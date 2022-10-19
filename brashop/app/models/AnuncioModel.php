@@ -5,7 +5,7 @@ class AnuncioModel{
 	private $preco;
 	
 
-	public function getId(): int{
+    public function getId(): int{
 		return $this->id;
 	}
 	
@@ -21,12 +21,15 @@ class AnuncioModel{
 		$this->nome = $n;
 	}
 
-	public function getPreco(): string{
-		return $this->senha;
+	public function getPreco(): float{
+		return $this->preco;
 	}
 	
-	public function setPreco(string $sen){
-		$this->senha = $sen;
+	public function setPreco(float $pre){
+		$this->preco = $pre;
 	}
 
-	
+
+
+
+}

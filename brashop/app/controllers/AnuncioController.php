@@ -1,23 +1,19 @@
 <?php
 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
 
 require_once __DIR__ . "/../repository/AnuncioRepository.php";
-//require_once __DIR__ . "/Controller.php";
 
 $controlleranuncio = new ControllerAnuncio();
 
 class ControllerAnuncio{
-
-	function __construct(){
+  
+    function __construct(){
 		if(isset($_POST["action"])){
 			$action = $_POST["action"];
 		}else if(isset($_GET["action"])){
 			$action = $_GET["action"];
 		}
-		//print_r($action);
+		//print_r("--->".$action);
 
 		if(isset($action)){
 			$this->callAction($action);
@@ -41,3 +37,114 @@ class ControllerAnuncio{
             throw new BadFunctionCallException("Usecase not exists");
         }
     }
+
+    public function loadView(string $path, array $data = null, string $msg = null){
+        $caminho = __DIR__ . "/../views/" . $path;
+        // echo("msg=");
+        // print_r($msg);
+        if(file_exists($caminho)){
+             require $caminho;
+        } else {
+            print "Erro ao carregar a view";
+        }
+    }
+
+    private function create(){
+        $anuncio = new AnuncioModel();
+		$anuncio->setNome($_POST["nome"]);
+        $anuncio->setPreco($_POST["preco"]);
+
+		$anuncioRepository = new AnuncioRepository();
+        $id = $anuncioRepository->create($anuncio);
+        //var_dump($id);
+
+        if($id){
+			$msg = "Registro inserido com sucesso.";
+		}else{
+			$msg = "Erro ao inserir o registro no banco de dados.";
+		}
+
+        $this->findAll($msg);
+    }
+
+    private function findAll(string $msg = null){
+        $anuncioRepository = new AnuncioRepository();
+
+        $anuncios = $anuncioRepository->findAll();
+
+        $data['titulo'] = "listar anuncios";
+        $data['anuncios'] = $anuncios;
+
+        $this->loadView("anuncios/list.php", $data, $msg);
+    }
+
+    private function findAnuncioById(){
+        $idParam = $_GET['id'];
+
+        $anuncioRepository = new AnuncioRepository();
+        $anuncio = $anuncioRepository->findAnuncioById($idParam);
+
+        print "<pre>";
+        print_r($anuncio);
+        print "</pre>";
+    }
+    private function deleteAnuncioById(){
+        $idParam = $_GET['id'];
+        $anuncioRepository = new AnuncioRepository();    
+
+        $qt = $anuncioRepository->deleteAnuncioById($idParam);
+        if($qt){
+			$msg = "Registro excluído com sucesso.";
+		}else{
+			$msg = "Erro ao excluir o registro no banco de dados.";
+		}
+        $this->findAll($msg);
+    }
+
+    private function edit(){
+        $idParam = $_GET['id'];
+        $anuncioRepository= new AnuncioRepository(); 
+        $anuncio = $anuncioRepository->findAnuncioById($idParam);
+        $data['anuncios'][0] = $anuncio;
+
+        $this->loadView("anuncios/formEdita.php", $data);
+    }
+
+    private function update(){
+        $anuncio = new AnuncioRepository();
+
+		$anuncio->setId($_GET["id"]);
+		$anuncio->setNome($_POST["nome"]);
+		$anuncio->setPreco($_POST["preco"]);
+		
+        $anuncioRepository = new AnuncioRepository();
+        
+        $atualizou = $anuncioRepository->update($anuncio);
+        
+        if($atualizou){
+			$msg = "Registro atualizado com sucesso.";
+		}else{
+			$msg = "Erro ao atualizar o registro no banco de dados.";
+		}
+
+        $this->findAll($msg);        
+    }
+
+    private function preventDefault() {
+        print "Ação indefinida...";
+    }
+
+
+    private function loadFormNew(){
+        $this->loadView("anuncios/formCadastro.php", null,"teste");
+    }    
+
+    private function loadHome(){
+        $this->loadView("usuarios/home.php", null,"teste");
+    }    
+
+    private function loadAnuncio(){
+        $this->loadView("anuncios/list.php", null,"teste");
+    }  
+
+}
