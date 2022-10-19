@@ -1,9 +1,11 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="../views/helpers/css/bootstrap.min.css">
+    <script src="../views/helpers/js" type="text/javascript"></script>
     <title>Document</title>
 </head>
 <body>
@@ -13,15 +15,25 @@
 	//print_r($caminho); 
 ?>
 <h2>Editar anuncio</h2>
-<p/>
+
 <?php foreach($data['anuncios'] as $anuncio): ?>
 	<form action="./AnuncioController.php?action=update&id=<?= $anuncio->getId()?>" method="POST">
-		Nome: <input type="text" name="nome" value="<?= $anuncio->getNome(); ?>">
-		<br>
-		Preço: <input type="number" min="0.01" name="preco" value="<?= $anuncio->getPreco(); ?>">
-		<br>
-		<input type="submit" value="Atualizar">
-		<input type="reset" value="Limpar">
+	<div class="mb-3">	
+	<label>Nome:</label> 
+	<input type="text" name="nome" class="form-control" value="<?= $anuncio->getNome(); ?>">
+	</div>
+
+		<div class="mb-3">
+		<label>Preço:</label>
+		 <input type="number" name="preco" class="form-control" value="<?= $anuncio->getPreco(); ?>">
+		</div>
+
+		<div class="mb-3">
+		<button type="submit" value="Atualizar" class="btn
+    btn-primary">Atualizar</button>
+		<button type="reset" value="Limpar"class="btn
+    btn-primary">Limpar</button>
+		</div>
 	</form>		
 <?php endforeach; ?>
 
