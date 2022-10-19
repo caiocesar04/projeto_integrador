@@ -40,13 +40,13 @@
                        
         <?php endforeach; ?>
     </ul>
+
+    <p>
+    [ <a href="./AnuncioController.php?action=loadFormNew">Anunciar novo Produto</a> ]
     <?php
 	include_once __DIR__ . "/../helpers/mensagem.php";
 	//$caminho = __DIR__ . "/../helpers/mensagem.php";
 	//print_r($caminho); 
 ?>
-    <p>
-    [ <a href="./AnuncioController.php?action=loadFormNew">Anunciar novo Produto</a> ]
-    
 </body>
 </html>

@@ -23,12 +23,8 @@
         <a class="nav-link" href="./AnuncioController.php?action=loadAnuncio">Anuncios</a>
       </li>
 </div>
+</nav>
 
-<?php
-	include_once __DIR__ . "/../helpers/mensagem.php";
-	//$caminho = __DIR__ . "/../helpers/mensagem.php";
-	//print_r($caminho); 
-?>
     <h1> Usuarios</h1>
     <ul>
         <?php foreach($data['usuarios'] as $user):
@@ -57,6 +53,11 @@
 
     <p>
     [ <a href="./UsuarioController.php?action=loadFormNew">Cadastrar novo usuario</a> ]
-    
+    <?php
+	include_once __DIR__ . "/../helpers/mensagem.php";
+	//$caminho = __DIR__ . "/../helpers/mensagem.php";
+	//print_r($caminho); 
+?>
+
 </body>
 </html>

@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="../views/helpers/css/bootstrap.min.css">
+    <script src="../views/helpers/js" type="text/javascript"></script>
     <title>Document</title>
 </head>
 <body>
@@ -13,19 +15,35 @@
 	//print_r($caminho); 
 ?>
 <h2>Editar usuario</h2>
-<p/>
 <?php foreach($data['usuarios'] as $usuario): ?>
 	<form action="./UsuarioController.php?action=update&id=<?= $usuario->getId()?>" method="POST">
-		Nome: <input type="text" name="nome" value="<?= $usuario->getNome(); ?>">
-		<br>
-		Senha: <input type="text" name="senha" value="<?= $usuario->getSenha(); ?>">
-		<br>
-		Email: <input type="text" name="email" value="<?= $usuario->getEmail(); ?>">
-		<break>
-		Data de Nascimento: <input type="date" name="data_nasc" value="<?= $usuario->getData_nasc(); ?>">
-		<p/>
-		<input type="submit" value="Atualizar">
-		<input type="reset" value="Limpar">
+	<div class="mb-3">	
+	<label>Nome:</label> 
+	<input type="text" name="nome" class="form-control" value="<?= $usuario->getNome(); ?>">
+	</div>
+
+
+	<div class="mb-3">
+	<label>Email:</label>
+	<input type="email" name="email" class="form-control" value="<?= $usuario->getEmail(); ?>">
+	</div>
+	
+	<div class="mb-3">
+	<label>Senha:</label>
+	<input type="password" name="senha" class="form-control" value="<?= $usuario->getSenha(); ?>">
+	</div>
+	
+	<div class="mb-3">
+	<label>Data de Nascimento:</label>
+	<input type="date" name="data_nasc" class="form-control" value="<?= $usuario->getData_nasc(); ?>">
+	</div>
+
+		<div class="mb-3">
+		<button type="submit" value="Atualizar" class="btn
+    btn-primary">Atualizar</button>
+		<button type="reset" value="Limpar"class="btn
+    btn-primary">Limpar</button>
+		</div>
 	</form>		
 <?php endforeach; ?>
 
