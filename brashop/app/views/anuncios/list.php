@@ -14,14 +14,11 @@
   <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="dropdown-toggle" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
+  </nav>
 
 
-<?php
-	include_once __DIR__ . "/../helpers/mensagem.php";
-	//$caminho = __DIR__ . "/../helpers/mensagem.php";
-	//print_r($caminho); 
-?>
     <h1> Anuncios </h1>
+    
     <ul>
         <?php foreach($data['anuncios'] as $user):
         
@@ -39,10 +36,15 @@
                  print "<td>".$user['preco']."</td>";?>
                 [ <a href="./AnuncioController.php?action=edit&id=<?= $user['id'] ?>">Editar</a> ] 
                 [ <a href="javascript:confirmarExclusaoAnuncio('<?= $user['nome'] ?>', <?= $user['id'] ?>)">Excluir</a> ]
+                
                        
         <?php endforeach; ?>
     </ul>
-
+    <?php
+	include_once __DIR__ . "/../helpers/mensagem.php";
+	//$caminho = __DIR__ . "/../helpers/mensagem.php";
+	//print_r($caminho); 
+?>
     <p>
     [ <a href="./AnuncioController.php?action=loadFormNew">Anunciar novo Produto</a> ]
     
