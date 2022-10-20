@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Tempo de geração: 19-Out-2022 às 15:50
+-- Tempo de geração: 20-Out-2022 às 14:56
 -- Versão do servidor: 8.0.30-0ubuntu0.20.04.2
 -- versão do PHP: 7.4.3
 
@@ -39,7 +39,9 @@ CREATE TABLE `anuncios` (
 --
 
 INSERT INTO `anuncios` (`id`, `nome`, `preco`) VALUES
-(5, 'ps4', 1000);
+(11, 'ps4', 1000),
+(12, 'dfhrthrth', 23),
+(13, 'dfhrthrth', 23);
 
 -- --------------------------------------------------------
 
@@ -61,10 +63,10 @@ CREATE TABLE `usuarios` (
 
 INSERT INTO `usuarios` (`id`, `nome`, `email`, `senha`, `data_nasc`) VALUES
 (4, 'Caio', 'caio@gmail.com', 'abc123', '2004-04-20'),
-(11, 'Qualquer', 'testando@gmail.com', 'teste', '2000-10-09'),
-(13, 'gagqtqwetqw', 'abc@email.com', '123445', '1999-11-11'),
-(14, 'gagqtqwetqw', 'aaaaa@email.com', '123445', '1999-11-11'),
-(15, 'teste', 'aaa@emial.com', '12345', '2000-11-11');
+(16, '123333333', '4125125@email.com', '12345', '1999-11-04'),
+(17, 'ssss', 'email@email.com', '123', '3333-02-23'),
+(31, '456456', 'ca435345io@gmail.com', '3245234', '4535-03-05'),
+(34, '234234', 'caiougu8yygu@gmail.com', 'ouhgugkc', '0234-04-23');
 
 --
 -- Índices para tabelas despejadas
@@ -80,7 +82,8 @@ ALTER TABLE `anuncios`
 -- Índices para tabela `usuarios`
 --
 ALTER TABLE `usuarios`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`);
 
 --
 -- AUTO_INCREMENT de tabelas despejadas
@@ -90,13 +93,13 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de tabela `anuncios`
 --
 ALTER TABLE `anuncios`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de tabela `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
