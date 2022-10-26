@@ -2,7 +2,7 @@
 
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+//error_reporting(E_ALL);
 
 require_once __DIR__ . "/../repository/UsuarioRepository.php";
 //require_once __DIR__ . "/Controller.php";
@@ -68,7 +68,7 @@ class ControllerUsuario{
         $id = $usuarioRepository->create($usuario);
         //var_dump($id);
 
-        if($id){
+        if($id > 0){
 			$msg = "Registro inserido com sucesso.";
 		}else{
 			$msg = "Erro ao inserir o registro no banco de dados.";
