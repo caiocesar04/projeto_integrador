@@ -142,9 +142,3 @@ class ControllerAnuncio{
     private function loadHome(){
         $this->loadView("usuarios/home.php", null,"teste");
     }    
-
-    private function loadAnuncio(){
-        $this->loadView("anuncios/list.php", null,"teste");
-    }  
-
-}

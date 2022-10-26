@@ -20,7 +20,7 @@
         <a class="nav-link" href="./AnuncioController.php?action=loadFormNew">Anunciar</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="./AnuncioController.php?action=loadAnuncio">Anuncios</a>
+        <a class="nav-link" href="./AnuncioController.php?action=findAll">Anuncios</a>
       </li>
 </div>
 </nav>
