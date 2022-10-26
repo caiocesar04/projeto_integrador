@@ -29,7 +29,8 @@
                 return $this->conn->lastInsertId();
                 
             } catch(Exception $e) {
-                    print("Erro ao inserir usuario no banco de dados");
+                    //print("Erro ao inserir usuario no banco de dados");
+                    return 0;
             }
         }
 
@@ -80,3 +81,4 @@
             return $result;
         }
     }
+
