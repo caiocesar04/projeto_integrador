@@ -27,37 +27,41 @@
 
     <h1> Usuarios</h1>
     <ul>
-        <?php foreach($data['usuarios'] as $user):
+      <table class = 'table table-hover-table-striped table-bordered'>
+         <tr>
+         <th>#</th>
+         <th>Nome</th>
+         <th>Senha</th>
+         <th>Email</th>
+         <th>Data de Nascimento</th>
+         </tr>
+           <?php foreach($data['usuarios'] as $user): ?>
         
-            print "<table class = 'table table-hover-table-striped table-bordered'>";
-                print "<tr>";
-                print "<th>#</th>";
-                print "<th>Nome</th>";
-                print "<th>Senha</th>";
-                print "<th>Email</th>";
-                print "<th>Data de Nascimento</th>";
-                print "</tr>";
+                
             
                 
             
-            print "<td>".$user['id']."</td>";
-             print "<td>".$user['nome']."</td>";
-                 print "<td>".$user['senha']."</td>";
-                 print "<td>".$user['email']."</td>";
-                 print "<td>".$user['data_nasc']."</td>" ;?>
-                [ <a href="./UsuarioController.php?action=edit&id=<?= $user['id'] ?>">Editar</a> ] 
-                [ <a href="javascript:confirmarExclusaoUsuario('<?= $user['nome'] ?>', <?= $user['id'] ?>)">Excluir</a> ]
-                       
-        <?php endforeach; ?>
+                 <tr>
+                 <td><?= $user['id'] ?></td>
+                 <td><?= $user['nome'] ?></td>
+                 <td><?= $user['senha'] ?></td>
+                 <td><?= $user['email'] ?></td>
+                 <td><?= $user['data_nasc'] ?></td>                
+                 <td><a href="./UsuarioController.php?action=edit&id=<?= $user['id'] ?>">Editar</a></td> 
+                 <td><a href="javascript:confirmarExclusaoUsuario('<?= $user['nome'] ?>', <?= $user['id'] ?>)">Excluir</a></td>
+                <?php endforeach; ?>
+
+                
     </ul>
 
     <p>
-    [ <a href="./UsuarioController.php?action=loadFormNew">Cadastrar novo usuario</a> ]
+    
     <?php
 	include_once __DIR__ . "/../helpers/mensagem.php";
 	//$caminho = __DIR__ . "/../helpers/mensagem.php";
 	//print_r($caminho); 
 ?>
+[ <a href="./UsuarioController.php?action=loadFormNew">Cadastrar novo usuario</a> ]
 
 </body>
 </html>
