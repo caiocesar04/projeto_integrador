@@ -10,7 +10,7 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-  <a class="navbar-brand active" href="./UsuarioController.php?action=loadHome">Brashop</a>
+  <a class="navbar-brand active" href="index.php">Brashop</a>
   <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="dropdown-toggle" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -20,22 +20,20 @@
     <h1> Anuncios </h1>
     
     <ul>
-        <?php foreach($data['anuncios'] as $user):
-        
-            print "<table class = 'table table-hover-table-striped table-bordered'>";
-                print "<tr>";
-                print "<th>#</th>";
-                print "<th>Nome</th>";
-                print "<th>Preço</th>";
-                print "</tr>";
-            
-                
-            
-            print "<td>".$user['id']."</td>";
-             print "<td>".$user['nome']."</td>";
-                 print "<td>".$user['preco']."</td>";?>
-                [ <a href="./AnuncioController.php?action=edit&id=<?= $user['id'] ?>">Editar</a> ] 
-                [ <a href="javascript:confirmarExclusaoAnuncio('<?= $user['nome'] ?>', <?= $user['id'] ?>)">Excluir</a> ]
+      <td><table class = 'table table-hover-table-striped table-bordered'></td>
+          <tr>
+          <th>#</th>
+          <th>Nome</th>
+          <th>Preço</th>
+          </tr>
+        <?php foreach($data['anuncios'] as $user): ?>
+              
+          <tr>
+          <td><?= $user['id'] ?></td>
+          <td><?= $user['nome'] ?></td>
+          <td><?= $user['preco'] ?></td>
+          <td><a href="./AnuncioController.php?action=edit&id=<?= $user['id'] ?>">Editar</a></td>
+          <td><a href="javascript:confirmarExclusaoAnuncio('<?= $user['nome'] ?>', <?= $user['id'] ?>)">Excluir</a></td>
                 
                        
         <?php endforeach; ?>
