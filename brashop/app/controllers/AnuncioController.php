@@ -2,7 +2,7 @@
 
 
 require_once __DIR__ . "/../repository/AnuncioRepository.php";
-
+ 
 $controlleranuncio = new ControllerAnuncio();
 
 class ControllerAnuncio{
@@ -142,3 +142,4 @@ class ControllerAnuncio{
     private function loadHome(){
         $this->loadView("usuarios/home.php", null,"teste");
     }    
+}

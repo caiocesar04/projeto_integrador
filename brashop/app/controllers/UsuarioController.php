@@ -112,22 +112,21 @@ class ControllerUsuario{
     }
     
     private function login(){
-        $usuario = new UsuarioModel();
+        $usuario = new usuarioModel();
+
 		$usuario->setSenha($_POST["senha"]);
 		$usuario->setEmail($_POST["email"]);
-
         $usuarioRepository = new UsuarioRepository();
-        //print_r($usuario);
-        $verifica = $usuarioRepository->verifica($usuario);
+        $result = $usuarioRepository->login($usuario);
+        //var_dump($id);
         
-        if($verifica){
-			$msg = "Você está logado!";
+        if($result){
+            $msg = "Logado com Sucesso.";
+            $this->findAll($msg);
 		}else{
-			$msg = "Erro ao logar o verifique se os seus dados foram preenchidos corretamente";
-		}
-		// include_once "cadastrar.php";
-
-        $this->findAll($msg);        
+			$msg = "Erro ao Logar verifique se seu email e senha estão corretos.";
+            $this->loadLogin($msg);
+		}     
     }
 
     private function deleteUsuarioById(){

@@ -80,5 +80,18 @@
             //var_dump($result);
             return $result;
         }
+        
+        public function login(UsuarioModel $usuario){
+            session_start();
+            
+            $query = "SELECT * FROM usuarios WHERE  email = :email AND senha = :senha";
+            $prepare = $this->conn->prepare($query);
+            $prepare->bindValue(":email", $usuario->getEmail());
+            $prepare->bindValue(":senha", $usuario->getSenha());
+            $prepare->execute();
+            $result = $prepare->rowCount();
+            
+            return $result > 0 ;
+        }
     }
 
