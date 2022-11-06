@@ -118,11 +118,11 @@ class ControllerUsuario{
 		$usuario->setEmail($_POST["email"]);
         $usuarioRepository = new UsuarioRepository();
         $result = $usuarioRepository->login($usuario);
-        //var_dump($id);
+ 
         
         if($result){
             $msg = "Logado com Sucesso.";
-            $this->findAll($msg);
+            $this->loadView("usuarios/homeLogin.php", @$data, $msg);
 		}else{
 			$msg = "Erro ao Logar verifique se seu email e senha estão corretos.";
             $this->loadLogin($msg);

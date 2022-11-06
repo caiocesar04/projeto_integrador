@@ -14,12 +14,20 @@
  
   <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
+  <div class="container-fluid">
   <a class="navbar-brand active" href="./UsuarioController.php?action=loadHome">Brashop</a>
   <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="dropdown-toggle" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="./AnuncioController.php?action=loadFormNew">Anunciar</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="./AnuncioController.php?action=findAll">Anuncios</a>
+      </li>
+</div>
 </nav>
 <div class="container">
     <div class="row">

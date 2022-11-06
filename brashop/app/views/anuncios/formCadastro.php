@@ -20,6 +20,10 @@
     <input type="number" name="preco" class="form-control" required>
 </div>
 <div class="mb-3">
+    <label>Imagem</label>
+    <input type="file" name="imagem" class="form-control" required>
+</div>
+<div class="mb-3">
     <button type="submit" value="enviar" name="enviar" class="btn
     btn-primary">Enviar</button>
 </div>

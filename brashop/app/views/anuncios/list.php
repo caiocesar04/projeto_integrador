@@ -25,6 +25,7 @@
           <th>#</th>
           <th>Nome</th>
           <th>Preço</th>
+          <th>Imagem</th>
           </tr>
         <?php foreach($data['anuncios'] as $user): ?>
               
@@ -32,6 +33,7 @@
           <td><?= $user['id'] ?></td>
           <td><?= $user['nome'] ?></td>
           <td><?= $user['preco'] ?></td>
+          <td><img src="<? $user['imagem']; ?>"></img></td>
           <td><a href="./AnuncioController.php?action=edit&id=<?= $user['id'] ?>">Editar</a></td>
           <td><a href="javascript:confirmarExclusaoAnuncio('<?= $user['nome'] ?>', <?= $user['id'] ?>)">Excluir</a></td>
                 

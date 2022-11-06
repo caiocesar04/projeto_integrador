@@ -53,6 +53,8 @@ class ControllerAnuncio{
         $anuncio = new AnuncioModel();
 		$anuncio->setNome($_POST["nome"]);
         $anuncio->setPreco($_POST["preco"]);
+        $anuncio->setImagem($_POST["imagem"]);
+        
 
 		$anuncioRepository = new AnuncioRepository();
         $id = $anuncioRepository->create($anuncio);
@@ -116,6 +118,7 @@ class ControllerAnuncio{
 		$anuncio->setId($_GET["id"]);
 		$anuncio->setNome($_POST["nome"]);
 		$anuncio->setPreco($_POST["preco"]);
+        $anuncio->setImagem($_POST["imagem"]);
 		
         $anuncioRepository = new AnuncioRepository();
         

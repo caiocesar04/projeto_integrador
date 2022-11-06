@@ -28,6 +28,13 @@ class AnuncioModel{
 	public function setPreco(float $pre){
 		$this->preco = $pre;
 	}
+	public function getImagem(): string{
+		return $this->imagem;
+	}
+	
+	public function setImagem(string $img){
+		$this->imagem = $img;
+	}
 
 
 
