@@ -45,14 +45,14 @@
             $prepare->bindParam(1, $id, PDO::PARAM_INT);
 
             if($prepare->execute()){
-                $usuario  = $prepare->fetchObject("AnuncioModel");
+                $anuncio  = $prepare->fetchObject("AnuncioModel");
             } else {
-                $usuario = null;
+                $anuncio = null;
             }
-            return $usuario;
+            return $anuncio;
         }
 
-        public function update(UsuarioModel $anuncio) : bool {
+        public function update(AnuncioModel $anuncio) : bool {
             $query = "UPDATE anuncios SET nome = ?, preco = ?, imagem = ? WHERE id = ?";
             $prepare = $this->conn->prepare($query);
             $prepare->bindValue(1, $anuncio->getNome());
@@ -74,4 +74,14 @@
             //var_dump($result);
             return $result;
         }
+        public function findAnuncioByName(AnuncioModel $anuncio){
+            $query = "SELECT * FROM anuncios WHERE  nome = :nome";
+            $prepare = $this->conn->prepare($query);
+            $prepare->bindValue(":nome", $anuncio->getNome());
+            $prepare->execute();
+            $result = $prepare->rowCount();
+            
+            return $result > 0 ;
+        }
+
     }

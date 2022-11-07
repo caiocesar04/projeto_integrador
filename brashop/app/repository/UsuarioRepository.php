@@ -66,8 +66,6 @@
             $prepare->bindValue(4, $usuario->getData_nasc());
             $prepare->bindValue(5, $usuario->getId());
             $result = $prepare->execute();
-            //$result = $prepare->rowCount();
-            //var_dump($result);
             return $result;
         }
 
@@ -91,5 +89,6 @@
             
             return $result > 0 ;
         }
+       
     }
 

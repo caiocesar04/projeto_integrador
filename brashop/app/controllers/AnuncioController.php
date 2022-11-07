@@ -90,6 +90,21 @@ class ControllerAnuncio{
         print_r($anuncio);
         print "</pre>";
     }
+    private function findAnuncioByName(){
+        $anuncio= new AnuncioModel();
+
+		$anuncio->setNome($_POST["nome"]);;
+        $anuncioRepository = new AnuncioRepository();
+        $result = $anuncioRepository->findAnuncioByName($anuncio);
+ 
+        
+        if($result){
+            $msg = "Logado com Sucesso.";
+            $this->loadView("anuncios/list.php", @$data, $msg);
+		}else{
+            echo "Anuncio nao encontrado";
+		}     
+    }
     private function deleteAnuncioById(){
         $idParam = $_GET['id'];
         $anuncioRepository = new AnuncioRepository();    
@@ -132,6 +147,7 @@ class ControllerAnuncio{
 
         $this->findAll($msg);        
     }
+  
 
     private function preventDefault() {
         print "Ação indefinida...";
