@@ -115,7 +115,7 @@ class ControllerUsuario{
        
 
         $usuario = new usuarioModel();
-
+		session_start();
 		@$usuario->setSenha($_POST["senha"]);
 		@$usuario->setEmail($_POST["email"]);
         
