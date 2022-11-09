@@ -119,7 +119,8 @@ class ControllerUsuario{
 		@$usuario->setSenha($_POST["senha"]);
 		@$usuario->setEmail($_POST["email"]);
         
-       
+       		$_SESSION['senha'] = $_POST["senha"];
+         	$_SESSION['email'] = $_POST["email"];
 
         $usuarioRepository = new UsuarioRepository();
         $result = $usuarioRepository->login($usuario);
