@@ -80,7 +80,7 @@
         }
         
         public function login(UsuarioModel $usuario){
-            session_start();
+            
 
             $query = "SELECT * FROM usuarios WHERE  email = :email AND senha = :senha";
             $prepare = $this->conn->prepare($query);
@@ -89,8 +89,6 @@
             $prepare->execute();
             $result = $prepare->rowCount();
 
-            $_SESSION['senha'] = $usuario->getSenha();
-            $_SESSION['email'] = $usuario->getEmail();
            
             return $result > 0 ;
         }
