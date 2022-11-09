@@ -12,7 +12,7 @@
     <title>Brashop</title>
   </head>
  
-  <body>
+  <body style ="background-color:black">
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
   <a class="navbar-brand active" href="./UsuarioController.php?action=loadHome">Brashop</a>
@@ -37,8 +37,13 @@
     <div class="row">
     <div class="col mt-5">
     <?php
-            print "<h1>Você está logado no Brashop!</h1>";
+           print "<font color='white'>
+           <h1>Você está logado no Brashop!</h1>
+           </font>";
+;
         ?>
+        <p>
+    [ <a href="./UsuarioController.php?action=logout">sair</a> ]
        
 </div>
 </div>

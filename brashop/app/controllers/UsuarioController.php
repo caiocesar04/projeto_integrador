@@ -112,10 +112,15 @@ class ControllerUsuario{
     }
     
     private function login(){
+       
+
         $usuario = new usuarioModel();
 
-		$usuario->setSenha($_POST["senha"]);
-		$usuario->setEmail($_POST["email"]);
+		@$usuario->setSenha($_POST["senha"]);
+		@$usuario->setEmail($_POST["email"]);
+        
+       
+
         $usuarioRepository = new UsuarioRepository();
         $result = $usuarioRepository->login($usuario);
  
@@ -123,10 +128,18 @@ class ControllerUsuario{
         if($result){
             $msg = "Logado com Sucesso.";
             $this->loadView("usuarios/homeLogin.php", @$data, $msg);
+            
 		}else{
-			$msg = "Erro ao Logar verifique se seu email e senha estão corretos.";
-            $this->loadLogin($msg);
+			$msg = "Erro ao Logar! verifique se seu email e senha estão corretos.";
+            $this->loadView("usuarios/formLogin.php", @$data, $msg);
+            exit;
 		}     
+    }
+
+    private function logout(){
+
+        $usuario = new usuarioModel();
+        $this->loadView("usuarios/formLogin.php", @$data, @$msg);
     }
 
     private function deleteUsuarioById(){

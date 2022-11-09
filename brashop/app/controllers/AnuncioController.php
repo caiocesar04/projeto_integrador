@@ -93,14 +93,14 @@ class ControllerAnuncio{
     private function findAnuncioByName(){
         $anuncio= new AnuncioModel();
 
-		$anuncio->setNome($_POST["nome"]);;
+		$anuncio->setNome($_POST["nome"]);
         $anuncioRepository = new AnuncioRepository();
         $result = $anuncioRepository->findAnuncioByName($anuncio);
  
         
         if($result){
-            $msg = "Logado com Sucesso.";
-            $this->loadView("anuncios/list.php", @$data, $msg);
+            $msg = "Resultados encontrados:";
+            $this->loadView("anuncios/search.php", @$data, $msg);
 		}else{
             echo "Anuncio nao encontrado";
 		}     
