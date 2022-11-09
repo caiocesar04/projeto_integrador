@@ -33,7 +33,7 @@
           <td><?= $user['id'] ?></td>
           <td><?= $user['nome'] ?></td>
           <td><?= $user['preco'] ?></td>
-          <td><img src="<? $user['imagem']; ?>"></img></td>
+          <td><img style="width:50px;" src="../../imagens/<?=$user['imagem'];?>"></img></td>
           <td><a href="./AnuncioController.php?action=edit&id=<?= $user['id'] ?>">Editar</a></td>
           <td><a href="javascript:confirmarExclusaoAnuncio('<?= $user['nome'] ?>', <?= $user['id'] ?>)">Excluir</a></td>
                 
