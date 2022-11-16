@@ -1,0 +1,105 @@
+body {
+
+    padding: 0;
+
+    margin: 0;
+
+    background-color: black;
+
+}
+
+#login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.card {
+    background-color: #1d2124;
+    padding: 120px;
+    border-radius: 2px;
+    width:320px;
+}
+
+.card-header {
+    text-align: center;
+    font-size: 24px;
+    padding-bottom: 30px;
+    opacity: 0.8;
+    color: #fff;
+}
+
+.card-content label {
+    color: #fff;
+
+    font-size: 18px;
+
+    opacity: 0.8;
+
+}
+
+.card-content-area {
+
+    display: flex;
+
+    flex-direction: column;
+
+    padding:10px 0;
+
+}
+
+.card-content-area input {
+    font-size: 22px;
+    margin-top: 20px;
+
+    padding:0 5px;
+
+    background-color: transparent;
+
+    border:none;
+
+    border-bottom: 1px solid #e1e1e1;
+
+    outline: none;
+
+    color: #fff;
+
+}
+
+.card-footer {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-footer .submit{
+    font-size: 15px;
+
+    width: 100%;
+
+    height: 40px;
+
+    background-color: #28a745;
+
+    border:none;
+
+    color:#e1e1e1;
+
+    margin: 10px 0;
+
+}
+
+.card-footer a {
+
+    text-align: center;
+
+    font-size: 12px;
+
+    opacity: 0.8;
+
+    color: #fff;
+
+    text-decoration: none;
+
+}
