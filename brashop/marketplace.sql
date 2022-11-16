@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 06-Nov-2022 às 19:29
+-- Tempo de geração: 16-Nov-2022 às 20:00
 -- Versão do servidor: 10.4.24-MariaDB
 -- versão do PHP: 8.1.6
 
@@ -39,7 +39,9 @@ CREATE TABLE `anuncios` (
 --
 
 INSERT INTO `anuncios` (`id`, `nome`, `preco`, `imagem`) VALUES
-(18, 'Playstation 4', 1200, 'ps4.png');
+(21, 'PS4', 10000, 'ps4.png'),
+(22, 'refrigerante', 4, 'refri.jpg'),
+(23, 'mapa territorio', 5, 'territorio.png');
 
 -- --------------------------------------------------------
 
@@ -48,9 +50,27 @@ INSERT INTO `anuncios` (`id`, `nome`, `preco`, `imagem`) VALUES
 --
 
 CREATE TABLE `categorias` (
-  `id` int(11) NOT NULL,
+  `id` int(100) NOT NULL,
   `nome` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `sugestoes`
+--
+
+CREATE TABLE `sugestoes` (
+  `id` int(11) NOT NULL,
+  `texto` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `sugestoes`
+--
+
+INSERT INTO `sugestoes` (`id`, `texto`) VALUES
+(0, 'Precisam melhorar o Front-end');
 
 -- --------------------------------------------------------
 
@@ -72,7 +92,11 @@ CREATE TABLE `usuarios` (
 
 INSERT INTO `usuarios` (`id`, `nome`, `email`, `senha`, `data_nasc`) VALUES
 (4, 'Caio', 'caio@gmail.com', 'abc123', '2004-04-20'),
-(44, 'Caio', 'caiocesar@email.com', 'teste', '2009-08-21');
+(44, 'Caio', 'caiocesar@email.com', 'teste', '2009-08-21'),
+(49, 'PS4', 'a@email.com', 'qqqqqqq', '9999-01-21'),
+(52, 'acacac', 'testando@gmail.com', '11111', '9999-09-21'),
+(57, 'Caio', 'caioces41ar@gmail.com', '11111111', '0000-00-00'),
+(59, 'Pedro', 'pedro@gmail.com', 'teste', '2004-10-22');
 
 --
 -- Índices para tabelas despejadas
@@ -99,13 +123,13 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de tabela `anuncios`
 --
 ALTER TABLE `anuncios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT de tabela `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
