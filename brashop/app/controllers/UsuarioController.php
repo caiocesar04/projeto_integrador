@@ -141,13 +141,12 @@ class ControllerUsuario{
             exit;
 		}     
     }
-
     private function logout(){
 
         $usuario = new usuarioModel();
-        $this->loadView("usuarios/formLogin.php", @$data, @$msg);
+        $this->loadHome();
     }
-
+	
     private function deleteUsuarioById(){
         $idParam = $_GET['id'];
         $usuarioRepository = new UsuarioRepository();    
