@@ -90,7 +90,11 @@ class ControllerUsuario{
     }    
     private function loadLogin(){
         $this->loadView("usuarios/formLogin.php", null);
-    }    
+    }  
+    private function loadHomeLogin(){
+        $this->loadView("usuarios/homeLogin.php", null);
+    }  
+    
 
     private function findAll(string $msg = null){
         $usuarioRepository = new UsuarioRepository();
