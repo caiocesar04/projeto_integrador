@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
@@ -27,7 +26,7 @@
         <a class="nav-link" href="./AnuncioController.php?action=findAll">Anuncios</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="./SugestaoController.php?action=findAll">Sugestoes</a>
+        <a class="nav-link" href="./CategoriaController.php?action=findAll">Categorias</a>
       </li>
       </div>
       <form action="./AnuncioController.php?action=findAnunciobyName" method="POST">
@@ -41,7 +40,7 @@
     <div class="col mt-5">
     <?php
            print "<font color='white'>
-           <h1>Você está logado no Brashop!</h1>
+           <h1>Bem vindo Administrador!</h1>
            </font>";
 ;
         ?>

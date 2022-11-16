@@ -69,24 +69,27 @@ class ControllerUsuario{
         //var_dump($id);
 
         if($id > 0){
-			$msg = "Registro inserido com sucesso.";
+			echo "Registro inserido com sucesso. Agora é só Logar!";
+            $this->loadView("usuarios/formLogin.php", @$data);
 		}else{
-			$msg = "Erro ao inserir o registro no banco de dados.";
+			echo "Erro ao inserir o registro no banco de dados.";
+            $this->loadView("usuarios/formCadastro.php", @$data);
 		}
-
-        $this->findAll($msg);
+        
     }
 
     private function loadFormNew(){
-        $this->loadView("usuarios/formCadastro.php", null,"teste");
+        $this->loadView("usuarios/formCadastro.php", null);
     }    
 
     private function loadHome(){
-        $this->loadView("usuarios/home.php", null,"teste");
+        $this->loadView("usuarios/home.php", null);
     }    
-
+    private function loadAdm(){
+        $this->loadView("usuarios/home.php", null);
+    }    
     private function loadLogin(){
-        $this->loadView("usuarios/formLogin.php", null,"teste");
+        $this->loadView("usuarios/formLogin.php", null);
     }    
 
     private function findAll(string $msg = null){
@@ -130,7 +133,8 @@ class ControllerUsuario{
             $msg = "Logado com Sucesso.";
             $this->loadView("usuarios/homeLogin.php", @$data, $msg);
             
-		}else{
+		} 
+        else{
 			$msg = "Erro ao Logar! verifique se seu email e senha estão corretos.";
             $this->loadView("usuarios/formLogin.php", @$data, $msg);
             exit;

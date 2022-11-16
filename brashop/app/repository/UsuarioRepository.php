@@ -88,7 +88,7 @@
             $prepare->bindValue(":senha", $usuario->getSenha());
             $prepare->execute();
             $result = $prepare->rowCount();
-
+            
            
             return $result > 0 ;
         }
