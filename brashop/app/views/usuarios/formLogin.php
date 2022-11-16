@@ -11,7 +11,7 @@
     <?php
 	include_once __DIR__ . "/../helpers/mensagem.php"; 
 ?>
-        <div id="login">
+        <div id="title">
             <form class="card" action="./UsuarioController.php?action=login" method="POST">
                 <div class="card-header">
                     <h2>Login</h2>
