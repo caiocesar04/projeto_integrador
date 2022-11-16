@@ -74,14 +74,14 @@
             //var_dump($result);
             return $result;
         }
-        public function findAnuncioByName(AnuncioModel $anuncio){
-            $query = "SELECT * FROM anuncios WHERE  nome = :nome";
+       public function findAnuncioByName(AnuncioModel $anuncio){
+            $query = "SELECT * FROM anuncios WHERE  nome like :nome";
             $prepare = $this->conn->prepare($query);
-            $prepare->bindValue(":nome", $anuncio->getNome());
+            $prepare->bindpParam(':nome', $nome, PDO::PARAM_STR);
             $prepare->execute();
-            $result = $prepare->rowCount();
+            $result = $prepare-> fetchALL(PDO::FETCH_ASSOC);
             
-            return $result > 0 ;
+            return $result;
         }
 
     }
