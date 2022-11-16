@@ -9,7 +9,7 @@ include_once __DIR__ . "/../helpers/mensagem.php";
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-  <a class="navbar-brand active" href="./UsuarioController.php?action=loadHome">Brashop</a>
+  <a class="navbar-brand active" href="./UsuarioController.php?action=loadHomeLogin">Brashop</a>
   <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="dropdown-toggle" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
