@@ -1,11 +1,6 @@
 <?php
-
-
 include_once __DIR__ . "/../helpers/mensagem.php";
-	//$caminho = __DIR__ . "/../helpers/mensagem.php";
-	//print_r($caminho); 
 ?>
-
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
@@ -28,5 +23,4 @@ include_once __DIR__ . "/../helpers/mensagem.php";
       <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" name="nome" aria-label="Pesquisar">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
-
 </nav>
