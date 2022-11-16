@@ -155,10 +155,10 @@ class ControllerAnuncio{
 
 
     private function loadFormNew(){
-        $this->loadView("anuncios/formCadastro.php", null,"teste");
+        $this->loadView("anuncios/formCadastro.php", null);
     }    
 
     private function loadHome(){
-        $this->loadView("usuarios/home.php", null,"teste");
+        $this->loadView("usuarios/home.php", null);
     }    
 }

@@ -9,9 +9,11 @@
   </head>
   <body  >
   <?php
-	include_once __DIR__ . "/../helpers/mensagem.php"; 
+	include_once __DIR__ . "/../helpers/mensagem.php";
+	//$caminho = __DIR__ . "/../helpers/mensagem.php";  
+	//print_r($caminho); 
+
 ?>
-	  
 <h2>Login de usuarios</h2>
 
 <form action="./UsuarioController.php?action=login" method="POST">

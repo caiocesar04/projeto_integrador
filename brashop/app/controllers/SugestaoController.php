@@ -134,10 +134,10 @@ class ControllerSugestao{
 
 
     private function loadFormNew(){
-        $this->loadView("sugestoes/formCadastro.php", null,"teste");
+        $this->loadView("sugestoes/formCadastro.php", null);
     }    
 
     private function loadHome(){
-        $this->loadView("usuarios/home.php", null,"teste");
+        $this->loadView("usuarios/home.php", null);
     }    
 }

@@ -127,8 +127,7 @@ class ControllerUsuario{
  
         
         if($usuario){
-            $msg = "Logado com Sucesso.";
-            $this->loadView("usuarios/homeLogin.php", @$data, $msg);
+            $this->loadView("usuarios/homeLogin.php", @$data);
             session_start();
             $_SESSION['usuario'] = $usuario;
             

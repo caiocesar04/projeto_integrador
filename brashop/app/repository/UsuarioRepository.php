@@ -102,4 +102,3 @@
             session_destroy();
         }
     }
-

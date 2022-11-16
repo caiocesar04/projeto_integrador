@@ -7,7 +7,12 @@
     <script src="../views/helpers/js" type="text/javascript"></script>
     <title>Brashop</title>
   </head>
-  <body>
+  <body>  <?php
+
+include_once __DIR__ . "/../helpers/menuLogin.php";
+?>
+
+
 <h1> Anuncie um produto </h1>
 <form action="./AnuncioController.php?action=create" method="POST">
    

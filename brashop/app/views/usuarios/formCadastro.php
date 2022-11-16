@@ -8,6 +8,7 @@
     <title>Brashop</title>
   </head>
   <body>
+    
 <h1> Cadastre-se </h1>
 <form action="./UsuarioController.php?action=create" method="POST">
     <input type="hidden" name="acao" value="cadastrar">
