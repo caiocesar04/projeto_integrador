@@ -100,7 +100,6 @@ class ControllerAnuncio{
         print_r($anuncio);
         print "</pre>";
     }
-    }
     private function deleteAnuncioById(){
         $idParam = $_GET['id'];
         $anuncioRepository = new AnuncioRepository();    
