@@ -86,11 +86,16 @@
             $prepare = $this->conn->prepare($query);
             $prepare->bindValue(":email", $usuario->getEmail());
             $prepare->bindValue(":senha", $usuario->getSenha());
-            $prepare->execute();
-            $result = $prepare->rowCount();
-            
+            // $prepare->execute();
+            // $result = $prepare->rowCount();
+
+            if($prepare->execute()){
+                $usuario  = $prepare->fetchObject("UsuarioModel");
+            } else {
+                $usuario = null;
+            }
            
-            return $result > 0 ;
+            return $usuario ;
         }
         public function logout(UsuarioModel $usuario){
             session_start();
