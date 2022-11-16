@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 16-Nov-2022 às 20:00
+-- Tempo de geração: 16-Nov-2022 às 20:18
 -- Versão do servidor: 10.4.24-MariaDB
 -- versão do PHP: 8.1.6
 
@@ -70,7 +70,7 @@ CREATE TABLE `sugestoes` (
 --
 
 INSERT INTO `sugestoes` (`id`, `texto`) VALUES
-(0, 'Precisam melhorar o Front-end');
+(1, 'Precisam melhorar o Front-end');
 
 -- --------------------------------------------------------
 
@@ -109,6 +109,18 @@ ALTER TABLE `anuncios`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Índices para tabela `categorias`
+--
+ALTER TABLE `categorias`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Índices para tabela `sugestoes`
+--
+ALTER TABLE `sugestoes`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Índices para tabela `usuarios`
 --
 ALTER TABLE `usuarios`
@@ -124,6 +136,18 @@ ALTER TABLE `usuarios`
 --
 ALTER TABLE `anuncios`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+
+--
+-- AUTO_INCREMENT de tabela `categorias`
+--
+ALTER TABLE `categorias`
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `sugestoes`
+--
+ALTER TABLE `sugestoes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `usuarios`
