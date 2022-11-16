@@ -12,7 +12,7 @@
 	include_once __DIR__ . "/../helpers/mensagem.php"; 
 ?>
         <div id="title">
-            <form class="card" action="./UsuarioController.php?action=login" method="POST">
+            <form class="card" action="./UsuarioController.php?action=create" method="POST">
                 <div class="card-header">
                     <h2>Cadastre-se</h2>
                 </div>
