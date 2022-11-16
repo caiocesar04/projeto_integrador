@@ -114,27 +114,25 @@ class ControllerUsuario{
         print "</pre>";
     }
     
-    private function login(){
+     private function login(){
        
 
         $usuario = new usuarioModel();
-		session_start();
+		
 		@$usuario->setSenha($_POST["senha"]);
 		@$usuario->setEmail($_POST["email"]);
         
-       		$_SESSION['senha'] = $_POST["senha"];
-         	$_SESSION['email'] = $_POST["email"];
-
         $usuarioRepository = new UsuarioRepository();
-        $result = $usuarioRepository->login($usuario);
+        $usuario = $usuarioRepository->login($usuario);
  
         
-        if($result){
+        if($usuario){
             $msg = "Logado com Sucesso.";
             $this->loadView("usuarios/homeLogin.php", @$data, $msg);
+            session_start();
+            $_SESSION['usuario'] = $usuario;
             
-		} 
-        else{
+		}else{
 			$msg = "Erro ao Logar! verifique se seu email e senha estão corretos.";
             $this->loadView("usuarios/formLogin.php", @$data, $msg);
             exit;
