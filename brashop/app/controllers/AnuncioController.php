@@ -1,10 +1,6 @@
 <?php
-
-
 require_once __DIR__ . "/../repository/AnuncioRepository.php";
- 
 $controlleranuncio = new ControllerAnuncio();
-
 class ControllerAnuncio{
   
     function __construct(){
