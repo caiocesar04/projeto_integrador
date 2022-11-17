@@ -68,12 +68,13 @@ class ControllerUsuario{
         $id = $usuarioRepository->create($usuario);
         //var_dump($id);
 
+      
         if($id > 0){
-			echo "Registro inserido com sucesso. Agora é só Logar!";
-            $this->loadView("usuarios/formLogin.php", @$data);
+			$msg = "Registro inserido com sucesso. Agora é só Logar!";
+            $this->loadView("usuarios/formLogin.php", @$data, $msg);
 		}else{
-			echo "Erro ao inserir o registro no banco de dados.";
-            $this->loadView("usuarios/formCadastro.php", @$data);
+			$msg = "Erro ao inserir registro! É provavel que este email já exista!";
+            $this->loadView("usuarios/formCadastro.php", @$data, $msg);
 		}
         
     }
@@ -86,7 +87,7 @@ class ControllerUsuario{
         $this->loadView("usuarios/home.php", null);
     }    
     private function loadAdm(){
-        $this->loadView("usuarios/home.php", null);
+        $this->loadView("usuarios/homeAdm.php", null);
     }    
     private function loadLogin(){
         $this->loadView("usuarios/formLogin.php", null);
@@ -141,12 +142,13 @@ class ControllerUsuario{
             exit;
 		}     
     }
+
     private function logout(){
 
         $usuario = new usuarioModel();
         $this->loadHome();
     }
-	
+
     private function deleteUsuarioById(){
         $idParam = $_GET['id'];
         $usuarioRepository = new UsuarioRepository();    

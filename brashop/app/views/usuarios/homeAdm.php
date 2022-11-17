@@ -20,10 +20,13 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" href="./AnuncioController.php?action=loadFormNew">Anunciar</a>
+        <a class="nav-link" href="./UsuarioController.php?action=findAll">Usuários</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="./AnuncioController.php?action=findAll">Anuncios</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="./SugestaoController.php?action=findAll">Sugestoes</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="./CategoriaController.php?action=findAll">Categorias</a>

@@ -52,15 +52,14 @@
         public function update(SugestaoModel $sugestao) : bool {
             $query = "UPDATE sugestoes SET texto = ? WHERE id = ?";
             $prepare = $this->conn->prepare($query);
-            $prepare->bindValue(1, $anuncio->getTexto());
-            $prepare->bindValue(2, $anuncio->getId());
+            $prepare->bindValue(1, $sugestao->getTexto());
+            $prepare->bindValue(2, $sugestao->getId());
             $result = $prepare->execute();
-            //$result = $prepare->rowCount();
-            //var_dump($result);
             return $result;
         }
 
-        public function deleteAnuncioById( int $id) : int {
+
+        public function deleteSugestaoById( int $id) : int {
             $query = "DELETE FROM sugestoes WHERE id = :id";
             $prepare = $this->conn->prepare($query);
             $prepare->bindValue(":id", $id);

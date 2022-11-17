@@ -1,11 +1,9 @@
 <?php
-
-    class SugestaoModel{
+class SugestaoModel{
 	private $id;
 	private $texto;
-	
 
-    public function getId(): int{
+	public function getId(): int{
 		return $this->id;
 	}
 	
@@ -19,8 +17,6 @@
 	
 	public function setTexto(string $tex){
 		$this->texto = $tex;
-	}
-
-
-
+	}	
+	
 }

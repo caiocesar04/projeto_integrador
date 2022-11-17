@@ -3,9 +3,10 @@ class AnuncioModel{
 	private $id;
 	private $nome;
 	private $preco;
-	
+	private $imagem;
 
-    public function getId(): int{
+
+	public function getId(): int{
 		return $this->id;
 	}
 	
@@ -28,6 +29,7 @@ class AnuncioModel{
 	public function setPreco(float $pre){
 		$this->preco = $pre;
 	}
+
 	public function getImagem(): string{
 		return $this->imagem;
 	}
@@ -35,8 +37,5 @@ class AnuncioModel{
 	public function setImagem(string $img){
 		$this->imagem = $img;
 	}
-
-
-
-
+	
 }

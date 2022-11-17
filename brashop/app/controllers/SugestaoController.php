@@ -76,11 +76,11 @@ class ControllerSugestao{
         $this->loadView("sugestoes/list.php", $data, $msg);
     }
 
-    private function findAnuncioById(){
+    private function findSugestaoById(){
         $idParam = $_GET['id'];
 
         $sugestaoRepository = new SugestaoRepository();
-        $sugestao = $sugestaoRepository->findAnuncioById($idParam);
+        $sugestao = $sugestaoRepository->findSugestaoById($idParam);
 
         print "<pre>";
         print_r($sugestao);
@@ -101,7 +101,7 @@ class ControllerSugestao{
 
     private function edit(){
         $idParam = $_GET['id'];
-        $sugestaoRepository= new SugestaoRepository(); 
+        $sugestaoRepository = new SugestaoRepository(); 
         $sugestao = $sugestaoRepository->findSugestaoById($idParam);
         $data['sugestoes'][0] = $sugestao;
 
@@ -109,24 +109,24 @@ class ControllerSugestao{
     }
 
     private function update(){
-        $sugestao = new SugestaoRepository();
+        $sugestao = new SugestaoModel();
 
 		$sugestao->setId($_GET["id"]);
-		$sugestao->setTexto($_POST["texto"]);
-		
+        $sugestao->setTexto($_POST["texto"]);
+
         $sugestaoRepository = new SugestaoRepository();
-        
+        //print_r($usuario);
         $atualizou = $sugestaoRepository->update($sugestao);
         
         if($atualizou){
 			$msg = "Registro atualizado com sucesso.";
+            $this->findAll(@$data, $msg);
 		}else{
 			$msg = "Erro ao atualizar o registro no banco de dados.";
+            $this->loadView("sugestoes/formEdita.php", @$data, $msg);
 		}
-
-        $this->findAll($msg);        
+        
     }
-  
 
     private function preventDefault() {
         print "Ação indefinida...";

@@ -29,6 +29,11 @@
 		</div>
 
 		<div class="mb-3">
+		<label>Preço:</label>
+		 <input type="file" name="imagem" class="form-control" value="<?= $anuncio->getImagem(); ?>" required>
+		</div>
+
+		<div class="mb-3">
 		<button type="submit" value="Atualizar" class="btn
     btn-primary">Atualizar</button>
 		<button type="reset" value="Limpar"class="btn

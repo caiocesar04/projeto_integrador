@@ -60,8 +60,6 @@
             $prepare->bindValue(3, $anuncio->getImagem());
             $prepare->bindValue(4, $anuncio->getId());
             $result = $prepare->execute();
-            //$result = $prepare->rowCount();
-            //var_dump($result);
             return $result;
         }
 

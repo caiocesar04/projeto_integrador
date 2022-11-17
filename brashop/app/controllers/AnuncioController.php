@@ -88,7 +88,6 @@ class ControllerAnuncio{
     }
     private function findAnuncioByName(){
         $nomeParam = $_GET['nome'];
-
         $anuncioRepository = new AnuncioRepository();
         $anuncio = $anuncioRepository->findAnuncioByName($nomeParam);
 
@@ -111,7 +110,7 @@ class ControllerAnuncio{
 
     private function edit(){
         $idParam = $_GET['id'];
-        $anuncioRepository= new AnuncioRepository(); 
+        $anuncioRepository = new AnuncioRepository(); 
         $anuncio = $anuncioRepository->findAnuncioById($idParam);
         $data['anuncios'][0] = $anuncio;
 
@@ -119,27 +118,25 @@ class ControllerAnuncio{
     }
 
     private function update(){
-        $anuncio = new AnuncioRepository();
+        $anuncio = new AnuncioModel();
 
 		$anuncio->setId($_GET["id"]);
 		$anuncio->setNome($_POST["nome"]);
 		$anuncio->setPreco($_POST["preco"]);
         $anuncio->setImagem($_POST["imagem"]);
-		
         $anuncioRepository = new AnuncioRepository();
-        
+        //print_r($usuario);
         $atualizou = $anuncioRepository->update($anuncio);
         
         if($atualizou){
 			$msg = "Registro atualizado com sucesso.";
+            $this->findAll(@$data, $msg);
 		}else{
 			$msg = "Erro ao atualizar o registro no banco de dados.";
+            $this->loadView("anuncios/formEdita.php", @$data, $msg);
 		}
-
-        $this->findAll($msg);        
+        
     }
-  
-
     private function preventDefault() {
         print "Ação indefinida...";
     }
