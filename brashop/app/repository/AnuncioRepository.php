@@ -72,7 +72,7 @@
             //var_dump($result);
             return $result;
         }
-       public function findAnuncioByName(string $nome){
+      public function findAnuncioByName(string $nome){
             $query = "SELECT * FROM anuncios WHERE nome like '%".$nome."%'";
             $prepare = $this->conn->prepare($query);
             $prepare->bindValue(1, $nome);
