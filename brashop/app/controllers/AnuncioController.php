@@ -87,12 +87,12 @@ class ControllerAnuncio{
         print "</pre>";
     }
     private function findAnuncioByName(){
-        $nomeParam = $_GET['nome'];
+        $nomeParam = $_POST['nome'];
         $anuncioRepository = new AnuncioRepository();
-        $anuncio = $anuncioRepository->findAnuncioByName($nomeParam);
-
+        $anuncios = $anuncioRepository->findAnuncioByName($nomeParam);
+        print_r($anuncios);
         print "<pre>";
-        print_r($anuncio);
+        print_r($anuncios);
         print "</pre>";
     }
     private function deleteAnuncioById(){

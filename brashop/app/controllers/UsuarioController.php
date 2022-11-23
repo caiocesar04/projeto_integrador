@@ -122,7 +122,6 @@ class ControllerUsuario{
      private function login(){
        
 
-
         $usuario = new usuarioModel();
 		
 		@$usuario->setSenha($_POST["senha"]);
