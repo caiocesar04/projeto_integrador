@@ -33,7 +33,7 @@
     </ul>
     </div>
     <form action="./AnuncioController.php?action=findAnunciobyName" method="POST">
-      <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" name="pesquisar"  value="pesquisar" aria-label="Pesquisar">
+      <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" name="pesquisar"  value="" aria-label="Pesquisar">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
 </nav>
