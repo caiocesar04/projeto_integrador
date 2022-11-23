@@ -20,12 +20,7 @@ include_once __DIR__ . "/../helpers/menuLogin.php";
 <div class="container">
     <div class="row">
     <div class="col mt-5">
-    <?php
-           print "<font color='white'>
-           <h1>Você está logado no Brashop!</h1>
-           </font>";
-;
-        ?>
+  
         <p>
     [ <a href="./UsuarioController.php?action=logout">sair</a> ]
        
