@@ -90,10 +90,9 @@ class ControllerAnuncio{
         $nomeParam = $_POST['nome'];
         $anuncioRepository = new AnuncioRepository();
         $anuncios = $anuncioRepository->findAnuncioByName($nomeParam);
-        print_r($anuncios);
-        print "<pre>";
-        print_r($anuncios);
-        print "</pre>";
+        $data['titulo'] = "listar anuncios";
+        $data['anuncios'] = $anuncios;
+        $this->loadView("anuncios/search.php", $data, $msg);
     }
     private function deleteAnuncioById(){
         $idParam = $_GET['id'];
