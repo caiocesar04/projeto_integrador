@@ -30,5 +30,5 @@ foreach($data['chat'] as $user){
     </body>
     <?php
 include_once __DIR__ . "/../helpers/menuChat.php";
-?>
+?
 </html>
