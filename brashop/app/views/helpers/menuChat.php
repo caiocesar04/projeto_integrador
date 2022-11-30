@@ -12,8 +12,10 @@
 
     </div> 
     <form method="post" action="./ChatController.php?action=create">
+    <h3> Nome</h3>
         <input type="text" name="nome" peacholoader="Nome">
-        <input type="text" name="mensagem" peacholoader="mensagem">
+        <h3> Mensagem</h3>
+        <input type="text" name="mensagem" peacholoader="mensagem"> 
         <input type="submit" value="Enviar">
     </form>
 </body>

@@ -27,16 +27,13 @@
       <td><table class = 'table table-hover-table-striped table-bordered'></td>
           <tr>
           <th>Nome</th>
-          <th>Preço</th>
-          <th>Imagem</th>
+    
           </tr>
         <?php foreach($data['anuncios'] as $user): ?>
               
           <tr>
           <td><?= $user['id'] ?></td>
           <td><?= $user['nome'] ?></td>
-          <td><?= $user['preco'] ?></td>
-          <td><img src="<? $user['imagem']; ?>"></img></td>
 
                           
         <?php endforeach; ?>
