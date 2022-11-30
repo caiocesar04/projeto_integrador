@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 17-Nov-2022 às 03:18
+-- Tempo de geração: 30-Nov-2022 às 13:18
 -- Versão do servidor: 10.4.24-MariaDB
 -- versão do PHP: 8.1.6
 
@@ -31,18 +31,19 @@ CREATE TABLE `anuncios` (
   `id` int(11) NOT NULL,
   `nome` varchar(100) NOT NULL,
   `preco` float NOT NULL,
-  `imagem` mediumtext NOT NULL
+  `imagem` mediumtext NOT NULL,
+  `usuarios_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `anuncios`
 --
 
-INSERT INTO `anuncios` (`id`, `nome`, `preco`, `imagem`) VALUES
-(22, 'refrigerante', 3, 'refri.jpg'),
-(23, 'mapa territorio', 5, 'territorio.png'),
-(30, 'PS4', 1000, 'ps4.png'),
-(32, 'Batman', 30, 'batman.jpg');
+INSERT INTO `anuncios` (`id`, `nome`, `preco`, `imagem`, `usuarios_id`) VALUES
+(22, 'refrigerante', 3, 'refri.jpg', 0),
+(23, 'mapa territorio', 5, 'territorio.png', 0),
+(30, 'PS4', 1000, 'ps4.png', 0),
+(32, 'Batman', 30, 'batman.jpg', 0);
 
 -- --------------------------------------------------------
 
@@ -61,6 +62,27 @@ CREATE TABLE `categorias` (
 
 INSERT INTO `categorias` (`id`, `nome`) VALUES
 (1, 'Eletrodoméstico');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `chat`
+--
+
+CREATE TABLE `chat` (
+  `id` int(11) NOT NULL,
+  `nome` varchar(100) NOT NULL,
+  `mensagem` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `chat`
+--
+
+INSERT INTO `chat` (`id`, `nome`, `mensagem`) VALUES
+(11, 'Caio', 'Olá'),
+(12, '', 'tudo bem?'),
+(13, '', 'quanto custa o ps4?');
 
 -- --------------------------------------------------------
 
@@ -111,12 +133,19 @@ INSERT INTO `usuarios` (`id`, `nome`, `email`, `senha`, `data_nasc`) VALUES
 -- Índices para tabela `anuncios`
 --
 ALTER TABLE `anuncios`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `usuarios_id_fk` (`usuarios_id`);
 
 --
 -- Índices para tabela `categorias`
 --
 ALTER TABLE `categorias`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Índices para tabela `chat`
+--
+ALTER TABLE `chat`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -140,13 +169,19 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de tabela `anuncios`
 --
 ALTER TABLE `anuncios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT de tabela `categorias`
 --
 ALTER TABLE `categorias`
   MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de tabela `chat`
+--
+ALTER TABLE `chat`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de tabela `sugestoes`
