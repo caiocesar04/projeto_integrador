@@ -72,10 +72,10 @@
             //var_dump($result);
             return $result;
         }
-       public function findAnuncioByName(string $nome){
-            $query = "SELECT * FROM anuncios WHERE nome like '%".$nome."%'";
+      public function findAnuncioByName(string $nome){
+            $query = "SELECT * FROM anuncios WHERE nome like :nome";
             $prepare = $this->conn->prepare($query);
-            $prepare->bindValue(1, $nome);
+            $prepare->bindValue(':nome','%'.$nome.'%', PDO::PARAM_STR);
             $prepare->execute();
             $result = $prepare->fetchALL(PDO::FETCH_ASSOC);
             return $result;
