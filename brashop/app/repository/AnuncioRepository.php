@@ -15,13 +15,17 @@
         
         public function create(AnuncioModel $anuncio) : int {
             try {
+                session_start();
                 // print_r("anuncioooo");
                 // print_r($anuncio);
-                $query = "INSERT INTO anuncios (nome, preco, imagem) VALUES (:nome, :preco, :imagem)";
+                $query = "INSERT INTO anuncios (nome, preco, imagem, usuarios_id) VALUES (:nome, :preco, :imagem, :usuarios_id)";
                 $prepare = $this->conn->prepare($query);
                 $prepare->bindValue(":nome", $anuncio->getNome());
                 $prepare->bindValue(":preco",$anuncio->getPreco());
                 $prepare->bindValue(":imagem",$anuncio->getImagem());
+                //print_r($_SESSION["usuario"]["id"]);
+                //die;
+                $prepare->bindValue(":usuarios_id",$_SESSION["usuario"]["id"]);
                 $prepare->execute();
                 return $this->conn->lastInsertId();
                 
@@ -72,7 +76,7 @@
             //var_dump($result);
             return $result;
         }
-      public function findAnuncioByName(string $nome){
+       public function findAnuncioByName(string $nome){
             $query = "SELECT * FROM anuncios WHERE nome like :nome";
             $prepare = $this->conn->prepare($query);
             $prepare->bindValue(':nome','%'.$nome.'%', PDO::PARAM_STR);

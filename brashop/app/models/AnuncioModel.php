@@ -4,7 +4,7 @@ class AnuncioModel{
 	private $nome;
 	private $preco;
 	private $imagem;
-
+	
 
 	public function getId(): int{
 		return $this->id;

@@ -92,7 +92,7 @@ class ControllerAnuncio{
         $anuncios = $anuncioRepository->findAnuncioByName($nomeParam);
         $data['titulo'] = "listar anuncios";
         $data['anuncios'] = $anuncios;
-        $this->loadView("anuncios/search.php", $data, $msg);
+        $this->loadView("anuncios/search.php", $data, @$msg);
     }
     private function deleteAnuncioById(){
         $idParam = $_GET['id'];

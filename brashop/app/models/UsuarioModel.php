@@ -6,6 +6,7 @@ class UsuarioModel{
 	private $email;
 	private $data_nasc;
 
+
 	public function getId(): int{
 		return $this->id;
 	}
@@ -44,4 +45,16 @@ class UsuarioModel{
 	public function setData_nasc(string $dat){
 		$this->data_nasc = $dat;
 	}
+
+	public function getAll(){
+		return [
+			"id" =>$this->id,
+			"nome" =>$this->nome,
+			"email" =>$this->email,
+			"data_nasc" =>$this->data_nasc,
+		
+		
+		];
+	}
 }
+
