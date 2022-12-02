@@ -33,8 +33,7 @@ include_once __DIR__ . "/../helpers/menuLogin.php";
         <?php endforeach; ?>
     </ul>
 
-    <p>
-    [ <a href="./AnuncioController.php?action=loadFormNew">Anunciar novo Produto</a> ]
+  
     <?php
 	include_once __DIR__ . "/../helpers/mensagem.php";
 	//$caminho = __DIR__ . "/../helpers/mensagem.php";
