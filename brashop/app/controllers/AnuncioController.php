@@ -86,6 +86,16 @@ class ControllerAnuncio{
         print_r($anuncio);
         print "</pre>";
     }
+    private function findAnuncioByUser(){
+        $nomeParam = @$_GET['usuarios_id'];
+        $anuncioRepository = new AnuncioRepository();
+        $anuncios = $anuncioRepository->findAnuncioByUser($nomeParam);
+        $data['titulo'] = "listar anuncios";
+        $data['anuncios'] = $anuncios;
+        $this->loadView("anuncios/listAnuncios.php", $data, @$msg);
+    }
+
+    
     private function findAnuncioByName(){
         $nomeParam = $_POST['nome'];
         $anuncioRepository = new AnuncioRepository();

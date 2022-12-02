@@ -34,6 +34,16 @@
             }
         }
 
+        public function findAnuncioByUser(): array {
+            session_start();
+            $query = "SELECT * FROM anuncios WHERE usuarios_id = :usuarios_id";
+            $prepare = $this->conn->prepare($query);
+            $prepare->bindValue(':usuarios_id',$_SESSION["usuario"]["id"]);
+            $prepare->execute();
+            $result = $prepare->fetchALL(PDO::FETCH_ASSOC);
+            return $result;
+        }
+ 
         public function findAll(): array {
             $table = $this->conn->query("SELECT * FROM anuncios");
             $anuncios  = $table->fetchAll(PDO::FETCH_ASSOC);
@@ -41,6 +51,7 @@
             return $anuncios;
         }
  
+
 
 
         public function findAnuncioById(int $id) {

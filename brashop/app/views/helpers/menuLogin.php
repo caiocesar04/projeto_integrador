@@ -27,7 +27,7 @@ include_once __DIR__ . "/../helpers/mensagem.php";
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <a class="dropdown-item" href="./AnuncioController.php?action=loadFormNew">Anunciar</a>
-          <a class="dropdown-item" href="./AnuncioController.php?action=findAll">Anuncios</a>
+          <a class="dropdown-item" href="./AnuncioController.php?action=findAnuncioByUser">Meus Anuncios</a>
           <a class="dropdown-item" href="./UsuarioController.php?action=logout">Sair</a>
         </div>
       </li>
