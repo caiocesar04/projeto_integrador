@@ -56,7 +56,7 @@ class ControllerChat{
     private function create(){
         $chat = new chatModel();
        
-		$chat->setNome($_POST["nome"]);
+        
 		$chat->setMensagem($_POST["mensagem"]);
         $usuarioRepository = new ChatRepository();
         $id = $usuarioRepository->create($chat);

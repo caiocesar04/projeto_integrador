@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 30-Nov-2022 às 13:18
+-- Tempo de geração: 02-Dez-2022 às 02:09
 -- Versão do servidor: 10.4.24-MariaDB
 -- versão do PHP: 8.1.6
 
@@ -42,8 +42,8 @@ CREATE TABLE `anuncios` (
 INSERT INTO `anuncios` (`id`, `nome`, `preco`, `imagem`, `usuarios_id`) VALUES
 (22, 'refrigerante', 3, 'refri.jpg', 0),
 (23, 'mapa territorio', 5, 'territorio.png', 0),
-(30, 'PS4', 1000, 'ps4.png', 0),
-(32, 'Batman', 30, 'batman.jpg', 0);
+(32, 'Batman', 30, 'batman.jpg', 0),
+(35, 'PS4', 1000, 'ps4.png', 4);
 
 -- --------------------------------------------------------
 
@@ -71,18 +71,9 @@ INSERT INTO `categorias` (`id`, `nome`) VALUES
 
 CREATE TABLE `chat` (
   `id` int(11) NOT NULL,
-  `nome` varchar(100) NOT NULL,
-  `mensagem` text NOT NULL
+  `mensagem` text NOT NULL,
+  `usuarios_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Extraindo dados da tabela `chat`
---
-
-INSERT INTO `chat` (`id`, `nome`, `mensagem`) VALUES
-(11, 'Caio', 'Olá'),
-(12, '', 'tudo bem?'),
-(13, '', 'quanto custa o ps4?');
 
 -- --------------------------------------------------------
 
@@ -123,7 +114,8 @@ CREATE TABLE `usuarios` (
 INSERT INTO `usuarios` (`id`, `nome`, `email`, `senha`, `data_nasc`) VALUES
 (4, 'Caio', 'caio@gmail.com', 'abc123', '2004-04-20'),
 (52, 'acacac', 'testando@gmail.com', '11111', '9999-09-21'),
-(59, 'Pedro', 'pedro@gmail.com', 'teste', '2004-10-22');
+(59, 'Pedro', 'pedro@gmail.com', 'teste', '2004-10-22'),
+(64, 'Julio Cesar ', 'julio@gmail.com', '123', '1975-02-08');
 
 --
 -- Índices para tabelas despejadas
@@ -133,8 +125,7 @@ INSERT INTO `usuarios` (`id`, `nome`, `email`, `senha`, `data_nasc`) VALUES
 -- Índices para tabela `anuncios`
 --
 ALTER TABLE `anuncios`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `usuarios_id_fk` (`usuarios_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Índices para tabela `categorias`
@@ -169,7 +160,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de tabela `anuncios`
 --
 ALTER TABLE `anuncios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT de tabela `categorias`
@@ -181,7 +172,7 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT de tabela `chat`
 --
 ALTER TABLE `chat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT de tabela `sugestoes`
@@ -193,7 +184,7 @@ ALTER TABLE `sugestoes`
 -- AUTO_INCREMENT de tabela `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -13,14 +13,15 @@
 include_once __DIR__ . "/../helpers/menuLogin.php";
 ?>
 <h1> Chat </h1>
-
+<?php
+include_once __DIR__ . "/../helpers/menuChat.php";
+?>
 
 
 
 <?php
 
 foreach($data['chat'] as $user){
-    echo"<h3>".$user['nome']."</h3>";
     echo"<p>".$user['mensagem']."</p>";
 }
 ?>

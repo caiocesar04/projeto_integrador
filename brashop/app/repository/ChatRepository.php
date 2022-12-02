@@ -15,11 +15,11 @@
 
         public function create(ChatModel $chat) : int {
             try {
-                
-                $query = "INSERT INTO chat (nome, mensagem) VALUES (:nome, :mensagem)";
+                session_start();
+                $query = "INSERT INTO chat (mensagem, usuarios_id) VALUES  (:mensagem, :usuarios_id)";
                 $prepare = $this->conn->prepare($query);
-                $prepare->bindValue(":nome", $chat->getNome());
                 $prepare->bindValue(":mensagem",$chat->getMensagem());
+                $prepare->bindValue(":usuarios_id",$_SESSION["usuario"]["id"]);
                 $prepare->execute();
                 return $this->conn->lastInsertId();
                 
