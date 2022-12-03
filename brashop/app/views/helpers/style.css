@@ -1,74 +1,74 @@
 body {
-    padding: 0;
-    margin: 0;
-    background-color: black;
+    padding: 0!important; 
+    margin: 0!important;
+    background-color: black!important
 }
 
 #title {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    display: flex!important;
+    align-items: center!important;
+    justify-content: center!important;
+    height: 100vh!important;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"!important;
 }
 
 .card {
-    background-color: #1d2124;
-    padding: 120px;
-    border-radius: 2px;
-    width:320px;
+    background-color: #1d2124!important;
+    padding: 120px!important;
+    border-radius: 2px!important;
+    width:320px!important;
 }
 
-.card-header {
-    text-align: center;
-    font-size: 24px;
-    padding-bottom: 30px;
-    opacity: 0.8;
-    color: #fff;
+.card-header{
+    text-align: center!important;
+    font-size: 24px!important;
+    padding-bottom: 30px!important;
+    opacity: 0.8!important;
+    color: #fff!important;
 }
 
 .card-content label {
-    color: #fff;
-    font-size: 18px;
-    opacity: 0.8;
+    color: #fff!important;
+    font-size: 18px!important;
+    opacity: 0.8!important;
 }
 
 .card-content-area {
-    display: flex;
-    flex-direction: column;
-    padding:10px 0;
+    display: flex!important;
+    flex-direction: column!important;
+    padding:10px 0!important;
 }
 
 .card-content-area input {
-    font-size: 22px;
-    margin-top: 20px;
-    padding:0 5px;
-    background-color: transparent;
-    border:none;
-    border-bottom: 1px solid #e1e1e1;
-    outline: none;
-    color: #fff;
+    font-size: 22px!important;
+    margin-top: 20px!important;
+    padding:0 5px!important;
+    background-color: transparent!important;
+    border:none!important;
+    border-bottom: 1px solid #e1e1e1!important;
+    outline: none!important;
+    color: #fff!important;
 }
 
 .card-footer {
-    display: flex;
-    flex-direction: column;
+    display: flex!important;
+    flex-direction: column!important;
 }
 
 .card-footer .submit{
-    font-size: 15px;
-    width: 100%;
-    height: 40px;
-    background-color: #28a745;
-    border:none;
-    color:#e1e1e1;
-    margin: 10px 0;
+    font-size: 15px!important;
+    width: 100%!important;
+    height: 40px!important;
+    background-color: #28a745!important;
+    border:none!important;
+    color:#e1e1e1!important;
+    margin: 10px 0!important;
 }
 
 .card-footer a {
-    text-align: center;
-    font-size: 12px;
-    opacity: 0.8;
-    color: #fff;
-    text-decoration: none;
+    text-align: center!important;
+    font-size: 12px!important;
+    opacity: 0.8!important;
+    color: #fff!important;
+    text-decoration: none!important;
 }
