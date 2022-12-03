@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport"content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../views/helpers/css/bootstrap.min.css">
         <link rel="stylesheet" href="../views/helpers/style.css">
         <title> Brashop</title>
     </head>
@@ -12,7 +13,7 @@
 	include_once __DIR__ . "/../helpers/mensagem.php"; 
 ?>
         <div id="title">
-            <form class="card" action="./UsuarioController.php?action=create" method="POST">
+            <form class="card col-md-10 mx-auto col-lg-5 p-4 p-md-5" action="./UsuarioController.php?action=create" method="POST">
                 <div class="card-header">
                     <h2>Cadastre-se</h2>
                 </div>
