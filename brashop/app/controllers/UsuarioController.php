@@ -92,7 +92,7 @@ class ControllerUsuario{
     private function loadLogin(){
         $this->loadView("usuarios/formLogin.php", null);
     } 
-     
+
     private function loadHomeLogin(){
         if((@$_SESSION["usuario"])){
             $this->loadView("usuarios/homeLogin.php", null);
@@ -153,6 +153,8 @@ class ControllerUsuario{
     private function logout(){
 
         $usuario = new usuarioModel();
+        $usuarioRepository = new UsuarioRepository();
+        $usuario = $usuarioRepository->logout($usuario);
         $this->loadHome();
     }
 

@@ -110,6 +110,7 @@
         }
         public function logout(UsuarioModel $usuario){
             session_start();
+            unset($_SESSION["usuario"]);
             session_destroy();
         }
     }
