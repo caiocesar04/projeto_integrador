@@ -56,6 +56,17 @@
             return $usuario;
         }
 
+        public function findUsuariorByIdLogged(): array {
+            session_start();
+            $query = "SELECT * FROM usuarios WHERE id = :id";
+            $prepare = $this->conn->prepare($query);
+            $prepare->bindValue(':id',$_SESSION["usuario"]["id"]);
+            $prepare->execute();
+            $result = $prepare->fetchALL(PDO::FETCH_ASSOC);
+            return $result;
+        }
+    
+
         public function update(UsuarioModel $usuario) : bool {
             $query = "UPDATE usuarios SET nome = ?, senha = ?, email = ?, data_nasc = 
             ? WHERE id = ?";

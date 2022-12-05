@@ -19,4 +19,11 @@ class CategoriaModel{
 		$this->nome = $n;
 	}
 
+	public function getAllCat(){
+		return [
+			"id" =>$this->id,
+			"nome" =>$this->nome,
+		];
+	}
+
 }

@@ -149,6 +149,15 @@ class ControllerUsuario{
         $this->loadHome();
     }
 
+    private function findUsuarioByIdLogged(){
+        $nomeParam = @$_GET['id'];
+        $usuarioRepository = new UsuarioRepository();
+        $usuarios = $usuarioRepository->findUsuariorByIdLogged($nomeParam);
+        $data['titulo'] = "listar usuarios";
+        $data['usuarios'] = $usuarios;
+        $this->loadView("usuarios/list.php", $data, @$msg);
+    }
+
     private function deleteUsuarioById(){
         $idParam = $_GET['id'];
         $usuarioRepository = new UsuarioRepository();    

@@ -27,6 +27,10 @@
                     <label>Preço</label>
                     <input type="number" name="preco" value="0.00" class="form-control" required>
                     </div>
+                    <label for="categorias">Categoria:</label>
+                    <select name="categoria" id="categorias_id" >
+                    <option acion="./AnuncioController.php?action=SelecionarCategoria" text="nome" value="cateogorias_id">----</option>
+                    </select>
                     <div class="card-content-area">
                     <label>Imagem</label>
                     <input type="file" name="imagem" class="form-control" required>

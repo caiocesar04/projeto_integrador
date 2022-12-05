@@ -92,6 +92,16 @@ class ControllerCategoria{
         $this->loadView("categorias/list.php", $data, $msg);
     }
 
+    private function SelecionarCategoria(string $msg = null){
+        $categoriaRepository = new CategoriaRepository();
+
+        $categorias = $categoriaRepository->findAll();
+
+        $data['titulo'] = "listar categorias";
+        $data['categorias'] = $categorias;
+
+       
+    }
 
     private function deleteCategoriaById(){
         $idParam = $_GET['id'];
