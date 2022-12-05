@@ -152,8 +152,15 @@ class ControllerAnuncio{
 
 
     private function loadFormNew(){
-        $this->loadView("anuncios/formCadastro.php", null);
-    }    
+        session_start();
+
+        if((@$_SESSION["usuario"])){
+            $this->loadView("anuncios/formCadastro.php", @$data, @$msg);;
+		}else{
+			$msg = "É necessário estar logado";
+            $this->loadView("usuarios/formLogin.php", @$data, $msg);
+		}
+}
 
     private function loadHome(){
         $this->loadView("usuarios/home.php", null);

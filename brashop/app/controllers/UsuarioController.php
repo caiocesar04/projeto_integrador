@@ -91,9 +91,16 @@ class ControllerUsuario{
     }    
     private function loadLogin(){
         $this->loadView("usuarios/formLogin.php", null);
-    }  
+    } 
+     
     private function loadHomeLogin(){
-        $this->loadView("usuarios/homeLogin.php", null);
+        if((@$_SESSION["usuario"])){
+            $this->loadView("usuarios/homeLogin.php", null);
+		}else{
+			$msg = "É necessário estar logado";
+            $this->loadView("usuarios/formLogin.php", @$data, $msg);
+		}
+       
     }  
     
 
