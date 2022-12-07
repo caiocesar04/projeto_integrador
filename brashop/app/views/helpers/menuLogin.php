@@ -36,7 +36,7 @@ include_once __DIR__ . "/../helpers/mensagem.php";
     </ul>
   </div>
   <form action="./AnuncioController.php?action=findAnunciobyName" method="POST">
-      <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" name="nome"  aria-label="Pesquisar">
+      <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" name="nome"  aria-label="Pesquisar" required>
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
 </nav>

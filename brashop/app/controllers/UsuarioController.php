@@ -158,13 +158,21 @@ class ControllerUsuario{
         $this->loadHome();
     }
 
+    private function validateEmail(){
+
+        $usuario = new usuarioModel();
+        $usuarioRepository = new UsuarioRepository();
+        $usuario = $usuarioRepository->validateEmail($usuario);
+        $this->loadHome();
+    }
+
     private function findUsuarioByIdLogged(){
         $nomeParam = @$_GET['id'];
         $usuarioRepository = new UsuarioRepository();
         $usuarios = $usuarioRepository->findUsuariorByIdLogged($nomeParam);
         $data['titulo'] = "listar usuarios";
         $data['usuarios'] = $usuarios;
-        $this->loadView("usuarios/list.php", $data, @$msg);
+        $this->loadView("usuarios/dadosUsuario.php", $data, @$msg);
     }
 
     private function deleteUsuarioById(){
