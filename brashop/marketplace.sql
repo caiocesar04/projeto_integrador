@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 02-Dez-2022 às 02:09
+-- Tempo de geração: 07-Dez-2022 às 21:32
 -- Versão do servidor: 10.4.24-MariaDB
 -- versão do PHP: 8.1.6
 
@@ -32,18 +32,31 @@ CREATE TABLE `anuncios` (
   `nome` varchar(100) NOT NULL,
   `preco` float NOT NULL,
   `imagem` mediumtext NOT NULL,
-  `usuarios_id` int(11) NOT NULL
+  `usuarios_id` int(11) NOT NULL,
+  `categorias_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `anuncios`
 --
 
-INSERT INTO `anuncios` (`id`, `nome`, `preco`, `imagem`, `usuarios_id`) VALUES
-(22, 'refrigerante', 3, 'refri.jpg', 0),
-(23, 'mapa territorio', 5, 'territorio.png', 0),
-(32, 'Batman', 30, 'batman.jpg', 0),
-(35, 'PS4', 1000, 'ps4.png', 4);
+INSERT INTO `anuncios` (`id`, `nome`, `preco`, `imagem`, `usuarios_id`, `categorias_id`) VALUES
+(48, 'Livro Percy jackson', 49.99, 'percy jackson.jpg', 70, 0),
+(49, 'refrigerante', 3.99, 'refri.jpg', 71, 0),
+(50, 'Playstation 4 (PS4)', 1501.8, 'ps4.png', 72, 0),
+(51, 'jogo do batman', 70.55, 'batman.jpg', 73, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `avaliacoes`
+--
+
+CREATE TABLE `avaliacoes` (
+  `id` int(11) NOT NULL,
+  `texto` varchar(255) NOT NULL,
+  `nota` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -61,7 +74,8 @@ CREATE TABLE `categorias` (
 --
 
 INSERT INTO `categorias` (`id`, `nome`) VALUES
-(1, 'Eletrodoméstico');
+(1, 'Eletrodomésticos'),
+(3, 'eletronicos');
 
 -- --------------------------------------------------------
 
@@ -74,6 +88,24 @@ CREATE TABLE `chat` (
   `mensagem` text NOT NULL,
   `usuarios_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `chat`
+--
+
+INSERT INTO `chat` (`id`, `mensagem`, `usuarios_id`) VALUES
+(42, 'teste', 4),
+(43, 'coe', 4),
+(44, 'coe', 4),
+(45, 'Olá', 70),
+(46, 'Olá', 70),
+(47, 'aaaa', 70),
+(48, 'a', 70),
+(49, 'a', 70),
+(50, 'a', 70),
+(51, 'a', 70),
+(52, 'a', 70),
+(53, 'ih', 70);
 
 -- --------------------------------------------------------
 
@@ -91,7 +123,7 @@ CREATE TABLE `sugestoes` (
 --
 
 INSERT INTO `sugestoes` (`id`, `texto`) VALUES
-(3, 'Melhorar a front-end');
+(13, 'Precisam melhorar o Front-end');
 
 -- --------------------------------------------------------
 
@@ -112,10 +144,10 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `nome`, `email`, `senha`, `data_nasc`) VALUES
-(4, 'Caio', 'caio@gmail.com', 'abc123', '2004-04-20'),
-(52, 'acacac', 'testando@gmail.com', '11111', '9999-09-21'),
-(59, 'Pedro', 'pedro@gmail.com', 'teste', '2004-10-22'),
-(64, 'Julio Cesar ', 'julio@gmail.com', '123', '1975-02-08');
+(70, 'Caio', 'caio@gmail.com', 'abc123', '2004-04-20'),
+(71, 'Pedro Henrique ', 'pedro@gmail.com', 'pedro', '2004-10-22'),
+(72, 'Luis Coradi', 'luis@gmail.com', 'luis', '2003-03-27'),
+(73, 'Rubens', 'rubens@gmail.com', 'rubens', '2002-12-05');
 
 --
 -- Índices para tabelas despejadas
@@ -125,6 +157,12 @@ INSERT INTO `usuarios` (`id`, `nome`, `email`, `senha`, `data_nasc`) VALUES
 -- Índices para tabela `anuncios`
 --
 ALTER TABLE `anuncios`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Índices para tabela `avaliacoes`
+--
+ALTER TABLE `avaliacoes`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -160,31 +198,37 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de tabela `anuncios`
 --
 ALTER TABLE `anuncios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+
+--
+-- AUTO_INCREMENT de tabela `avaliacoes`
+--
+ALTER TABLE `avaliacoes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `chat`
 --
 ALTER TABLE `chat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT de tabela `sugestoes`
 --
 ALTER TABLE `sugestoes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de tabela `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
