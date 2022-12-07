@@ -66,6 +66,7 @@ class ControllerSugestao{
     }
 
     private function findAll(string $msg = null){
+       @session_start();
         $sugestaoRepository = new SugestaoRepository();
 
         $sugestoes = $sugestaoRepository->findAll();
@@ -73,7 +74,14 @@ class ControllerSugestao{
         $data['titulo'] = "listar sugestoes";
         $data['sugestoes'] = $sugestoes;
 
-        $this->loadView("sugestoes/list.php", $data, $msg);
+         
+        if(isset($_SESSION["usuario"])){
+            $this->loadView("sugestoes/list.php", $data, $msg);
+          }else{
+            $msg = "É necessário estar Logado!";
+            $this->loadView("usuarios/formLogin.php", $data, $msg);
+          }
+        
     }
 
     private function findSugestaoById(){
@@ -100,12 +108,21 @@ class ControllerSugestao{
     }
 
     private function edit(){
+        session_start();
+
         $idParam = $_GET['id'];
         $sugestaoRepository = new SugestaoRepository(); 
         $sugestao = $sugestaoRepository->findSugestaoById($idParam);
         $data['sugestoes'][0] = $sugestao;
 
-        $this->loadView("sugestoes/formEdita.php", $data);
+       
+        if(isset($_SESSION["usuario"])){
+            $this->loadView("sugestoes/formEdita.php", $data);
+          }else{
+            $msg = "É necessário estar Logado!";
+            $this->loadView("usuarios/formLogin.php", @$data, $msg);
+          }
+        
     }
 
     private function update(){
@@ -123,7 +140,7 @@ class ControllerSugestao{
             $this->findAll(@$data, $msg);
 		}else{
 			$msg = "Erro ao atualizar o registro no banco de dados.";
-            $this->loadView("sugestoes/formEdita.php", @$data, $msg);
+            $this->loadView("sugestoes/formEdita.php", $data, $msg);
 		}
         
     }
@@ -134,7 +151,14 @@ class ControllerSugestao{
 
 
     private function loadFormNew(){
-        $this->loadView("sugestoes/formCadastro.php", null);
+        session_start();
+        if(isset($_SESSION["usuario"])){
+            $this->loadView("sugestoes/formCadastro.php", null);
+          }else{
+            $msg = "É necessário estar Logado!";
+            $this->loadView("usuarios/formLogin.php", @$data, $msg);
+          }
+       
     }    
 
     private function loadHome(){

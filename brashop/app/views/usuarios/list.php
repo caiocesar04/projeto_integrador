@@ -8,14 +8,9 @@
 
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
-  <a class="navbar-brand active" href="./UsuarioController.php?action=loadHome">Brashop</a>
-  <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="dropdown-toggle" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-</div>
-</nav>
+<?php
+include_once __DIR__ . "/../helpers/menuLogin.php";
+?>
 
     <h1> Usuarios</h1>
     <ul>
@@ -53,7 +48,6 @@
 	//$caminho = __DIR__ . "/../helpers/mensagem.php";
 	//print_r($caminho); 
 ?>
-[ <a href="./UsuarioController.php?action=loadFormNew">Cadastrar novo usuario</a> ]
 
 </body>
 </html>

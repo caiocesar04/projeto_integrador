@@ -66,6 +66,7 @@ class ControllerAnuncio{
     }
 
     private function findAll(string $msg = null){
+        @session_start();
         $anuncioRepository = new AnuncioRepository();
 
         $anuncios = $anuncioRepository->findAll();
@@ -87,22 +88,33 @@ class ControllerAnuncio{
         print "</pre>";
     }
     private function findAnuncioByUser(){
+        
         $nomeParam = @$_GET['usuarios_id'];
         $anuncioRepository = new AnuncioRepository();
         $anuncios = $anuncioRepository->findAnuncioByUser($nomeParam);
         $data['titulo'] = "listar anuncios";
         $data['anuncios'] = $anuncios;
-        $this->loadView("anuncios/listAnuncios.php", $data, @$msg);
+        
+        if(isset($_SESSION["usuario"])){
+            $this->loadView("anuncios/meusAnuncios.php", $data, @$msg);
+          }else{
+            $msg = "É necessário estar Logado!";
+            $this->loadView("usuarios/formLogin.php", $data, $msg);
+          }
+        
     }
 
     
     private function findAnuncioByName(){
+        session_start();
         $nomeParam = $_POST['nome'];
         $anuncioRepository = new AnuncioRepository();
         $anuncios = $anuncioRepository->findAnuncioByName($nomeParam);
         $data['titulo'] = "listar anuncios";
         $data['anuncios'] = $anuncios;
-        $this->loadView("anuncios/search.php", $data, @$msg);
+  
+        $this->loadView("anuncios/list.php", $data, @$msg);
+        
     }
     private function deleteAnuncioById(){
         $idParam = $_GET['id'];
@@ -118,12 +130,19 @@ class ControllerAnuncio{
     }
 
     private function edit(){
+        session_start();
         $idParam = $_GET['id'];
         $anuncioRepository = new AnuncioRepository(); 
         $anuncio = $anuncioRepository->findAnuncioById($idParam);
         $data['anuncios'][0] = $anuncio;
-
-        $this->loadView("anuncios/formEdita.php", $data);
+      
+        if(isset($_SESSION["usuario"])){
+            $this->loadView("anuncios/formEdita.php", $data);
+          }else{
+            $msg = "É necessário estar Logado!";
+            $this->loadView("usuarios/formLogin.php", $data, $msg);
+          }
+       
     }
 
     private function update(){

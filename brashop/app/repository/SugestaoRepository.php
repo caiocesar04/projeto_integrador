@@ -50,6 +50,7 @@
         }
 
         public function update(SugestaoModel $sugestao) : bool {
+
             $query = "UPDATE sugestoes SET texto = ? WHERE id = ?";
             $prepare = $this->conn->prepare($query);
             $prepare->bindValue(1, $sugestao->getTexto());
@@ -60,12 +61,20 @@
 
 
         public function deleteSugestaoById( int $id) : int {
+            @session_start();
+
             $query = "DELETE FROM sugestoes WHERE id = :id";
             $prepare = $this->conn->prepare($query);
             $prepare->bindValue(":id", $id);
             $prepare->execute();
             $result = $prepare->rowCount();
-            //var_dump($result);
-            return $result;
+
+            if(isset($_SESSION["usuario"])){
+                return $result;
+              }else{
+                $msg = "É necessário estar Logado!";
+                $this->loadView("usuarios/formLogin.php", $data, $msg);
+              }
+          
         }
     }

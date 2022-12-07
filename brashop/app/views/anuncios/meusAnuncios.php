@@ -9,12 +9,7 @@
 </head>
 <body>
 <?php
-
- if(isset($_SESSION["usuario"])){
-  include_once __DIR__ . "/../helpers/menuLogin.php";
-}else{
-  include_once __DIR__ . "/../helpers/menuHome.php";
-}
+include_once __DIR__ . "/../helpers/menuLogin.php";
 ?>
 
     <h1> Anuncios </h1>
@@ -34,11 +29,15 @@
           <td><?= $user['nome'] ?></td>
           <td><?= $user['preco'] ?></td>
           <td><img style="width:50px;" src="../../imagens/<?=$user['imagem'];?>"></img></td>
+          <td><a href="./AnuncioController.php?action=edit&id=<?= $user['id'] ?>">Editar</a></td>
+          <td><a href="javascript:confirmarExclusaoAnuncio('<?= $user['nome'] ?>', <?= $user['id'] ?>)">Excluir</a></td>
+                
                        
         <?php endforeach; ?>
     </ul>
 
-
+    <p>
+     <a class="btn btn-primary" href="./AnuncioController.php?action=loadFormNew" >Anunciar novo Produto</a> 
     <?php
 	include_once __DIR__ . "/../helpers/mensagem.php";
 	//$caminho = __DIR__ . "/../helpers/mensagem.php";

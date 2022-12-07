@@ -60,7 +60,7 @@
             session_start();
             $query = "SELECT * FROM usuarios WHERE id = :id";
             $prepare = $this->conn->prepare($query);
-            $prepare->bindValue(':id',$_SESSION["usuario"]["id"]);
+            $prepare->bindValue(':id',@$_SESSION["usuario"]["id"]);
             $prepare->execute();
             $result = $prepare->fetchALL(PDO::FETCH_ASSOC);
             return $result;
@@ -81,13 +81,20 @@
         }
 
         public function deleteUsuarioById( int $id) : int {
+            session_start();
             $query = "DELETE FROM usuarios WHERE id = :id";
             $prepare = $this->conn->prepare($query);
             $prepare->bindValue(":id", $id);
             $prepare->execute();
             $result = $prepare->rowCount();
-            //var_dump($result);
-            return $result;
+           
+            if(isset($_SESSION["usuario"])){
+                return $result;
+              }else{
+                $msg = "É necessário estar Logado!";
+                $this->loadView("usuarios/formLogin.php", $data, $msg);
+              }
+            
         }
         
         public function login(UsuarioModel $usuario){

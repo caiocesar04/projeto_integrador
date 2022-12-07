@@ -82,13 +82,14 @@ class ControllerCategoria{
     }
 
     private function findAll(string $msg = null){
+
         $categoriaRepository = new CategoriaRepository();
 
         $categorias = $categoriaRepository->findAll();
 
         $data['titulo'] = "listar categorias";
         $data['categorias'] = $categorias;
-
+        
         $this->loadView("categorias/list.php", $data, $msg);
     }
 

@@ -70,20 +70,24 @@ class ControllerChat{
     }
 
     private function findAll(string $msg = null){
+       
         $chatRepository = new ChatRepository();
 
         $chats = $chatRepository->findAll();
 
         $data['titulo'] = "listar chat";
         $data['chat'] = $chats;
-
-        $this->loadView("usuarios/chat.php", $data, $msg);
+        @session_start();
+        if(isset($_SESSION["usuario"])){
+            $this->loadView("usuarios/chat.php", $data, $msg);
+          }else{
+            $msg = "É necessário estar Logado!";
+            $this->loadView("usuarios/formLogin.php", $data, $msg);
+          }
+        
     }
 
-
-    private function loadChat(){
-        $this->loadView("usuarios/usuarioChat.php", null);
-    }    
+ 
 
     private function preventDefault() {
         print "Ação indefinida...";

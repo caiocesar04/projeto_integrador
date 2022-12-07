@@ -94,8 +94,8 @@ class ControllerUsuario{
     } 
 
     private function loadHomeLogin(){
-	session_start();
-        if((@$_SESSION["usuario"])){
+        session_start();
+        if(isset($_SESSION["usuario"])){
             $this->loadView("usuarios/homeLogin.php", null);
 		}else{
 			$msg = "É necessário estar logado";
@@ -106,14 +106,21 @@ class ControllerUsuario{
     
 
     private function findAll(string $msg = null){
+        session_start();
         $usuarioRepository = new UsuarioRepository();
 
         $usuarios = $usuarioRepository->findAll();
 
         $data['titulo'] = "listar usuarios";
         $data['usuarios'] = $usuarios;
-
-        $this->loadView("usuarios/list.php", $data, $msg);
+       
+        if(isset($_SESSION["usuario"])){
+            $this->loadView("usuarios/list.php", $data, $msg);
+          }else{
+            $msg = "É necessário estar Logado!";
+            $this->loadView("usuarios/formLogin.php", $data, $msg);
+          }
+        
     }
 
     private function findUsuarioById(){
@@ -168,12 +175,21 @@ class ControllerUsuario{
     }
 
     private function findUsuarioByIdLogged(){
+       
         $nomeParam = @$_GET['id'];
         $usuarioRepository = new UsuarioRepository();
         $usuarios = $usuarioRepository->findUsuariorByIdLogged($nomeParam);
         $data['titulo'] = "listar usuarios";
         $data['usuarios'] = $usuarios;
-        $this->loadView("usuarios/dadosUsuario.php", $data, @$msg);
+
+
+        if(isset($_SESSION["usuario"])){
+            $this->loadView("usuarios/dadosUsuario.php", $data, @$msg);
+          }else{
+            $msg = "É necessário estar Logado!";
+            $this->loadView("usuarios/formLogin.php", $data, $msg);
+          }
+       
     }
 
     private function deleteUsuarioById(){
@@ -186,16 +202,23 @@ class ControllerUsuario{
 		}else{
 			$msg = "Erro ao excluir o registro no banco de dados.";
 		}
-        $this->findAll($msg);
+        $this->loadFormNew($msg);
     }
 
     private function edit(){
+        session_start();
+
         $idParam = $_GET['id'];
         $usuarioRepository = new UsuarioRepository(); 
         $usuario = $usuarioRepository->findUsuarioById($idParam);
         $data['usuarios'][0] = $usuario;
 
-        $this->loadView("usuarios/formEdita.php", $data);
+        if(isset($_SESSION["usuario"])){
+            $this->loadView("usuarios/formEdita.php", $data, @$msg);
+          }else{
+            $msg = "É necessário estar Logado!";
+            $this->loadView("usuarios/formLogin.php", $data, $msg);
+          }
     }
 
     private function update(){

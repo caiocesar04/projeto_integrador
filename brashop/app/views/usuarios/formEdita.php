@@ -11,6 +11,7 @@
 <body>
 <?php
 	include_once __DIR__ . "/../helpers/mensagem.php";
+	include_once __DIR__ . "/../helpers/menuLogin.php";
 	//$caminho = __DIR__ . "/../helpers/mensagem.php";
 	//print_r($caminho); 
 ?>
