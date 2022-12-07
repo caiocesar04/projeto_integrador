@@ -94,6 +94,7 @@ class ControllerUsuario{
     } 
 
     private function loadHomeLogin(){
+	session_start();
         if((@$_SESSION["usuario"])){
             $this->loadView("usuarios/homeLogin.php", null);
 		}else{
