@@ -38,7 +38,7 @@
             session_start();
             $query = "SELECT * FROM anuncios WHERE usuarios_id = :usuarios_id";
             $prepare = $this->conn->prepare($query);
-            $prepare->bindValue(':usuarios_id',$_SESSION["usuario"]["id"]);
+            $prepare->bindValue(':usuarios_id',@$_SESSION["usuario"]["id"]);
             $prepare->execute();
             $result = $prepare->fetchALL(PDO::FETCH_ASSOC);
             return $result;
@@ -79,19 +79,12 @@
         }
 
         public function deleteAnuncioById( int $id) : int {
-            session_start();
             $query = "DELETE FROM anuncios WHERE id = :id";
             $prepare = $this->conn->prepare($query);
             $prepare->bindValue(":id", $id);
             $prepare->execute();
             $result = $prepare->rowCount();
-            
-            if(isset($_SESSION["usuario"])){
-                return $result;
-              }else{
-                $msg = "É necessário estar Logado!";
-                $this->loadView("usuarios/formLogin.php", $data, $msg);
-              }
+            return $result;
         }
        public function findAnuncioByName(string $nome){
             $query = "SELECT * FROM anuncios WHERE nome like :nome";

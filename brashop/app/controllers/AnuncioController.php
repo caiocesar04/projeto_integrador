@@ -126,7 +126,7 @@ class ControllerAnuncio{
 		}else{
 			$msg = "Erro ao excluir o registro no banco de dados.";
 		}
-        $this->findAll($msg);
+        $this->findAnuncioByUser($msg);
     }
 
     private function edit(){
@@ -158,7 +158,7 @@ class ControllerAnuncio{
         
         if($atualizou){
 			$msg = "Registro atualizado com sucesso.";
-            $this->findAll(@$data, $msg);
+            $this->findAnuncioByUser(@$data, $msg);
 		}else{
 			$msg = "Erro ao atualizar o registro no banco de dados.";
             $this->loadView("anuncios/formEdita.php", @$data, $msg);

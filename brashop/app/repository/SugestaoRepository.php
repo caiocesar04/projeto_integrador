@@ -61,7 +61,7 @@
 
 
         public function deleteSugestaoById( int $id) : int {
-            @session_start();
+        
 
             $query = "DELETE FROM sugestoes WHERE id = :id";
             $prepare = $this->conn->prepare($query);
@@ -69,12 +69,6 @@
             $prepare->execute();
             $result = $prepare->rowCount();
 
-            if(isset($_SESSION["usuario"])){
-                return $result;
-              }else{
-                $msg = "É necessário estar Logado!";
-                $this->loadView("usuarios/formLogin.php", $data, $msg);
-              }
-          
+            return $result;
         }
     }

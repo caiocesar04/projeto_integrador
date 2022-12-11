@@ -23,8 +23,8 @@ function confirmarExclusaoCategoria(nome, id) {
 }
 
 function confirmarExclusaoSugestao(texto, id) {
+    
     var resposta = confirm("Deseja remover o registro '" + texto + "' ?");
-
     if (resposta) {
        window.location.href = "SugestaoController.php?action=deleteSugestaoById&id=" + id;
     }

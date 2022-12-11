@@ -26,7 +26,7 @@
 
 		<div class="mb-3">
 		<label>Preço:</label>
-		 <input type="number" name="preco" class="form-control" value="<?= $anuncio->getPreco(); ?>">
+		 <input type="number" name="preco"  pattern="[0-9]+([,\.][0-9]+)?" min="0" step="any" name="null" class="form-control" value="<?= $anuncio->getPreco(); ?>">
 		</div>
 
 		<div class="mb-3">

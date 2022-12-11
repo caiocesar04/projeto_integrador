@@ -25,7 +25,8 @@
                     </div>
                     <div class="card-content-area">
                     <label>Preço</label>
-                    <input type="number" name="preco" value="0.00" class="form-control" required>
+                    <input type="number" name="preco" pattern="[0-9]+([,\.][0-9]+)?" min="0" step="any"
+name="null" class="form-control" required>
                     </div>
                     <label for="categorias">Categoria:</label>
                     <select name="categoria" id="categorias_id" >
