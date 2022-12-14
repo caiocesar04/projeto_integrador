@@ -26,6 +26,7 @@
           <th>Nome</th>
           <th>Preço</th>
           <th>Imagem</th>
+          <th>Usuario</th>
           </tr>
         <?php foreach($data['anuncios'] as $user): ?>
               
@@ -34,7 +35,7 @@
           <td><?= $user['nome'] ?></td>
           <td><?= $user['preco'] ?></td>
           <td><img style="width:50px;" src="../../imagens/<?=$user['imagem'];?>"></img></td>
-                       
+          <td><?= $user['usuarios_id'] ?></td>             
         <?php endforeach; ?>
     </ul>
 
