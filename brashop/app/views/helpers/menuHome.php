@@ -13,7 +13,7 @@
 
     <title>Brashop</title>
     
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav style="background-color: #009c3b;" class="navbar navbar-expand-lg navbar-dark">
    <div class="container-fluid">
    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -35,6 +35,6 @@
   </div>
   <form action="./AnuncioController.php?action=findAnunciobyName" method="POST">
       <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" name="nome"  aria-label="Pesquisar" required>
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      <button style = "background-color: #ffdf00;" class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
     </form>
 </nav>
