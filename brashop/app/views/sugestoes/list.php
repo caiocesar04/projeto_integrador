@@ -27,15 +27,15 @@ include_once __DIR__ . "/../helpers/menuLogin.php";
           <tr>
           <td><?= $user['id'] ?></td>
           <td><?= $user['texto'] ?></td>
-          <td><a href="./SugestaoController.php?action=edit&id=<?= $user['id'] ?>">Editar</a></td>
-          <td><a href="javascript:confirmarExclusaoSugestao('<?= $user['texto'] ?>', <?= $user['id'] ?>)">Excluir</a></td>
+          <td><a class="btn btn-success" href="./SugestaoController.php?action=edit&id=<?= $user['id'] ?>">Editar</a></td>
+          <td><a class="btn btn-danger" href="javascript:confirmarExclusaoSugestao('<?= $user['texto'] ?>', <?= $user['id'] ?>)">Excluir</a></td>
                 
                        
         <?php endforeach; ?>
     </ul>
 
     <p>
-    [ <a href="./SugestaoController.php?action=loadFormNew">Fazer uma nova sugestão</a> ]
+     <a class="btn btn-primary" href="./SugestaoController.php?action=loadFormNew">Fazer uma nova sugestão</a> 
     <?php
 	include_once __DIR__ . "/../helpers/mensagem.php";
 	//$caminho = __DIR__ . "/../helpers/mensagem.php";

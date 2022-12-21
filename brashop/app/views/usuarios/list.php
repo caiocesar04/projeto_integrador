@@ -34,8 +34,8 @@ include_once __DIR__ . "/../helpers/menuLogin.php";
                  <td><?= $user['senha'] ?></td>
                  <td><?= $user['email'] ?></td>
                  <td><?= $user['data_nasc'] ?></td>                
-                 <td><a href="./UsuarioController.php?action=edit&id=<?= $user['id'] ?>">Editar</a></td> 
-                 <td><a href="javascript:confirmarExclusaoUsuario('<?= $user['nome'] ?>', <?= $user['id'] ?>)">Excluir</a></td>
+                 <td><a  class="btn btn-success" href="./UsuarioController.php?action=edit&id=<?= $user['id'] ?>">Editar</a></td> 
+                 <td><a  class="btn btn-danger" href="javascript:confirmarExclusaoUsuario('<?= $user['nome'] ?>', <?= $user['id'] ?>)">Excluir</a></td>
                 <?php endforeach; ?>
 
                 
