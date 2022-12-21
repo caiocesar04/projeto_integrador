@@ -19,7 +19,7 @@ include_once __DIR__ . "/../helpers/mensagem.php";
         <a class="nav-link" href="./SugestaoController.php?action=findAll">Sugestoes</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="./ChatController.php?action=findAll">Chat</a>
+        <a class="nav-link" href="./ChatController.php?action=findMensagemByUser">Chat</a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

@@ -14,7 +14,7 @@
     <title>Brashop</title>
   </head>
  
-  <body style ="background-color:black">
+  <body style ="background-color:white">
   <?php
 	include_once __DIR__ . "/../helpers/menuHome.php";
 ?>
@@ -22,7 +22,7 @@
     <div class="row">
     <div class="col mt-5">
         <?php
-            print "<font color='white'>
+            print "<font color='black'>
             <h1>Bem vindo ao Brashop!</h1>
             </font>";
 

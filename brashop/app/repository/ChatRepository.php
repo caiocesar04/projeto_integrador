@@ -34,5 +34,14 @@
 
             return $chats;
         }
-
+        
+        public function findMensagemByUser(): array {
+            @session_start();
+            $query = "SELECT * FROM chat WHERE usuarios_id = :usuarios_id";
+            $prepare = $this->conn->prepare($query);
+            $prepare->bindValue(':usuarios_id',@$_SESSION["usuario"]["id"]);
+            $prepare->execute();
+            $result = $prepare->fetchALL(PDO::FETCH_ASSOC);
+            return $result;
+        }
 }

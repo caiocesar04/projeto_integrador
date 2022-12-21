@@ -64,7 +64,7 @@ class ControllerChat{
 
       
        
-            $this->findAll();
+            $this->findMensagemByUser();
 		
         
     }
@@ -80,6 +80,22 @@ class ControllerChat{
         @session_start();
         if(isset($_SESSION["usuario"])){
             $this->loadView("usuarios/chat.php", $data, $msg);
+          }else{
+            $msg = "É necessário estar Logado!";
+            $this->loadView("usuarios/formLogin.php", $data, $msg);
+          }
+        
+    }
+    private function findMensagemByUser(string $msg = null){
+       
+        $nomeParam = @$_GET['usuarios_id'];
+        $chatRepository = new ChatRepository();
+        $chats = $chatRepository->findMensagemByUser($nomeParam);
+        $data['titulo'] = "listar chats";
+        $data['chat'] = $chats;
+        
+        if(isset($_SESSION["usuario"])){
+            $this->loadView("usuarios/chat.php", $data, @$msg);
           }else{
             $msg = "É necessário estar Logado!";
             $this->loadView("usuarios/formLogin.php", $data, $msg);
