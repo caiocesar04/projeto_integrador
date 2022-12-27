@@ -83,6 +83,22 @@ class ControllerSugestao{
           }
         
     }
+    private function findSugestaoByUser(){
+        
+        $nomeParam = @$_GET['usuarios_id'];
+        $sugestaoRepository = new SugestaoRepository();
+        $sugestoes = $sugestaoRepository->findSugestaoByUser($nomeParam);
+        $data['titulo'] = "listar anuncios";
+        $data['sugestoes'] = $sugestoes;
+        
+        if(isset($_SESSION["usuario"])){
+            $this->loadView("sugestoes/minhasSugestoes.php", $data, @$msg);
+          }else{
+            $msg = "É necessário estar Logado!";
+            $this->loadView("usuarios/formLogin.php", $data, $msg);
+          }
+        
+    }
 
     private function findSugestaoById(){
         $idParam = $_GET['id'];

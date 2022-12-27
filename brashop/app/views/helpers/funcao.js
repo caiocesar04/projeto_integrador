@@ -30,6 +30,14 @@ function confirmarExclusaoSugestao(texto, id) {
     }
 }
 
+function confirmarExclusaoAvaliacao(comentario, id) {
+    
+    var resposta = confirm("Deseja remover o registro '" + comentario + "' ?");
+    if (resposta) {
+       window.location.href = "AvaliacaoController.php?action=deleteAvaliacaoById&id=" + id;
+    }
+}
+
 function confirmarExclusaoUsuario(nome, id) {
     var resposta = confirm("Deseja remover o registro '" + nome + "' ?");
 

@@ -17,28 +17,24 @@
 }
 ?>
 
-    <h1> Anuncios </h1>
+    <h1> Avaliacoes </h1>
     
     <ul>
       <td><table class = 'table table-hover-table-striped table-bordered'></td>
           <tr>
-          <th>Nome</th>
-          <th>Preço</th>
-          <th>Imagem</th>
-          <th>Usuario</th>
+          <th>Comentário</th>
+          <th>Nota</th>
           </tr>
-        <?php foreach($data['anuncios'] as $user): ?>
+        <?php foreach($data['avaliacoes'] as $user): ?>
               
           <tr>
-          <td><?= $user['nome'] ?></td>
-          <td><?= $user['preco'] ?></td>
-          <td><img style="width:50px;" src="../../imagens/<?=$user['imagem'];?>"></img></td>
-          <td><?= $user['usuarios_id'] ?></td>             
+          <td><?= $user['comentario'] ?></td>
+          <td><?= $user['nota'] ?></td>         
         <?php endforeach; ?>
     </ul>
-    <p>
-    <a class="btn btn-primary" href="./AvaliacaoController.php?action=findAll" >Avaliações</a> 
 
+    <p>
+     <a class="btn btn-primary" href="./AvaliacaoController.php?action=findAvaliacaoByUser" >Avaliações que eu fiz</a> 
     <?php
 	include_once __DIR__ . "/../helpers/mensagem.php";
 	//$caminho = __DIR__ . "/../helpers/mensagem.php";

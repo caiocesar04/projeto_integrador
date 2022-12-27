@@ -37,5 +37,6 @@ class AnuncioModel{
 	public function setImagem(string $img){
 		$this->imagem = $img;
 	}
+
 	
 }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 21-Dez-2022 às 23:04
+-- Tempo de geração: 25-Dez-2022 às 23:51
 -- Versão do servidor: 10.4.24-MariaDB
 -- versão do PHP: 8.1.6
 
@@ -41,11 +41,11 @@ CREATE TABLE `anuncios` (
 --
 
 INSERT INTO `anuncios` (`id`, `nome`, `preco`, `imagem`, `usuarios_id`, `categorias_id`) VALUES
-(48, 'Livro Percy jackson', 49.99, 'percy jackson.jpg', 70, 0),
 (49, 'refrigerante', 3.99, 'refri.jpg', 71, 0),
 (50, 'Playstation 4 (PS4)', 1499.99, 'ps4.png', 72, 0),
 (51, 'jogo do batman', 70.55, 'batman.jpg', 73, 0),
-(62, 'playstation 5', 4599.99, 'ps5.jpg', 74, 0);
+(62, 'playstation 5', 4599.99, 'ps5.jpg', 74, 0),
+(63, 'Livro Percy Jackson', 69.99, 'percy jackson.jpg', 70, 0);
 
 -- --------------------------------------------------------
 
@@ -90,17 +90,17 @@ CREATE TABLE `chat` (
   `usuarios_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- --------------------------------------------------------
+
 --
--- Extraindo dados da tabela `chat`
+-- Estrutura da tabela `imagens`
 --
 
-INSERT INTO `chat` (`id`, `mensagem`, `usuarios_id`) VALUES
-(59, 'Olá', 70),
-(60, 'uau', 72),
-(61, 'uau', 72),
-(62, 'poder', 72),
-(63, 'ih', 70),
-(64, '', 70);
+CREATE TABLE `imagens` (
+  `id` int(11) NOT NULL,
+  `path` varchar(100) NOT NULL,
+  `data_upload` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -110,17 +110,17 @@ INSERT INTO `chat` (`id`, `mensagem`, `usuarios_id`) VALUES
 
 CREATE TABLE `sugestoes` (
   `id` int(11) NOT NULL,
-  `texto` text NOT NULL
+  `texto` text NOT NULL,
+  `usuarios_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `sugestoes`
 --
 
-INSERT INTO `sugestoes` (`id`, `texto`) VALUES
-(13, 'Precisam melhorar o Front-end'),
-(15, 'Precisam melhorar o Front-end'),
-(16, 'Precisam melhorar o Front-end');
+INSERT INTO `sugestoes` (`id`, `texto`, `usuarios_id`) VALUES
+(16, 'Precisam melhorar o Front-end hj', 0),
+(17, 'poderiam implementar um sistema de notificação', 70);
 
 -- --------------------------------------------------------
 
@@ -176,6 +176,12 @@ ALTER TABLE `chat`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Índices para tabela `imagens`
+--
+ALTER TABLE `imagens`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Índices para tabela `sugestoes`
 --
 ALTER TABLE `sugestoes`
@@ -196,7 +202,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de tabela `anuncios`
 --
 ALTER TABLE `anuncios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 
 --
 -- AUTO_INCREMENT de tabela `avaliacoes`
@@ -214,13 +220,19 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT de tabela `chat`
 --
 ALTER TABLE `chat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
+
+--
+-- AUTO_INCREMENT de tabela `imagens`
+--
+ALTER TABLE `imagens`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `sugestoes`
 --
 ALTER TABLE `sugestoes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de tabela `usuarios`

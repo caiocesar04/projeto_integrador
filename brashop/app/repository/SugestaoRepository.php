@@ -15,10 +15,11 @@
         
         public function create(SugestaoModel $sugestao) : int {
             try {
-                
-                $query = "INSERT INTO sugestoes (texto) VALUES (:texto)";
+                session_start();
+                $query = "INSERT INTO sugestoes (texto, usuarios_id) VALUES (:texto, :usuarios_id)";
                 $prepare = $this->conn->prepare($query);
-                $prepare->bindValue(":texto", $sugestao->getTexto());
+                $prepare->bindValue(":texto", $sugestao->gettexto());
+                $prepare->bindValue(":usuarios_id",$_SESSION["usuario"]["id"]);
                 $prepare->execute();
                 return $this->conn->lastInsertId();
                 
@@ -49,11 +50,21 @@
             return $sugestao;
         }
 
+        public function findSugestaoByUser(): array {
+            session_start();
+            $query = "SELECT * FROM sugestoes WHERE usuarios_id = :usuarios_id";
+            $prepare = $this->conn->prepare($query);
+            $prepare->bindValue(':usuarios_id',@$_SESSION["usuario"]["id"]);
+            $prepare->execute();
+            $result = $prepare->fetchALL(PDO::FETCH_ASSOC);
+            return $result;
+        }
+
         public function update(SugestaoModel $sugestao) : bool {
 
             $query = "UPDATE sugestoes SET texto = ? WHERE id = ?";
             $prepare = $this->conn->prepare($query);
-            $prepare->bindValue(1, $sugestao->getTexto());
+            $prepare->bindValue(1, $sugestao->gettexto());
             $prepare->bindValue(2, $sugestao->getId());
             $result = $prepare->execute();
             return $result;

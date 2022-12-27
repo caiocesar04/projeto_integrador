@@ -8,7 +8,7 @@
     <title>Brashop</title>
 </head>    
 <?php include_once __DIR__ . "/../helpers/mensagem.php";?>
-<body>
+<body >
 <form action="./UsuarioController.php?action=login" method="POST">  
 <div class="main-login">
     <div class="left-login">

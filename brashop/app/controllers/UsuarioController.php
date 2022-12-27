@@ -150,7 +150,7 @@ class ControllerUsuario{
             $this->loadView("usuarios/homeLogin.php", @$data);
             session_start();
             $_SESSION['usuario'] = $usuario->getAll();
-             echo ("<h1><font color='white'> Bem Vindo  ".$usuario->getNome(@$_GET["nome"])."!</font>");
+             echo ("<h1><font> Bem Vindo  ".$usuario->getNome(@$_GET["nome"])."!</font>");
 		}else{
 			$msg = "Erro ao Logar! verifique se seu email e senha estão corretos.";
             $this->loadView("usuarios/formLogin.php", @$data, $msg);
@@ -241,7 +241,7 @@ class ControllerUsuario{
 		}
 		// include_once "cadastrar.php";
 
-        $this->findAll($msg);        
+        $this->findUsuarioByIdLogged($msg);        
     }
 
     private function preventDefault() {

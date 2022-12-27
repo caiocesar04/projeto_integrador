@@ -14,27 +14,19 @@
 ?>
 
         <div id="title">
-            <form class="card col-md-10 mx-auto col-lg-5 p-4 p-md-5" action="./AnuncioController.php?action=create" method="POST">
+            <form class="card col-md-10 mx-auto col-lg-5 p-4 p-md-5" action="./AvaliacaoController.php?action=create" method="POST">
                 <div class="card-header">
-                    <h2>Anuncie um Produto</h2>
+                    <h2>Avaliar</h2>
                 </div>
                 <div class="card-content">
                     <div class="card-content-area">
-                    <label>Nome</label>
-                    <input type="text" name="nome" class="form-control" required>
+                    <label>Comentario</label>
+                    <input type="text" name="comentario" class="form-control" required>
                     </div>
                     <div class="card-content-area">
-                    <label>Preço</label>
-                    <input type="number" name="preco" pattern="[0-9]+([,\.][0-9]+)?" min="0" step="any"
+                    <label>Nota</label>
+                    <input type="number" name="nota" pattern="[0-9]+([,\.][0-9]+)?" min="0" max="5" step="any"
 name="null" class="form-control" required>
-                    </div>
-                    <label for="categorias">Categoria:</label>
-                    <select name="categoria" id="categorias_id" >
-                    <option acion="./AnuncioController.php?action=SelecionarCategoria" text="nome" value="cateogorias_id">----</option>
-                    </select>
-                    <div class="card-content-area">
-                    <label>Imagem</label>
-                    <input type="file" name="imagem" class="form-control" required>
                     </div>
 
 

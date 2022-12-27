@@ -7,6 +7,9 @@
     <script src="../views/helpers/js" type="text/javascript"></script>
     <title>Brashop</title>
   </head>
+  <?php
+	include_once __DIR__ . "/../helpers/menuLogin.php"; 
+?>
   <body>
 <h3> Faça uma sugestão, Seu Feedback é importante para melhorarmos nosso site! </h3>
 <form action="./SugestaoController.php?action=create" method="POST">

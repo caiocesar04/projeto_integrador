@@ -13,7 +13,7 @@
     <title>Brashop</title>
   </head>
  
-  <body style ="background-color:black">
+  <body style ="background-color:white">
 <?php
 include_once __DIR__ . "/../helpers/menuLogin.php";
 ?>
