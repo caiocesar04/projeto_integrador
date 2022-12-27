@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 25-Dez-2022 às 23:51
+-- Tempo de geração: 27-Dez-2022 às 19:10
 -- Versão do servidor: 10.4.24-MariaDB
 -- versão do PHP: 8.1.6
 
@@ -33,19 +33,20 @@ CREATE TABLE `anuncios` (
   `preco` float NOT NULL,
   `imagem` mediumtext NOT NULL,
   `usuarios_id` int(11) NOT NULL,
-  `categorias_id` int(11) NOT NULL
+  `categorias_id` int(11) NOT NULL,
+  `avaliacoes_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `anuncios`
 --
 
-INSERT INTO `anuncios` (`id`, `nome`, `preco`, `imagem`, `usuarios_id`, `categorias_id`) VALUES
-(49, 'refrigerante', 3.99, 'refri.jpg', 71, 0),
-(50, 'Playstation 4 (PS4)', 1499.99, 'ps4.png', 72, 0),
-(51, 'jogo do batman', 70.55, 'batman.jpg', 73, 0),
-(62, 'playstation 5', 4599.99, 'ps5.jpg', 74, 0),
-(63, 'Livro Percy Jackson', 69.99, 'percy jackson.jpg', 70, 0);
+INSERT INTO `anuncios` (`id`, `nome`, `preco`, `imagem`, `usuarios_id`, `categorias_id`, `avaliacoes_id`) VALUES
+(49, 'refrigerante', 3.99, 'refri.jpg', 71, 0, 0),
+(50, 'Playstation 4 (PS4)', 1499.99, 'ps4.png', 72, 0, 0),
+(51, 'jogo do batman', 70.55, 'batman.jpg', 73, 0, 0),
+(62, 'playstation 5', 4599.99, 'ps5.jpg', 74, 0, 0),
+(63, 'Livro Percy Jackson', 69.99, 'percy jackson.jpg', 70, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -55,9 +56,18 @@ INSERT INTO `anuncios` (`id`, `nome`, `preco`, `imagem`, `usuarios_id`, `categor
 
 CREATE TABLE `avaliacoes` (
   `id` int(11) NOT NULL,
-  `texto` varchar(255) NOT NULL,
-  `nota` int(11) NOT NULL
+  `comentario` text NOT NULL,
+  `nota` float NOT NULL,
+  `usuarios_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `avaliacoes`
+--
+
+INSERT INTO `avaliacoes` (`id`, `comentario`, `nota`, `usuarios_id`) VALUES
+(1, 'Produto foi entregue perfeitamente.', 5, 70),
+(2, 'Gostei do produto porém a entrega atrasou!', 4.5, 70);
 
 -- --------------------------------------------------------
 
@@ -161,7 +171,8 @@ ALTER TABLE `anuncios`
 -- Índices para tabela `avaliacoes`
 --
 ALTER TABLE `avaliacoes`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_usuarios_id` (`usuarios_id`);
 
 --
 -- Índices para tabela `categorias`
@@ -202,13 +213,13 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de tabela `anuncios`
 --
 ALTER TABLE `anuncios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
 -- AUTO_INCREMENT de tabela `avaliacoes`
 --
 ALTER TABLE `avaliacoes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `categorias`
@@ -239,6 +250,16 @@ ALTER TABLE `sugestoes`
 --
 ALTER TABLE `usuarios`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
+
+--
+-- Restrições para despejos de tabelas
+--
+
+--
+-- Limitadores para a tabela `avaliacoes`
+--
+ALTER TABLE `avaliacoes`
+  ADD CONSTRAINT `fk_usuarios_id` FOREIGN KEY (`usuarios_id`) REFERENCES `usuarios` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
