@@ -87,7 +87,14 @@ class ControllerUsuario{
         $this->loadView("usuarios/home.php", null);
     }    
     private function loadAdm(){
-        $this->loadView("usuarios/homeAdm.php", null);
+        session_start();
+        if(isset($_SESSION["usuario"])){
+            $this->loadView("usuarios/homeAdm.php", null);
+		}else{
+			$msg = "É necessário estar logado";
+            $this->loadView("usuarios/formLogin.php", @$data, $msg);
+		}
+       
     }    
     private function loadLogin(){
         $this->loadView("usuarios/formLogin.php", null);
@@ -147,10 +154,15 @@ class ControllerUsuario{
  
         
         if($usuario){
-            $this->loadView("usuarios/homeLogin.php", @$data);
-            session_start();
+            if($usuario->isAdm()){
+                $this->loadAdm(@$data);
+            }
+            else{
+                $this->loadView("usuarios/homeLogin.php", @$data);
+                echo ("<h1><font> Bem Vindo  ".$usuario->getNome(@$_GET["nome"])."!</font>");
+            }
+            @session_start();
             $_SESSION['usuario'] = $usuario->getAll();
-             echo ("<h1><font> Bem Vindo  ".$usuario->getNome(@$_GET["nome"])."!</font>");
 		}else{
 			$msg = "Erro ao Logar! verifique se seu email e senha estão corretos.";
             $this->loadView("usuarios/formLogin.php", @$data, $msg);

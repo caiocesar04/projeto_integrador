@@ -5,6 +5,7 @@ class UsuarioModel{
 	private $senha;
 	private $email;
 	private $data_nasc;
+	private $isadm;
 
 
 	public function getId(): int{
@@ -46,13 +47,18 @@ class UsuarioModel{
 		$this->data_nasc = $dat;
 	}
 
+	public function isAdm(): bool{
+		return $this->isadm == 1;
+	}
+	
+
 	public function getAll(){
 		return [
 			"id" =>$this->id,
 			"nome" =>$this->nome,
 			"email" =>$this->email,
 			"data_nasc" =>$this->data_nasc,
-		
+			"is_adm" => $this->isadm
 		
 		];
 	}

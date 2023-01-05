@@ -28,9 +28,15 @@
                     <input type="number" name="preco" pattern="[0-9]+([,\.][0-9]+)?" min="0" step="any"
 name="null" class="form-control" required>
                     </div>
-                    <label for="categorias">Categoria:</label>
-                    <select name="categoria" id="categorias_id" >
-                    <option acion="./AnuncioController.php?action=SelecionarCategoria" text="nome" value="cateogorias_id">----</option>
+                    <label for="categoria_id">Categoria:</label>
+                   
+                    <select name="categoria_id" id="categoria_id" >
+                        <option value="">Selecionar</option>
+                    <?php
+                    foreach ($data['categorias'] as $key => $categoria) {
+                        echo '<option value="'.$categoria['id'].'">'.$categoria['nome'].'</option>';
+                    }
+                    ?>
                     </select>
                     <div class="card-content-area">
                     <label>Imagem</label>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 27-Dez-2022 às 19:10
+-- Tempo de geração: 04-Jan-2023 às 06:26
 -- Versão do servidor: 10.4.24-MariaDB
 -- versão do PHP: 8.1.6
 
@@ -46,7 +46,9 @@ INSERT INTO `anuncios` (`id`, `nome`, `preco`, `imagem`, `usuarios_id`, `categor
 (50, 'Playstation 4 (PS4)', 1499.99, 'ps4.png', 72, 0, 0),
 (51, 'jogo do batman', 70.55, 'batman.jpg', 73, 0, 0),
 (62, 'playstation 5', 4599.99, 'ps5.jpg', 74, 0, 0),
-(63, 'Livro Percy Jackson', 69.99, 'percy jackson.jpg', 70, 0, 0);
+(63, 'Livro Percy Jackson', 69.99, 'percy jackson.jpg', 70, 0, 0),
+(66, 'coca cola', 6.9, 'refri.jpg', 72, 0, 0),
+(67, 'Caio', 123, 'batman.jpg', 72, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -86,7 +88,8 @@ CREATE TABLE `categorias` (
 
 INSERT INTO `categorias` (`id`, `nome`) VALUES
 (1, 'Eletrodomésticos'),
-(3, 'eletronicos');
+(3, 'eletronicos'),
+(4, 'bebidas');
 
 -- --------------------------------------------------------
 
@@ -99,6 +102,16 @@ CREATE TABLE `chat` (
   `mensagem` text NOT NULL,
   `usuarios_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `chat`
+--
+
+INSERT INTO `chat` (`id`, `mensagem`, `usuarios_id`) VALUES
+(72, 'po', 72),
+(73, 's', 72),
+(74, 'a', 72),
+(75, 'f', 72);
 
 -- --------------------------------------------------------
 
@@ -143,19 +156,20 @@ CREATE TABLE `usuarios` (
   `nome` varchar(45) NOT NULL,
   `email` varchar(255) NOT NULL,
   `senha` varchar(255) NOT NULL,
-  `data_nasc` date NOT NULL
+  `data_nasc` date NOT NULL,
+  `isadm` bit(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `nome`, `email`, `senha`, `data_nasc`) VALUES
-(70, 'Caio', 'caio@gmail.com', 'abc123', '2004-04-20'),
-(71, 'Pedro Henrique ', 'pedro@gmail.com', 'pedro', '2004-10-22'),
-(72, 'Luis Coradi', 'luis@gmail.com', 'luis', '2003-03-27'),
-(73, 'Rubens', 'rubens@gmail.com', 'rubens', '2002-12-05'),
-(74, 'Rafael', 'rafael@gmail.com', 'zorosola', '2006-08-04');
+INSERT INTO `usuarios` (`id`, `nome`, `email`, `senha`, `data_nasc`, `isadm`) VALUES
+(70, 'Caio', 'caio@gmail.com', 'abc123', '2004-04-20', b'1'),
+(71, 'Pedro Henrique ', 'pedro@gmail.com', 'pedro', '2004-10-22', b'0'),
+(72, 'Luis Coradi', 'luis@gmail.com', 'luis', '2003-03-27', b'0'),
+(73, 'Rubens', 'rubens@gmail.com', 'rubens', '2002-12-05', b'0'),
+(74, 'Rafael', 'rafael@gmail.com', 'zorosola', '2006-08-04', b'0');
 
 --
 -- Índices para tabelas despejadas
@@ -213,7 +227,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de tabela `anuncios`
 --
 ALTER TABLE `anuncios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
 
 --
 -- AUTO_INCREMENT de tabela `avaliacoes`
@@ -225,13 +239,13 @@ ALTER TABLE `avaliacoes`
 -- AUTO_INCREMENT de tabela `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de tabela `chat`
 --
 ALTER TABLE `chat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
 
 --
 -- AUTO_INCREMENT de tabela `imagens`

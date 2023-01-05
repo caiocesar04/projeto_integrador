@@ -33,7 +33,7 @@
           <td><?= $user['nome'] ?></td>
           <td><?= $user['preco'] ?></td>
           <td><img style="width:50px;" src="../../imagens/<?=$user['imagem'];?>"></img></td>
-          <td><?= $user['usuarios_id'] ?></td>             
+          <td><?= $user['usuario_nome'] ?></td>             
         <?php endforeach; ?>
     </ul>
     <p>

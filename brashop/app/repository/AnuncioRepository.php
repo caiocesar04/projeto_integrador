@@ -13,18 +13,15 @@
         }
 
         
-        public function create(AnuncioModel $anuncio) : int {
+        public function create( $anuncio) : int {
             try {
                 session_start();
-                // print_r("anuncioooo");
-                // print_r($anuncio);
-                $query = "INSERT INTO anuncios (nome, preco, imagem, usuarios_id) VALUES (:nome, :preco, :imagem, :usuarios_id)";
+                $query = "INSERT INTO anuncios (nome, preco, imagem, usuarios_id, categorias_id) VALUES (:nome, :preco, :imagem, :usuarios_id, :categoria_id)";
                 $prepare = $this->conn->prepare($query);
                 $prepare->bindValue(":nome", $anuncio->getNome());
                 $prepare->bindValue(":preco",$anuncio->getPreco());
                 $prepare->bindValue(":imagem",$anuncio->getImagem());
-                //print_r($_SESSION["usuario"]["id"]);
-                //die;
+                $prepare->bindValue(":categoria_id", $_POST['categoria_id']);
                 $prepare->bindValue(":usuarios_id",$_SESSION["usuario"]["id"]);
                 $prepare->execute();
                 return $this->conn->lastInsertId();
@@ -45,7 +42,7 @@
         }
  
         public function findAll(): array {
-            $table = $this->conn->query("SELECT * FROM anuncios");
+            $table = $this->conn->query("SELECT a.nome, a.preco, a.imagem,u.nome as 'usuario_nome' FROM `anuncios` a, usuarios u WHERE a.usuarios_id = u.id");
             $anuncios  = $table->fetchAll(PDO::FETCH_ASSOC);
 
             return $anuncios;

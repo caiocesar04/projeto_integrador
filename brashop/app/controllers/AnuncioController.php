@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . "/../repository/AnuncioRepository.php";
+require_once __DIR__ . "/../repository/CategoriaRepository.php";
 $controlleranuncio = new ControllerAnuncio();
 class ControllerAnuncio{
   
@@ -171,9 +172,14 @@ class ControllerAnuncio{
 
 
     private function loadFormNew(){
+        $categoriaRepository = new CategoriaRepository();
+
+        $categorias = $categoriaRepository->findAll();
+
         session_start();
 
         if((@$_SESSION["usuario"])){
+            $data['categorias'] =$categorias;
             $this->loadView("anuncios/formCadastro.php", @$data, @$msg);;
 		}else{
 			$msg = "É necessário estar logado";
