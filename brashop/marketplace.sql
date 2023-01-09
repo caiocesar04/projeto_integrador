@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 04-Jan-2023 às 06:26
+-- Tempo de geração: 09-Jan-2023 às 01:58
 -- Versão do servidor: 10.4.24-MariaDB
 -- versão do PHP: 8.1.6
 
@@ -42,13 +42,10 @@ CREATE TABLE `anuncios` (
 --
 
 INSERT INTO `anuncios` (`id`, `nome`, `preco`, `imagem`, `usuarios_id`, `categorias_id`, `avaliacoes_id`) VALUES
-(49, 'refrigerante', 3.99, 'refri.jpg', 71, 0, 0),
 (50, 'Playstation 4 (PS4)', 1499.99, 'ps4.png', 72, 0, 0),
 (51, 'jogo do batman', 70.55, 'batman.jpg', 73, 0, 0),
 (62, 'playstation 5', 4599.99, 'ps5.jpg', 74, 0, 0),
-(63, 'Livro Percy Jackson', 69.99, 'percy jackson.jpg', 70, 0, 0),
-(66, 'coca cola', 6.9, 'refri.jpg', 72, 0, 0),
-(67, 'Caio', 123, 'batman.jpg', 72, 1, 0);
+(63, 'Livro Percy Jackson', 69.99, 'percy jackson.jpg', 70, 0, 0);
 
 -- --------------------------------------------------------
 

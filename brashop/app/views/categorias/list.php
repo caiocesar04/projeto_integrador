@@ -8,13 +8,9 @@
 
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark" >
-    <div class="container-fluid">
-  <a class="navbar-brand active" href="">Brashop</a>
-  <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="dropdown-toggle" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  </nav>
+<?php
+include_once __DIR__ . "/../helpers/menuAdm.php";
+?>
 
 
     <h1> Categorias </h1>
@@ -22,14 +18,12 @@
     <ul>
       <td><table class = 'table table-hover-table-striped table-bordered'></td>
           <tr>
-          <th>#</th>
           <th>Nome</th>
          
           </tr>
         <?php foreach($data['categorias'] as $user): ?>
               
           <tr>
-          <td><?= $user['id'] ?></td>
           <td><?= $user['nome'] ?></td>
           <td><a href="./CategoriaController.php?action=edit&id=<?= $user['id'] ?>">Editar</a></td>
           <td><a href="javascript:confirmarExclusaoCategoria('<?= $user['nome'] ?>', <?= $user['id'] ?>)">Excluir</a></td>

@@ -118,6 +118,10 @@ class ControllerAnuncio{
         
     }
     private function deleteAnuncioById(){
+        @session_start();
+        if(!isset($_SESSION["usuario"])){
+            return $this->loadView("usuarios/formLogin.php", @$data, @$msg);
+          }
         $idParam = $_GET['id'];
         $anuncioRepository = new AnuncioRepository();    
 

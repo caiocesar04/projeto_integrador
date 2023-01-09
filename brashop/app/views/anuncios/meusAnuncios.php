@@ -9,7 +9,13 @@
 </head>
 <body>
 <?php
-include_once __DIR__ . "/../helpers/menuLogin.php";
+if(isset($_SESSION["usuario"])){
+  if($_SESSION["usuario"]['is_adm'] == 1){
+    include_once __DIR__ . "/../helpers/menuAdm.php";
+   }else{
+   include_once __DIR__ . "/../helpers/menuLogin.php";
+ }
+}
 ?>
 
     <h1> Anuncios </h1>
@@ -17,7 +23,6 @@ include_once __DIR__ . "/../helpers/menuLogin.php";
     <ul>
       <td><table class = 'table table-hover-table-striped table-bordered'></td>
           <tr>
-          <th>#</th>
           <th>Nome</th>
           <th>Preço</th>
           <th>Imagem</th>
@@ -25,7 +30,6 @@ include_once __DIR__ . "/../helpers/menuLogin.php";
         <?php foreach($data['anuncios'] as $user): ?>
               
           <tr>
-          <td><?= $user['id'] ?></td>
           <td><?= $user['nome'] ?></td>
           <td><?= $user['preco'] ?></td>
           <td><img style="width:50px;" src="../../imagens/<?=$user['imagem'];?>"></img></td>

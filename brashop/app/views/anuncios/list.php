@@ -9,10 +9,15 @@
 </head>
 <body>
 <?php
-
+  
  if(isset($_SESSION["usuario"])){
-  include_once __DIR__ . "/../helpers/menuLogin.php";
-}else{
+   if($_SESSION["usuario"]['is_adm'] == 1){
+     include_once __DIR__ . "/../helpers/menuAdm.php";
+    }else{
+    include_once __DIR__ . "/../helpers/menuLogin.php";
+  }
+}
+else{
   include_once __DIR__ . "/../helpers/menuHome.php";
 }
 ?>

@@ -104,6 +104,10 @@ class ControllerAvaliacao{
     }
     
     private function deleteAvaliacaoById(){
+        session_start();
+        if(!isset($_SESSION["usuario"])){
+            return $this->loadView("usuarios/formLogin.php", @$data, @$msg);
+          }
         $idParam = $_GET['id'];
         $avaliacaoRepository = new AvaliacaoRepository();    
 

@@ -87,14 +87,7 @@ class ControllerUsuario{
         $this->loadView("usuarios/home.php", null);
     }    
     private function loadAdm(){
-        session_start();
-        if(isset($_SESSION["usuario"])){
-            $this->loadView("usuarios/homeAdm.php", null);
-		}else{
-			$msg = "É necessário estar logado";
-            $this->loadView("usuarios/formLogin.php", @$data, $msg);
-		}
-       
+        $this->loadView("usuarios/homeAdm.php", null);
     }    
     private function loadLogin(){
         $this->loadView("usuarios/formLogin.php", null);

@@ -57,7 +57,7 @@
         }
 
         public function findUsuariorByIdLogged(): array {
-            session_start();
+            @session_start();
             $query = "SELECT * FROM usuarios WHERE id = :id";
             $prepare = $this->conn->prepare($query);
             $prepare->bindValue(':id',@$_SESSION["usuario"]["id"]);
