@@ -22,15 +22,15 @@ include_once __DIR__ . "/../helpers/mensagem.php";
         <a class="nav-link" href="./CategoriaController.php?action=findAll">Categorias</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="./ChatController.php?action=findMensagemByUser">Chat</a>
+        <a class="nav-link" href="./AnuncioController.php?action=findAll">Anuncios</a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Perfil
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="./AnuncioController.php?action=loadFormNew">Anunciar</a>
-          <a class="dropdown-item" href="./AnuncioController.php?action=findAll">Anuncios</a>
+          <a class="dropdown-item" href="./AnuncioController.php?action=loadFormNew">Anunciar um produto</a>
+          <a class="dropdown-item" href="./ChatController.php?action=findMensagemByUser">Chat</a>
           <a class="dropdown-item" href="./AnuncioController.php?action=findAnuncioByUser">Meus Anuncios</a>
           <a class="dropdown-item" href="./UsuarioController.php?action=findUsuarioByIdLogged">Meus Dados</a>
           <a class="dropdown-item" href="./UsuarioController.php?action=logout">Sair</a>

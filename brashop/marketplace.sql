@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 09-Jan-2023 às 01:58
+-- Tempo de geração: 10-Jan-2023 às 18:21
 -- Versão do servidor: 10.4.24-MariaDB
 -- versão do PHP: 8.1.6
 
@@ -56,7 +56,7 @@ INSERT INTO `anuncios` (`id`, `nome`, `preco`, `imagem`, `usuarios_id`, `categor
 CREATE TABLE `avaliacoes` (
   `id` int(11) NOT NULL,
   `comentario` text NOT NULL,
-  `nota` float NOT NULL,
+  `nota` int(11) NOT NULL,
   `usuarios_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -66,7 +66,7 @@ CREATE TABLE `avaliacoes` (
 
 INSERT INTO `avaliacoes` (`id`, `comentario`, `nota`, `usuarios_id`) VALUES
 (1, 'Produto foi entregue perfeitamente.', 5, 70),
-(2, 'Gostei do produto porém a entrega atrasou!', 4.5, 70);
+(2, 'Gostei do produto porém a entrega atrasou!', 4, 70);
 
 -- --------------------------------------------------------
 
