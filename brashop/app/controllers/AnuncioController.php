@@ -154,7 +154,7 @@ class ControllerAnuncio{
         $idParam = $_GET['id'];
         $anuncioRepository = new AnuncioRepository(); 
         $anuncio = $anuncioRepository->findAnuncioById($idParam);
-        $data['anuncios'][0] = $anuncio;
+        $data['anuncio'] = $anuncio;
       
         if(isset($_SESSION["usuario"])){
             $this->loadView("anuncios/AnuncioClicked.php", $data);

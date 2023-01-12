@@ -9,7 +9,16 @@
 </head>
 <body>
 <?php
-include_once __DIR__ . "/../helpers/menuLogin.php";
+ if(isset($_SESSION["usuario"])){
+  if($_SESSION["usuario"]['is_adm'] == 1){
+    include_once __DIR__ . "/../helpers/menuAdm.php";
+   }else{
+   include_once __DIR__ . "/../helpers/menuLogin.php";
+ }
+}
+else{
+ include_once __DIR__ . "/../helpers/menuHome.php";
+}
 ?>
 
     <h1> Minhas Avaliações </h1>
@@ -24,7 +33,7 @@ include_once __DIR__ . "/../helpers/menuLogin.php";
           <tr>
           <td><?= $user['nota'] ?></td>
           <td><a class="btn btn-success" href="./AvaliacaoController.php?action=edit&id=<?= $user['id'] ?>">Editar</a></td>
-          <td><a class="btn btn-danger" href="javascript:confirmarExclusaoAnuncio('<?= $user['comentario'] ?>', <?= $user['id'] ?>)">Excluir</a></td>
+          <td><a class="btn btn-danger" href="javascript:confirmarExclusaoAvaliacaos('<?= $user['nota'] ?>', <?= $user['id'] ?>)">Excluir</a></td>
                        
         <?php endforeach; ?>
     </ul>

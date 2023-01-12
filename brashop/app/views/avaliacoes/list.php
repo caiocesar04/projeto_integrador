@@ -10,10 +10,15 @@
 <body>
 <?php
 
- if(isset($_SESSION["usuario"])){
-  include_once __DIR__ . "/../helpers/menuLogin.php";
-}else{
-  include_once __DIR__ . "/../helpers/menuHome.php";
+if(isset($_SESSION["usuario"])){
+  if($_SESSION["usuario"]['is_adm'] == 1){
+    include_once __DIR__ . "/../helpers/menuAdm.php";
+   }else{
+   include_once __DIR__ . "/../helpers/menuLogin.php";
+ }
+}
+else{
+ include_once __DIR__ . "/../helpers/menuHome.php";
 }
 ?>
 
@@ -26,7 +31,8 @@
           </tr>
         <?php foreach($data['avaliacoes'] as $user): ?> 
           <tr>
-          <td><?= $user['nota'] ?></td>         
+          <td><?= print_r($user); ?></td> 
+        </tr>        
         <?php endforeach; ?>
     </ul>
 

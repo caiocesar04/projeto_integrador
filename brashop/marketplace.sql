@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 12-Jan-2023 às 05:04
+-- Tempo de geração: 12-Jan-2023 às 13:38
 -- Versão do servidor: 10.4.24-MariaDB
 -- versão do PHP: 8.1.6
 
@@ -66,8 +66,7 @@ CREATE TABLE `avaliacoes` (
 --
 
 INSERT INTO `avaliacoes` (`id`, `nota`, `usuarios_id`, `anuncios_id`) VALUES
-(1, 5, 70, 0),
-(2, 4, 70, 0);
+(22, 5, 70, 68);
 
 -- --------------------------------------------------------
 
@@ -232,7 +231,7 @@ ALTER TABLE `anuncios`
 -- AUTO_INCREMENT de tabela `avaliacoes`
 --
 ALTER TABLE `avaliacoes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT de tabela `categorias`

@@ -13,12 +13,13 @@
         }
 
         
-        public function create(AvaliacaoModel $avaliacao) : int {
+        public function create(AvaliacaoModel $avaliacao, $anuncios_id) : int {
             try {
                 session_start();
-                $query = "INSERT INTO avaliacoes (nota, usuarios_id) VALUES (:nota, :usuarios_id)";
+                $query = "INSERT INTO avaliacoes (nota, usuarios_id, anuncios_id) VALUES (:nota, :usuarios_id, :anuncios_id)";
                 $prepare = $this->conn->prepare($query);
                 $prepare->bindValue(":nota", $avaliacao->getNota());
+                $prepare->bindValue(":anuncios_id", $anuncios_id);
                 $prepare->bindValue(':usuarios_id',@$_SESSION["usuario"]["id"]);
                 $prepare->execute();
                 return $this->conn->lastInsertId();
@@ -37,7 +38,7 @@
         }
 
         public function findAvaliacaoByUser(): array {
-            session_start();
+            @session_start();
             $query = "SELECT * FROM avaliacoes WHERE usuarios_id = :usuarios_id";
             $prepare = $this->conn->prepare($query);
             $prepare->bindValue(':usuarios_id',@$_SESSION["usuario"]["id"]);

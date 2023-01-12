@@ -33,7 +33,7 @@
         }
 
         public function findAnuncioByUser(): array {
-            session_start();
+            @session_start();
             $query = "SELECT * FROM anuncios WHERE usuarios_id = :usuarios_id";
             $prepare = $this->conn->prepare($query);
             $prepare->bindValue(':usuarios_id',@$_SESSION["usuario"]["id"]);
@@ -53,7 +53,7 @@
 
 
         public function findAnuncioById(int $id) {
-            $query = "SELECT * FROM anuncios WHERE id = ?";
+            $query = "SELECT anuncios.*, AVG(avaliacoes.nota) nota FROM anuncios, avaliacoes WHERE anuncios.id = ? AND avaliacoes.anuncios_id = anuncios.id;";
             $prepare = $this->conn->prepare($query);
             $prepare->bindParam(1, $id, PDO::PARAM_INT);
 

@@ -36,6 +36,7 @@
   <input type="radio" id="cm_star-5" name="fb" value="5"/>
 </div>-->
 
+
         <div id="title">
             
             <form class="card col-md-10 mx-auto col-lg-5 p-4 p-md-5" action="./AvaliacaoController.php?action=create" method="POST">
@@ -44,8 +45,13 @@
                 </div>
                     <div class="card-content-area">
                     <label>Nota</label>
-                    <input type="number" name="nota" pattern="[0-9]+([,\.][0-9]+)?" min="0" max="5" step="any"
+                    <input type="number"  name="nota" pattern="[0-9]+([,\.][0-9]+)?" min="0" max="5" step="any"
 name="null" class="form-control" required>
+<input type="hidden" name="anuncios_id" value="<?php
+$queries = array();
+parse_str($_SERVER['QUERY_STRING'], $queries);
+echo(@$queries['id']);
+?>">
                     </div>
 
 

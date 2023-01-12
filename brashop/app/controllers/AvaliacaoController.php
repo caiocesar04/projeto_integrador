@@ -48,18 +48,16 @@ class ControllerAvaliacao{
     private function create(){
         $avaliacao = new AvaliacaoModel();
         $avaliacao->setNota($_POST["nota"]);
-        
 		$avaliacaoRepository = new AvaliacaoRepository();
-        $id = $avaliacaoRepository->create($avaliacao);
-        //var_dump($id);
+        
+        $id = $avaliacaoRepository->create($avaliacao, $_POST['anuncios_id']);
 
         if($id){
 			$msg = "Registro inserido com sucesso.";
 		}else{
 			$msg = "Erro ao inserir o registro no banco de dados.";
 		}
-
-        $this->findAll($msg);
+        $this->findAvaliacaoByUser($msg);
     }
 
     private function findAvaliacaoByUser(){
@@ -116,7 +114,7 @@ class ControllerAvaliacao{
 		}else{
 			$msg = "Erro ao excluir o registro no banco de dados.";
 		}
-        $this->findAll($msg);
+        $this->findAvaliacaoByUser($msg);
     }
 
     private function edit(){

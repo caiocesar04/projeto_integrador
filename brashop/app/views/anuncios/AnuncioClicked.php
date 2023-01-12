@@ -31,16 +31,16 @@
           <th>Preço</th>
           <th>Imagem</th>
           <th>Informações</th>
+          <th>Nota</th>
           </tr>
-<?php foreach($data['anuncios'] as $anuncio): ?>
     <tr>
-    <td><?= $anuncio->getNome(); ?></td>
-    <td><?= $anuncio->getPreco(); ?></td>
-	<td><img style="width:50px;" src="../../imagens/<?= $anuncio->getImagem();?>"></img></td>
-    <td><?= $anuncio->getDescricao(); ?></td>
+    <td><?= $data['anuncio']->getNome(); ?></td>
+    <td><?= $data['anuncio']->getPreco(); ?></td>
+	<td><img style="width:50px;" src="../../imagens/<?= $data['anuncio']->getImagem();?>"></img></td>
+    <td><?= $data['anuncio']->getDescricao(); ?></td>
+    <td><?= $data['anuncio']->nota; ?></td>
 
-<?php endforeach; ?>
-<td><a class="btn btn-primary" href="./AvaliacaoController.php?action=loadFormNew">Avaliar</a></td>
+    <td><a class="btn btn-primary" href="./AvaliacaoController.php?action=loadFormNew&id=<?= $data['anuncio']->getId(); ?>">Avaliar</a></td>
 </ul>
 </body>
 </html>
