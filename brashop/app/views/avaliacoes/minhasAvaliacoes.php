@@ -17,13 +17,11 @@ include_once __DIR__ . "/../helpers/menuLogin.php";
     <ul>
       <td><table class = 'table table-hover-table-striped table-bordered'></td>
           <tr>
-          <th>Nome</th>
           <th>Nota</th>
           </tr>
         <?php foreach($data['avaliacoes'] as $user): ?>
               
           <tr>
-          <td><?= $user['comentario'] ?></td>
           <td><?= $user['nota'] ?></td>
           <td><a class="btn btn-success" href="./AvaliacaoController.php?action=edit&id=<?= $user['id'] ?>">Editar</a></td>
           <td><a class="btn btn-danger" href="javascript:confirmarExclusaoAnuncio('<?= $user['comentario'] ?>', <?= $user['id'] ?>)">Excluir</a></td>

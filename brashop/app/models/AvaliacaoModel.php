@@ -1,7 +1,6 @@
 <?php
 class AvaliacaoModel{
 	private $id;
-	private $comentario;
 	private $nota;
 	
 	
@@ -13,14 +12,6 @@ class AvaliacaoModel{
 	public function setId(int $id){
 		$this->id = $id;
 	}	
-	
-	public function getComentario(): string{
-		return $this->comentario;
-	}
-	
-	public function setComentario(string $com){
-		$this->comentario = $com;
-	}
 
 	public function getNota(): float{
 		return $this->nota;

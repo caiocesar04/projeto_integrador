@@ -38,7 +38,7 @@
                 
             
                  <tr>
-                 <td><?= $user['id'] ?></td>
+                 
                  <td><?= $user['nome'] ?></td>
                  <td><?= $user['senha'] ?></td>
                  <td><?= $user['email'] ?></td>

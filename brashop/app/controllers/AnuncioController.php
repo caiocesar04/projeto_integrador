@@ -51,7 +51,7 @@ class ControllerAnuncio{
 		$anuncio->setNome($_POST["nome"]);
         $anuncio->setPreco($_POST["preco"]);
         $anuncio->setImagem($_POST["imagem"]);
-        
+        $anuncio->setDescricao($_POST["descricao"]);
 
 		$anuncioRepository = new AnuncioRepository();
         $id = $anuncioRepository->create($anuncio);
@@ -149,6 +149,21 @@ class ControllerAnuncio{
           }
        
     }
+    private function findAnuncioByClick(){
+        session_start();
+        $idParam = $_GET['id'];
+        $anuncioRepository = new AnuncioRepository(); 
+        $anuncio = $anuncioRepository->findAnuncioById($idParam);
+        $data['anuncios'][0] = $anuncio;
+      
+        if(isset($_SESSION["usuario"])){
+            $this->loadView("anuncios/AnuncioClicked.php", $data);
+          }else{
+            $msg = "É necessário estar Logado!";
+            $this->loadView("usuarios/formLogin.php", $data, $msg);
+          }
+    }
+    
 
     private function update(){
         $anuncio = new AnuncioModel();
@@ -157,6 +172,7 @@ class ControllerAnuncio{
 		$anuncio->setNome($_POST["nome"]);
 		$anuncio->setPreco($_POST["preco"]);
         $anuncio->setImagem($_POST["imagem"]);
+        $anuncio->setDescricao($_POST["descricao"]);
         $anuncioRepository = new AnuncioRepository();
         //print_r($usuario);
         $atualizou = $anuncioRepository->update($anuncio);

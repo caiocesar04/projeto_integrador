@@ -47,7 +47,6 @@ class ControllerAvaliacao{
 
     private function create(){
         $avaliacao = new AvaliacaoModel();
-		$avaliacao->setComentario($_POST["comentario"]);
         $avaliacao->setNota($_POST["nota"]);
         
 		$avaliacaoRepository = new AvaliacaoRepository();
@@ -140,7 +139,6 @@ class ControllerAvaliacao{
         $avaliacao = new AvaliacaoModel();
 
 		$avaliacao->setId($_GET["id"]);
-		$avaliacao->setComentario($_POST["comentario"]);
 		$avaliacao->setNota($_POST["nota"]);
         $avaliacaoRepository = new AvaliacaoRepository();
         //print_r($usuario);

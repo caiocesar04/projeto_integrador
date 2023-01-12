@@ -16,9 +16,8 @@
         public function create(AvaliacaoModel $avaliacao) : int {
             try {
                 session_start();
-                $query = "INSERT INTO avaliacoes (comentario, nota, usuarios_id) VALUES (:comentario, :nota, :usuarios_id)";
+                $query = "INSERT INTO avaliacoes (nota, usuarios_id) VALUES (:nota, :usuarios_id)";
                 $prepare = $this->conn->prepare($query);
-                $prepare->bindValue(":comentario", $avaliacao->getComentario());
                 $prepare->bindValue(":nota", $avaliacao->getNota());
                 $prepare->bindValue(':usuarios_id',@$_SESSION["usuario"]["id"]);
                 $prepare->execute();
@@ -31,7 +30,7 @@
 
  
         public function findAll(): array {
-            $table = $this->conn->query("SELECT * FROM avaliacoes");
+            $table = $this->conn->query("SELECT AVG(a.nota) FROM `avaliacoes` a  WHERE a.anuncios_id = 1;");
             $avaliacoes  = $table->fetchAll(PDO::FETCH_ASSOC);
 
             return $avaliacoes;
@@ -63,11 +62,10 @@
         }
 
         public function update(AvaliacaoModel $avaliacao) : bool {
-            $query = "UPDATE avaliacoes SET comentario = ?, nota = ? WHERE id = ?";
+            $query = "UPDATE avaliacoes SET  nota = ? WHERE id = ?";
             $prepare = $this->conn->prepare($query);
-            $prepare->bindValue(1, $avaliacao->getComentario());
-            $prepare->bindValue(2, $avaliacao->getNota());
-            $prepare->bindValue(3, $avaliacao->getId());
+            $prepare->bindValue(1, $avaliacao->getNota());
+            $prepare->bindValue(2, $avaliacao->getId());
             $result = $prepare->execute();
             return $result;
         }

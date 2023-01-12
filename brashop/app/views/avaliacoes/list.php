@@ -22,13 +22,10 @@
     <ul>
       <td><table class = 'table table-hover-table-striped table-bordered'></td>
           <tr>
-          <th>Comentário</th>
           <th>Nota</th>
           </tr>
-        <?php foreach($data['avaliacoes'] as $user): ?>
-              
+        <?php foreach($data['avaliacoes'] as $user): ?> 
           <tr>
-          <td><?= $user['comentario'] ?></td>
           <td><?= $user['nota'] ?></td>         
         <?php endforeach; ?>
     </ul>

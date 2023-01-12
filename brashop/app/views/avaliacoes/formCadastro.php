@@ -11,7 +11,16 @@
     </head>
     <body >
     <?php
-	include_once __DIR__ . "/../helpers/menuLogin.php"; 
+	if(isset($_SESSION["usuario"])){
+        if($_SESSION["usuario"]['is_adm'] == 1){
+          include_once __DIR__ . "/../helpers/menuAdm.php";
+         }else{
+         include_once __DIR__ . "/../helpers/menuLogin.php";
+       }
+     }
+     else{
+       include_once __DIR__ . "/../helpers/menuHome.php";
+     }
 ?>
 <!--<div class="estrelas">
   <input type="radio" id="cm_star-empty" name="fb" value="" checked/>
@@ -33,11 +42,6 @@
                 <div class="card-header">
                     <h2>Avaliar</h2>
                 </div>
-                <div class="card-content">
-                    <div class="card-content-area">
-                    <label>Comentario</label>
-                    <input type="text" name="comentario" class="form-control" required>
-                    </div>
                     <div class="card-content-area">
                     <label>Nota</label>
                     <input type="number" name="nota" pattern="[0-9]+([,\.][0-9]+)?" min="0" max="5" step="any"

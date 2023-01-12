@@ -4,6 +4,7 @@ class AnuncioModel{
 	private $nome;
 	private $preco;
 	private $imagem;
+	private $descricao;
 	private $categoria_id;
 
 	public function getId(): int{
@@ -36,6 +37,13 @@ class AnuncioModel{
 	
 	public function setImagem(string $img){
 		$this->imagem = $img;
+	}
+	public function getDescricao(): string{
+		return $this->descricao;
+	}
+	
+	public function setDescricao(string $des){
+		$this->descricao = $des;
 	}
 	
 	public function getCategoria_id(){

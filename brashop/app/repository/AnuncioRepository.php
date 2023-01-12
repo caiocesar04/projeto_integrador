@@ -16,11 +16,12 @@
         public function create( $anuncio) : int {
             try {
                 session_start();
-                $query = "INSERT INTO anuncios (nome, preco, imagem, usuarios_id, categorias_id) VALUES (:nome, :preco, :imagem, :usuarios_id, :categoria_id)";
+                $query = "INSERT INTO anuncios (nome, preco, imagem, descricao, usuarios_id, categorias_id) VALUES (:nome, :preco, :imagem, :descricao, :usuarios_id, :categoria_id)";
                 $prepare = $this->conn->prepare($query);
                 $prepare->bindValue(":nome", $anuncio->getNome());
                 $prepare->bindValue(":preco",$anuncio->getPreco());
                 $prepare->bindValue(":imagem",$anuncio->getImagem());
+                $prepare->bindValue(":descricao",$anuncio->getDescricao());
                 $prepare->bindValue(":categoria_id", $_POST['categoria_id']);
                 $prepare->bindValue(":usuarios_id",$_SESSION["usuario"]["id"]);
                 $prepare->execute();
@@ -42,7 +43,7 @@
         }
  
         public function findAll(): array {
-            $table = $this->conn->query("SELECT a.nome, a.preco, a.imagem,u.nome as 'usuario_nome' FROM `anuncios` a, usuarios u WHERE a.usuarios_id = u.id");
+            $table = $this->conn->query("SELECT a.id, a.nome, a.preco, a.imagem, a.descricao,u.nome as 'usuario_nome' FROM `anuncios` a, usuarios u WHERE a.usuarios_id = u.id");
             $anuncios  = $table->fetchAll(PDO::FETCH_ASSOC);
 
             return $anuncios;
@@ -64,13 +65,15 @@
             return $anuncio;
         }
 
+        
         public function update(AnuncioModel $anuncio) : bool {
-            $query = "UPDATE anuncios SET nome = ?, preco = ?, imagem = ? WHERE id = ?";
+            $query = "UPDATE anuncios SET nome = ?, preco = ?, imagem = ? descricao = ? WHERE id = ?";
             $prepare = $this->conn->prepare($query);
             $prepare->bindValue(1, $anuncio->getNome());
             $prepare->bindValue(2, $anuncio->getPreco());
             $prepare->bindValue(3, $anuncio->getImagem());
-            $prepare->bindValue(4, $anuncio->getId());
+            $prepare->bindValue(4, $anuncio->getDescricao());
+            $prepare->bindValue(5, $anuncio->getId());
             $result = $prepare->execute();
             return $result;
         }
@@ -84,7 +87,7 @@
             return $result;
         }
        public function findAnuncioByName(string $nome){
-            $query = "SELECT * FROM anuncios WHERE nome like :nome";
+            $query = "SELECT a.id, a.nome, a.preco, a.imagem, a.descricao, u.nome as 'usuario_nome' FROM `anuncios` a, usuarios u WHERE a.usuarios_id = u.id AND a.nome like :nome";
             $prepare = $this->conn->prepare($query);
             $prepare->bindValue(':nome','%'.$nome.'%', PDO::PARAM_STR);
             $prepare->execute();

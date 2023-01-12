@@ -19,11 +19,6 @@
 
 <?php foreach($data['avalicoes'] as $avaliacao): ?>
 	<form action="./AvaliacaoController.php?action=update&id=<?= $avaliacao->getId()?>" method="POST">
-	<div class="mb-3">	
-	<label>Comentário:</label> 
-	<input type="text" name="comentario" class="form-control" value="<?= $avaliacao->getComentario(); ?>">
-	</div>
-
 		<div class="mb-3">
 		<label>Nota:</label>
 		 <input type="number" name="nota"  pattern="[0-9]+([,\.][0-9]+)?" min="0" step="any" name="null" class="form-control" value="<?= $avaliacao->getNota(); ?>">

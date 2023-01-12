@@ -51,7 +51,9 @@ name="null" class="form-control" required>
                     <label>Imagem</label>
                     <input type="file" name="imagem" class="form-control" required>
                     </div>
-
+                    <label>Descrição</label>
+                    <input type="text" name="descricao" class="form-control" required>
+                    </div>
 
                 </div>
                 <div class="card-footer">
