@@ -115,11 +115,15 @@ class ControllerUsuario{
         $data['usuarios'] = $usuarios;
        
         if(isset($_SESSION["usuario"])){
-            $this->loadView("usuarios/list.php", $data, $msg);
-          }else{
-            $msg = "É necessário estar Logado!";
-            $this->loadView("usuarios/formLogin.php", $data, $msg);
-          }
+            if($_SESSION["usuario"]['is_adm'] == 1){
+           return $this->loadView("usuarios/dadosUsuario.php", @$data);
+        }else{
+                $msg = "É necessário o administrador estar Logado!";
+                $this->loadView("usuarios/formLogin.php", @$data, $msg);
+            }
+            
+            
+        }
         
     }
 

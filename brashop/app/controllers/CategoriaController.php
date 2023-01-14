@@ -145,7 +145,17 @@ class ControllerCategoria{
         $this->findAll($msg);        
     }
     private function loadFormNew(){
+        session_start();
+        if(isset($_SESSION["usuario"])){
+        if($_SESSION["usuario"]['is_adm'] == 1){
         $this->loadView("categorias/formCadastro.php", null);
+    }else{
+            $msg = "É necessário o administrador estar Logado!";
+            $this->loadView("usuarios/formLogin.php", @$data, $msg);
+        }
+        
+        
+    }
     }    
 
     private function loadHome(){
