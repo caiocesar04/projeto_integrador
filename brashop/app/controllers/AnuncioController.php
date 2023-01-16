@@ -150,18 +150,13 @@ class ControllerAnuncio{
        
     }
     private function findAnuncioByClick(){
-        session_start();
+     session_start();
         $idParam = $_GET['id'];
         $anuncioRepository = new AnuncioRepository(); 
         $anuncio = $anuncioRepository->findAnuncioById($idParam);
         $data['anuncio'] = $anuncio;
       
-        if(isset($_SESSION["usuario"])){
-            $this->loadView("anuncios/AnuncioClicked.php", $data);
-          }else{
-            $msg = "É necessário estar Logado!";
-            $this->loadView("usuarios/formLogin.php", $data, $msg);
-          }
+        $this->loadView("anuncios/AnuncioClicked.php", $data);
     }
     
 

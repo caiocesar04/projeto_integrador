@@ -8,7 +8,13 @@
     <title>Brashop</title>
   </head>
   <?php
-	include_once __DIR__ . "/../helpers/menuLogin.php"; 
+if(isset($_SESSION["usuario"])){
+  if($_SESSION["usuario"]['is_adm'] == 1){
+    include_once __DIR__ . "/../helpers/menuAdm.php";
+   }else{
+   include_once __DIR__ . "/../helpers/menuLogin.php";
+ }
+}
 ?>
   <body>
 <h3> Faça uma sugestão, Seu Feedback é importante para melhorarmos nosso site! </h3>

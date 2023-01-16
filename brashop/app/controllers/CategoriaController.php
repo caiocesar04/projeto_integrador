@@ -82,6 +82,7 @@ class ControllerCategoria{
     }
 
     private function findAll(string $msg = null){
+        @session_start();
 
         $categoriaRepository = new CategoriaRepository();
 
@@ -90,21 +91,28 @@ class ControllerCategoria{
         $data['titulo'] = "listar categorias";
         $data['categorias'] = $categorias;
         
-        $this->loadView("categorias/list.php", $data, $msg);
+        if(isset($_SESSION["usuario"])){
+            if($_SESSION["usuario"]['is_adm'] == 1){
+           return $this->loadView("categorias/list.php", @$data);
+        }else{
+                $msg = "É necessário o administrador estar Logado!";
+                $this->loadView("usuarios/formLogin.php", @$data, $msg);
+            }
+            
+            
+        }
     }
 
-    private function SelecionarCategoria(string $msg = null){
-        $categoriaRepository = new CategoriaRepository();
-
-        $categorias = $categoriaRepository->findAll();
-
-        $data['titulo'] = "listar categorias";
-        $data['categorias'] = $categorias;
-
-       
-    }
 
     private function deleteCategoriaById(){
+        @session_start();
+        if(isset($_SESSION["usuario"])){
+            if($_SESSION["usuario"]['is_adm'] == 0){
+                $msg = "É necessário o administrador estar Logado!";
+           return  $this->loadView("usuarios/formLogin.php", @$data, $msg);
+            }
+        }
+
         $idParam = $_GET['id'];
         $categoriaRepository = new CategoriaRepository();    
 
@@ -118,6 +126,14 @@ class ControllerCategoria{
     }
 
     private function edit(){
+        session_start();
+        if(isset($_SESSION["usuario"])){
+            if($_SESSION["usuario"]['is_adm'] == 0){
+                $msg = "É necessário o administrador estar Logado!";
+           return  $this->loadView("usuarios/formLogin.php", @$data, $msg);
+            }
+        }
+
         $idParam = $_GET['id'];
         $categoriaRepository = new CategoriaRepository(); 
         $categoria = $categoriaRepository->findCategoriaById($idParam);

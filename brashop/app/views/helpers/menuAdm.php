@@ -16,12 +16,6 @@ include_once __DIR__ . "/../helpers/mensagem.php";
         <a class="nav-link" href="./UsuarioController.php?action=loadAdm">Brashop <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="./SugestaoController.php?action=findAll">Sugestoes</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="./CategoriaController.php?action=findAll">Categorias</a>
-      </li>
-      <li class="nav-item">
         <a class="nav-link" href="./AnuncioController.php?action=findAll">Anuncios</a>
       </li>
       <li class="nav-item dropdown">
@@ -29,11 +23,21 @@ include_once __DIR__ . "/../helpers/mensagem.php";
           Perfil
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="./AnuncioController.php?action=loadFormNew">Anunciar um produto</a>
           <a class="dropdown-item" href="./ChatController.php?action=findMensagemByUser">Chat</a>
           <a class="dropdown-item" href="./AnuncioController.php?action=findAnuncioByUser">Meus Anuncios</a>
           <a class="dropdown-item" href="./UsuarioController.php?action=findUsuarioByIdLogged">Meus Dados</a>
           <a class="dropdown-item" href="./UsuarioController.php?action=logout">Sair</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Menu
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="./AnuncioController.php?action=loadFormNew">Anunciar um produto</a>
+          <a class="dropdown-item" href="./CategoriaController.php?action=findAll">Categorias</a>
+          <a class="dropdown-item" href="./SugestaoController.php?action=findAll">Sugestões</a>
+          <a class="dropdown-item" href="./UsuarioController.php?action=findAll">Usuarios</a>
         </div>
       </li>
     </ul>

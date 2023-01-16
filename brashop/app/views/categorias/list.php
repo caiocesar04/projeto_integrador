@@ -25,15 +25,15 @@ include_once __DIR__ . "/../helpers/menuAdm.php";
               
           <tr>
           <td><?= $user['nome'] ?></td>
-          <td><a href="./CategoriaController.php?action=edit&id=<?= $user['id'] ?>">Editar</a></td>
-          <td><a href="javascript:confirmarExclusaoCategoria('<?= $user['nome'] ?>', <?= $user['id'] ?>)">Excluir</a></td>
+          <td><a class="btn btn-success" href="./CategoriaController.php?action=edit&id=<?= $user['id'] ?>">Editar</a></td>
+          <td><a class="btn btn-danger" href="javascript:confirmarExclusaoCategoria('<?= $user['nome'] ?>', <?= $user['id'] ?>)">Excluir</a></td>
                 
                        
         <?php endforeach; ?>
     </ul>
 
     <p>
-    [ <a href="./CategoriaController.php?action=loadFormNew">Adicionar nova Categoria</a> ]
+    <a class="btn btn-primary" href="./CategoriaController.php?action=loadFormNew">Adicionar nova Categoria</a>
     <?php
 	include_once __DIR__ . "/../helpers/mensagem.php";
 	//$caminho = __DIR__ . "/../helpers/mensagem.php";

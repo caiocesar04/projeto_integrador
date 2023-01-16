@@ -17,9 +17,6 @@
          include_once __DIR__ . "/../helpers/menuLogin.php";
        }
      }
-     else{
-       include_once __DIR__ . "/../helpers/menuHome.php";
-     }
     ?>
 
         <div id="title">

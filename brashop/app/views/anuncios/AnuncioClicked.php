@@ -10,17 +10,13 @@
 </head>
 <body>
 <?php
-	include_once __DIR__ . "/../helpers/mensagem.php";
 	if(isset($_SESSION["usuario"])){
-		if($_SESSION["usuario"]['is_adm'] == 1){
-		  include_once __DIR__ . "/../helpers/menuAdm.php";
-		 }else{
-		 include_once __DIR__ . "/../helpers/menuLogin.php";
-	   }
-	 }
-	 else{
-	   include_once __DIR__ . "/../helpers/menuHome.php";
-	 }
+        if($_SESSION["usuario"]['is_adm'] == 1){
+          include_once __DIR__ . "/../helpers/menuAdm.php";
+         }else{
+         include_once __DIR__ . "/../helpers/menuLogin.php";
+       }
+     }
 	//$caminho = __DIR__ . "/../helpers/mensagem.php";
 	//print_r($caminho); 
 ?>
