@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 16-Jan-2023 às 22:35
+-- Tempo de geração: 17-Jan-2023 às 19:54
 -- Versão do servidor: 10.4.24-MariaDB
 -- versão do PHP: 8.1.6
 
@@ -86,9 +86,9 @@ CREATE TABLE `categorias` (
 
 INSERT INTO `categorias` (`id`, `nome`) VALUES
 (1, 'Eletrodomésticos'),
-(3, 'eletronicos'),
-(4, 'bebidas'),
-(5, 'Livros');
+(3, 'Eletrônicos'),
+(5, 'Livros'),
+(7, 'Outros');
 
 -- --------------------------------------------------------
 
@@ -99,18 +99,17 @@ INSERT INTO `categorias` (`id`, `nome`) VALUES
 CREATE TABLE `chat` (
   `id` int(11) NOT NULL,
   `mensagem` text NOT NULL,
-  `usuarios_id` int(11) NOT NULL
+  `usuarios_id` int(11) NOT NULL,
+  `usuario2_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `chat`
 --
 
-INSERT INTO `chat` (`id`, `mensagem`, `usuarios_id`) VALUES
-(72, 'po', 72),
-(73, 's', 72),
-(74, 'a', 72),
-(75, 'f', 72);
+INSERT INTO `chat` (`id`, `mensagem`, `usuarios_id`, `usuario2_id`) VALUES
+(78, 'Olá tudo bem?', 70, 0),
+(79, 'Eae tudo tranquilo, e contigo?', 72, 0);
 
 -- --------------------------------------------------------
 
@@ -238,13 +237,13 @@ ALTER TABLE `avaliacoes`
 -- AUTO_INCREMENT de tabela `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de tabela `chat`
 --
 ALTER TABLE `chat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
 
 --
 -- AUTO_INCREMENT de tabela `imagens`
