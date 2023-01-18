@@ -27,12 +27,16 @@ include_once __DIR__ . "/../helpers/menuAdm.php";
           <td><?= $user['nome'] ?></td>
           <td><a class="btn btn-success" href="./CategoriaController.php?action=edit&id=<?= $user['id'] ?>">Editar</a></td>
           <td><a class="btn btn-danger" href="javascript:confirmarExclusaoCategoria('<?= $user['nome'] ?>', <?= $user['id'] ?>)">Excluir</a></td>
-                
-                       
+                      
         <?php endforeach; ?>
     </ul>
-
+    <div>
+    <form action="./CategoriaController.php?action=findCategoriabyName" method="POST">
+        <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" name="nome"  aria-label="Pesquisar" required>
+        <button class="btn btn-primary" type="submit">Buscar</button>
+        </form>
     <p>
+    </div>
     <a class="btn btn-primary" href="./CategoriaController.php?action=loadFormNew">Adicionar nova Categoria</a>
     <?php
 	include_once __DIR__ . "/../helpers/mensagem.php";

@@ -8,6 +8,10 @@
     <title>Brashop</title>
   </head>
   <body>
+  <?php
+include_once __DIR__ . "/../helpers/menuAdm.php";
+?>
+
 <h1> Criar nova Categoria </h1>
 <form action="./CategoriaController.php?action=create" method="POST">
    

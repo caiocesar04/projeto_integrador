@@ -59,6 +59,7 @@
             return $result;
         }
 
+
         public function deleteCategoriaById( int $id) : int {
             $query = "DELETE FROM categorias WHERE id = :id";
             $prepare = $this->conn->prepare($query);
@@ -68,14 +69,16 @@
             //var_dump($result);
             return $result;
         }
-        public function findCategoriaByName(CategoriaModel $categoria){
-            $query = "SELECT * FROM categorias WHERE  nome = :nome";
+        
+        public function findCategoriaByName(string $nome){
+            $query = "SELECT * FROM categorias WHERE nome like :nome";
             $prepare = $this->conn->prepare($query);
-            $prepare->bindValue(":nome", $categoria->getNome());
+            $prepare->bindValue(':nome','%'.$nome.'%', PDO::PARAM_STR);
             $prepare->execute();
-            $result = $prepare->rowCount();
-            
-            return $result > 0 ;
+            $result = $prepare->fetchALL(PDO::FETCH_ASSOC);
+            return $result;
+        }
+        
         }
 
-    }
+   

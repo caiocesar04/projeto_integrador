@@ -34,7 +34,21 @@
 
             return $chats;
         }
+
+        public function findChatById(int $id) {
+            $query = "SELECT * FROM chat WHERE id = ?";
+            $prepare = $this->conn->prepare($query);
+            $prepare->bindParam(1, $id, PDO::PARAM_INT);
+
+            if($prepare->execute()){
+                $usuario  = $prepare->fetchObject("UsuarioModel");
+            } else {
+                $usuario = null;
+            }
+            return $usuario;
+        }
         
+
         public function findMensagemByUser(): array {
             @session_start();
             $query = "SELECT * FROM chat WHERE usuarios_id = :usuarios_id";

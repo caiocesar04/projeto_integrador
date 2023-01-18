@@ -41,7 +41,9 @@ else{
         <?php
 
             foreach($data['chat'] as $user){
+             echo"<p>".$user['usuarios_id']."</p>";
              echo"<p>".$user['mensagem']."</p>";
+             
             }?>
     
           <input type="text" class="form-control form-control-lg" name="mensagem" id="exampleFormControlInput1"

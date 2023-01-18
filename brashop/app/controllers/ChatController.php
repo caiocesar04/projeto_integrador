@@ -86,6 +86,29 @@ class ControllerChat{
           }
         
     }
+
+    private function findChatById(){
+        $idParam = $_GET['id'];
+
+        $chatRepository = new ChatRepository();
+        $chat = $chatRepository->findChatById($idParam);
+
+        print "<pre>";
+        print_r($chat);
+        print "</pre>";
+    }
+
+    private function findUsuarioByClick(){
+        session_start();
+           $idParam = $_GET['id'];
+           $chatRepository = new ChatRepository(); 
+           $chats = $chatRepository->findChatById($idParam);
+           $data['titulo'] = "listar chats";
+           $data['chat'] = $chats;
+         
+           $this->loadView("usuarios/chat.php", $data);
+       } 
+
     private function findMensagemByUser(string $msg = null){
        
         $nomeParam = @$_GET['usuarios_id'];
@@ -103,7 +126,16 @@ class ControllerChat{
         
     }
 
- 
+    private function loadFormNew(){
+        session_start();
+
+        if((@$_SESSION["usuario"])){
+            $this->loadView("chat/list.php", @$data, @$msg);;
+		}else{
+			$msg = "É necessário estar logado";
+            $this->loadView("usuarios/formLogin.php", @$data, $msg);
+		}
+}
 
     private function preventDefault() {
         print "Ação indefinida...";

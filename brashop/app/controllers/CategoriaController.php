@@ -125,6 +125,24 @@ class ControllerCategoria{
         $this->findAll($msg);
     }
 
+    private function findCategoriaByName(){
+        session_start();
+        if(isset($_SESSION["usuario"])){
+            if($_SESSION["usuario"]['is_adm'] == 0){
+                $msg = "É necessário o administrador estar Logado!";
+           return  $this->loadView("usuarios/formLogin.php", @$data, $msg);
+            }
+        }
+        $nomeParam = $_POST['nome'];
+        $categoriaRepository = new CategoriaRepository();
+        $categorias = $categoriaRepository->findCategoriaByName($nomeParam);
+        $data['titulo'] = "listar categorias";
+        $data['categorias'] = $categorias;
+  
+        $this->loadView("categorias/list.php", $data, @$msg);
+        
+    }
+
     private function edit(){
         session_start();
         if(isset($_SESSION["usuario"])){

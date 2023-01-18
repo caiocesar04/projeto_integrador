@@ -28,6 +28,7 @@
           <th>Imagem</th>
           <th>Informações</th>
           <th>Nota</th>
+          <th>Entrar em contato</th>
           </tr>
     <tr>
     <td><?= $data['anuncio']->getNome(); ?></td>
@@ -35,7 +36,6 @@
 	<td><img style="width:50px;" src="../../imagens/<?= $data['anuncio']->getImagem();?>"></img></td>
     <td><?= $data['anuncio']->getDescricao(); ?></td>
     <td><?= $data['anuncio']->nota; ?></td>
-
     <td><a class="btn btn-primary" href="./AvaliacaoController.php?action=loadFormNew&id=<?= $data['anuncio']->getId(); ?>">Avaliar</a></td>
 </ul>
 </body>

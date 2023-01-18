@@ -40,11 +40,13 @@ else{
           <td><?= $user['preco'] ?></td>
           <td><img style="width:50px;" src="../../imagens/<?=$user['imagem'];?>"></img></td>
           <td><?= $user['usuario_nome'] ?></td>  
-          <td><a class="btn btn-primary" href="./AnuncioController.php?action=findAnuncioByClick&id=<?= $user['id'] ?>">Ver mais</a></td>          
+          <td><a class="btn btn-primary" href="./AnuncioController.php?action=findAnuncioByClick&id=<?= $user['id'] ?>">Ver mais</a></td>   
+                 
         <?php endforeach; ?>
     </ul>
     <p>
     <a class="btn btn-primary" href="./AvaliacaoController.php?action=findAll" >Avaliações</a> 
+    
 
     <?php
 	include_once __DIR__ . "/../helpers/mensagem.php";
