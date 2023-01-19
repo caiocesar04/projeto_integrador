@@ -45,6 +45,11 @@
 	<input type="date" name="data_nasc" class="form-control" value="<?= $usuario->getData_nasc(); ?>">
 	</div>
 
+	<div class="mb-3">
+	<label>Foto Perfil(opcional):</label>
+	<input type="file" name="foto_perfil" class="form-control" value="<?= $usuario->getFoto_Perfil(); ?>">
+	</div>
+
 		<div class="mb-3">
 		<button type="submit" value="Atualizar" class="btn
     btn-primary">Atualizar</button>

@@ -12,4 +12,10 @@ body{text-align: center; padding-top: 50px}
 }
 .estrelas input[type=radio]:checked ~ label i.fa:before {
   color: #CCC;
+} 
+.circle-image {
+  width: 50 px;
+  height: 50px;
+  background-size: 100%;
+  border-radius : 50%;
 }

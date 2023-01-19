@@ -64,6 +64,8 @@ class ControllerUsuario{
 		$usuario->setSenha($_POST["senha"]);
 		$usuario->setEmail($_POST["email"]);
         $usuario->setData_nasc($_POST["data_nasc"]);
+        $usuario->setFoto_Perfil($_POST["foto_perfil"]);
+        
         $usuarioRepository = new UsuarioRepository();
         $id = $usuarioRepository->create($usuario);
         //var_dump($id);
@@ -87,8 +89,19 @@ class ControllerUsuario{
         $this->loadView("usuarios/home.php", null);
     }    
     private function loadAdm(){
+        session_start();
+        if(isset($_SESSION["usuario"])){
+        if($_SESSION["usuario"]['is_adm'] == 1){
         $this->loadView("usuarios/homeAdm.php", null);
+    }else{
+            $msg = "É necessário o administrador estar Logado!";
+            $this->loadView("usuarios/formLogin.php", @$data, $msg);
+        }
+        
+        
+    }
     }    
+
     private function loadLogin(){
         $this->loadView("usuarios/formLogin.php", null);
     } 
@@ -152,7 +165,7 @@ class ControllerUsuario{
         
         if($usuario){
             if($usuario->isAdm()){
-                $this->loadAdm(@$data);
+                $this->loadView("usuarios/homeAdm.php", @$data);
             }
             else{
                 $this->loadView("usuarios/homeLogin.php", @$data);
@@ -238,6 +251,7 @@ class ControllerUsuario{
 		$usuario->setSenha($_POST["senha"]);
 		$usuario->setEmail($_POST["email"]);
         $usuario->setData_nasc($_POST["data_nasc"]);
+        $usuario->setFoto_perfil($_POST["foto_perfil"]);
 
         $usuarioRepository = new UsuarioRepository();
         //print_r($usuario);

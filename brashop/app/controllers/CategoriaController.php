@@ -131,7 +131,10 @@ class ControllerCategoria{
             if($_SESSION["usuario"]['is_adm'] == 0){
                 $msg = "É necessário o administrador estar Logado!";
            return  $this->loadView("usuarios/formLogin.php", @$data, $msg);
-            }
+            }if(!isset($_SESSION["usuario"])){
+                $msg = "É necessário o administrador estar Logado!";
+                return  $this->loadView("usuarios/formLogin.php", @$data, $msg);
+            }  
         }
         $nomeParam = $_POST['nome'];
         $categoriaRepository = new CategoriaRepository();
@@ -149,7 +152,10 @@ class ControllerCategoria{
             if($_SESSION["usuario"]['is_adm'] == 0){
                 $msg = "É necessário o administrador estar Logado!";
            return  $this->loadView("usuarios/formLogin.php", @$data, $msg);
-            }
+            }if(!isset($_SESSION["usuario"])){
+                $msg = "É necessário o administrador estar Logado!";
+                return  $this->loadView("usuarios/formLogin.php", @$data, $msg);
+            }  
         }
 
         $idParam = $_GET['id'];

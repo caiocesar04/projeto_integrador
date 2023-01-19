@@ -35,6 +35,10 @@
                 <label>Data de Nascimento:</label>
                 <input type="date" name="data_nasc" class="form-control" required>
              </div>
+             <div class="textfield">
+                <label>Foto de perfil:</label>
+                <input type="file" name="foto_perfil" class="form-control" required>
+             </div>
             <button class="btn-login">Cadastre-se</button>
         </div>
     </div>

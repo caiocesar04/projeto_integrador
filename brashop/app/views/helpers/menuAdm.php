@@ -20,7 +20,8 @@ include_once __DIR__ . "/../helpers/mensagem.php";
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Perfil
+        <img  style="height: 20px; border-radius : 100%;" src="../../imagens/<?=$_SESSION["usuario"]['foto_perfil']?>"></img>
+        Perfil
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <a class="dropdown-item" href="./ChatController.php?action=findMensagemByUser">Chat</a>

@@ -5,6 +5,7 @@ class UsuarioModel{
 	private $senha;
 	private $email;
 	private $data_nasc;
+	private $foto_perfil;
 	private $isadm;
 
 
@@ -47,6 +48,14 @@ class UsuarioModel{
 		$this->data_nasc = $dat;
 	}
 
+	public function getFoto_perfil(): string{
+		return $this->foto_perfil;
+	}
+	
+	public function setFoto_Perfil(string $foto){
+		$this->foto_perfil = $foto;
+	}
+
 	public function isAdm(): bool{
 		return $this->isadm == 1;
 	}
@@ -58,6 +67,7 @@ class UsuarioModel{
 			"nome" =>$this->nome,
 			"email" =>$this->email,
 			"data_nasc" =>$this->data_nasc,
+			"foto_perfil" =>$this->foto_perfil,
 			"is_adm" => $this->isadm
 		
 		];

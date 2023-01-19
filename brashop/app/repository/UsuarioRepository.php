@@ -19,12 +19,13 @@
         public function create(UsuarioModel $usuario) : int {
             try {
                 //print_r($usuario);
-                $query = "INSERT INTO usuarios (nome, senha, email, data_nasc) VALUES (:nome, :senha, :email, :data_nasc)";
+                $query = "INSERT INTO usuarios (nome, senha, email, data_nasc, foto_perfil) VALUES (:nome, :senha, :email, :data_nasc, :foto_perfil)";
                 $prepare = $this->conn->prepare($query);
                 $prepare->bindValue(":nome", $usuario->getNome());
                 $prepare->bindValue(":senha", $usuario->getSenha());
                 $prepare->bindValue(":email", $usuario->getEmail());
                 $prepare->bindValue(":data_nasc", $usuario->getData_nasc());
+                $prepare->bindValue(":foto_perfil", $usuario->getFoto_perfil());
                 $prepare->execute();
                 return $this->conn->lastInsertId();
                 
@@ -69,13 +70,14 @@
 
         public function update(UsuarioModel $usuario) : bool {
             $query = "UPDATE usuarios SET nome = ?, senha = ?, email = ?, data_nasc = 
-            ? WHERE id = ?";
+            ?, foto_perfil = ? WHERE id = ?";
             $prepare = $this->conn->prepare($query);
             $prepare->bindValue(1, $usuario->getNome());
             $prepare->bindValue(2, $usuario->getSenha());
             $prepare->bindValue(3, $usuario->getEmail());
             $prepare->bindValue(4, $usuario->getData_nasc());
-            $prepare->bindValue(5, $usuario->getId());
+            $prepare->bindValue(5, $usuario->getFoto_Perfil());
+            $prepare->bindValue(6, $usuario->getId());
             $result = $prepare->execute();
             return $result;
         }

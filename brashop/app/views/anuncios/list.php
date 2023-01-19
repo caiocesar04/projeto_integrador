@@ -38,7 +38,7 @@ else{
           <tr>
           <td><?= $user['nome'] ?></td>
           <td><?= $user['preco'] ?></td>
-          <td><img style="width:50px;" src="../../imagens/<?=$user['imagem'];?>"></img></td>
+          <td><img  style="width:50px;" src="../../imagens/<?=$user['imagem'];?>"></img></td>
           <td><?= $user['usuario_nome'] ?></td>  
           <td><a class="btn btn-primary" href="./AnuncioController.php?action=findAnuncioByClick&id=<?= $user['id'] ?>">Ver mais</a></td>   
                  

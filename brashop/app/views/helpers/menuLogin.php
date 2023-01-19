@@ -13,14 +13,15 @@ include_once __DIR__ . "/../helpers/mensagem.php";
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="./UsuarioController.php?action=loadAdm">Brashop <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="./UsuarioController.php?action=loadHomeLogin">Brashop <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="./AnuncioController.php?action=findAll">Anuncios</a>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Perfil
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <img  style="height: 20px; border-radius : 100%;" src="../../imagens/<?=$_SESSION["usuario"]['foto_perfil']?>"></img>
+        Perfil
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <a class="dropdown-item" href="./ChatController.php?action=findMensagemByUser">Chat</a>
