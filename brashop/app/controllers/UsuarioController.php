@@ -215,6 +215,11 @@ class ControllerUsuario{
     }
 
     private function deleteUsuarioById(){
+        @session_start();
+        if(!isset($_SESSION["usuario"])){
+            return $this->loadView("usuarios/formLogin.php", @$data, @$msg);
+          }
+          
         $idParam = $_GET['id'];
         $usuarioRepository = new UsuarioRepository();    
 
@@ -224,8 +229,15 @@ class ControllerUsuario{
 		}else{
 			$msg = "Erro ao excluir o registro no banco de dados.";
 		}
+        if(isset($_SESSION["usuario"])){
+        if($_SESSION["usuario"]['is_adm'] == 1){
+            $this->findAll($msg);
+        }
+        else{
         $this->loadFormNew($msg);
     }
+    }
+}
 
     private function edit(){
         session_start();

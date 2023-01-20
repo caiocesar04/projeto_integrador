@@ -37,7 +37,7 @@
              </div>
              <div class="textfield">
                 <label>Foto de perfil:</label>
-                <input type="file" name="foto_perfil" class="form-control" required>
+                <input type="file" name="foto_perfil" class="form-control" >
              </div>
             <button class="btn-login">Cadastre-se</button>
         </div>

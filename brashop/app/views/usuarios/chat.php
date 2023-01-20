@@ -41,7 +41,6 @@ else{
         <?php
 
             foreach($data['chat'] as $user){
-             echo"<p>".$user['usuarios_id']."</p>";
              echo"<p>".$user['mensagem']."</p>";
              
             }?>

@@ -83,19 +83,13 @@
         }
 
         public function deleteUsuarioById( int $id) : int {
-            session_start();
+            @session_start();
             $query = "DELETE FROM usuarios WHERE id = :id";
             $prepare = $this->conn->prepare($query);
             $prepare->bindValue(":id", $id);
             $prepare->execute();
             $result = $prepare->rowCount();
-           
-            if(isset($_SESSION["usuario"])){
-                return $result;
-              }else{
-                $msg = "É necessário estar Logado!";
-                $this->loadView("usuarios/formLogin.php", $data, $msg);
-              }
+            return $result;
             
         }
         
