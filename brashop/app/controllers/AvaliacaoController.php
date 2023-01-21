@@ -51,7 +51,7 @@ class ControllerAvaliacao{
 		$avaliacaoRepository = new AvaliacaoRepository();
         
         $id = $avaliacaoRepository->create($avaliacao, $_POST['anuncios_id']);
-
+        
         if($id){
 			$msg = "Registro inserido com sucesso.";
 		}else{

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 19-Jan-2023 às 17:29
+-- Tempo de geração: 21-Jan-2023 às 01:26
 -- Versão do servidor: 10.4.24-MariaDB
 -- versão do PHP: 8.1.6
 
@@ -108,9 +108,10 @@ CREATE TABLE `chat` (
 --
 
 INSERT INTO `chat` (`id`, `mensagem`, `usuarios_id`, `usuario2_id`) VALUES
-(78, 'Olá tudo bem?', 70, 0),
-(79, 'Eae tudo tranquilo, e contigo?', 72, 0),
-(80, 'Eae tudo tranquilo, e contigo?', 72, 0);
+(90, 'teste', 70, 71),
+(91, 'eae', 71, 70),
+(92, 'quanto custa o ps4?', 71, 70),
+(93, 'tava querendo um', 71, 70);
 
 -- --------------------------------------------------------
 
@@ -165,11 +166,10 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `nome`, `email`, `senha`, `data_nasc`, `foto_perfil`, `isadm`) VALUES
-(70, 'Caio', 'caio@gmail.com', 'abc123', '2004-04-20', '0', b'1'),
+(70, 'Caio', 'caio@gmail.com', 'abc123', '2004-04-20', 'Caio.jpg', b'1'),
 (71, 'Pedro Henrique ', 'pedro@gmail.com', 'pedro', '2004-10-22', '0', b'0'),
-(72, 'Luis Coradi', 'luis@gmail.com', 'luis', '2003-03-27', '0', b'0'),
-(73, 'Rubens', 'rubens@gmail.com', 'rubens', '2002-12-05', '0', b'0'),
-(74, 'Rafael', 'rafael@gmail.com', 'zorosola', '2006-08-04', '0', b'0');
+(72, 'Luis Coradi', 'luis@gmail.com', 'luis', '2003-03-27', '', b'0'),
+(73, 'Rubens', 'rubens@gmail.com', 'rubens', '2002-12-05', '0', b'0');
 
 --
 -- Índices para tabelas despejadas
@@ -227,7 +227,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de tabela `anuncios`
 --
 ALTER TABLE `anuncios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
 
 --
 -- AUTO_INCREMENT de tabela `avaliacoes`
@@ -245,7 +245,7 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT de tabela `chat`
 --
 ALTER TABLE `chat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
 
 --
 -- AUTO_INCREMENT de tabela `imagens`
@@ -263,7 +263,7 @@ ALTER TABLE `sugestoes`
 -- AUTO_INCREMENT de tabela `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

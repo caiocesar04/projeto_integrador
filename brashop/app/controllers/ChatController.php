@@ -59,14 +59,11 @@ class ControllerChat{
         
 		$chat->setMensagem($_POST["mensagem"]);
         $usuarioRepository = new ChatRepository();
-        $id = $usuarioRepository->create($chat);
+        $id = $usuarioRepository->create($chat, $_POST["destinatario_id"]);
         //var_dump($id);
 
-      
-       
-            $this->findMensagemByUser();
-		
-        
+
+            $this->loadFormNew();    
     }
 
     private function findAll(string $msg = null){
@@ -128,9 +125,10 @@ class ControllerChat{
 
     private function loadFormNew(){
         session_start();
-
+        $chatRepository = new ChatRepository();
+        $chats = $chatRepository->getConversa($_GET["id"]);
         if((@$_SESSION["usuario"])){
-            $this->loadView("chat/list.php", @$data, @$msg);;
+            $this->loadView("usuarios/chat.php",["chats"=>$chats]);
 		}else{
 			$msg = "É necessário estar logado";
             $this->loadView("usuarios/formLogin.php", @$data, $msg);

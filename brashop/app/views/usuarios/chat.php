@@ -40,10 +40,15 @@ else{
         <div class="card-body" data-mdb-perfect-scrollbar="true" style="position: relative; height: 400px">
         <?php
 
-            foreach($data['chat'] as $user){
-             echo"<p>".$user['mensagem']."</p>";
+            foreach($data['chats'] as $conversa){
+             echo"<p>".$conversa["remetente"].": ".$conversa['mensagem']."</p>";
              
             }?>
+            <input type="hidden" name="destinatario_id" value="<?php
+$queries = array();
+parse_str($_SERVER['QUERY_STRING'], $queries);
+echo(@$queries['id']);
+?>">
     
           <input type="text" class="form-control form-control-lg" name="mensagem" id="exampleFormControlInput1"
             placeholder="mensagem" >

@@ -13,12 +13,13 @@
         }
 
 
-        public function create(ChatModel $chat) : int {
+        public function create(ChatModel $chat, $destinatario_id) : int {
             try {
                 session_start();
-                $query = "INSERT INTO chat (mensagem, usuarios_id) VALUES  (:mensagem, :usuarios_id)";
+                $query = "INSERT INTO chat (mensagem, usuarios_id, usuario2_id ) VALUES   (:mensagem, :usuarios_id, :destinatario)";
                 $prepare = $this->conn->prepare($query);
                 $prepare->bindValue(":mensagem",$chat->getMensagem());
+                $prepare->bindValue(":destinatario",$destinatario_id);
                 $prepare->bindValue(":usuarios_id",$_SESSION["usuario"]["id"]);
                 $prepare->execute();
                 return $this->conn->lastInsertId();
@@ -57,5 +58,17 @@
             $prepare->execute();
             $result = $prepare->fetchALL(PDO::FETCH_ASSOC);
             return $result;
+        }
+
+        public function getConversa($destinatario_id){
+            @session_start();
+            $query = " SELECT c.id, c.mensagem, (SELECT nome FROM usuarios WHERE id = c.usuarios_id) remetente, (SELECT nome FROM usuarios WHERE id = c.usuario2_id) destinatario FROM chat c WHERE usuarios_id IN (:usuarios_id, :destinatario) AND usuario2_id IN (:usuarios_id, :destinatario)";
+            $prepare = $this->conn->prepare($query);
+            $prepare->bindValue(':destinatario',$destinatario_id);
+            $prepare->bindValue(':usuarios_id',@$_SESSION["usuario"]["id"]);
+            $prepare->execute();
+            $result = $prepare->fetchALL(PDO::FETCH_ASSOC);
+            return $result;
+
         }
 }

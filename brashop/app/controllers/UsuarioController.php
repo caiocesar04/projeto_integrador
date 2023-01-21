@@ -126,18 +126,8 @@ class ControllerUsuario{
 
         $data['titulo'] = "listar usuarios";
         $data['usuarios'] = $usuarios;
-       
-        if(isset($_SESSION["usuario"])){
-            if($_SESSION["usuario"]['is_adm'] == 1){
-           return $this->loadView("usuarios/dadosUsuario.php", @$data);
-        }else{
-                $msg = "É necessário o administrador estar Logado!";
-                $this->loadView("usuarios/formLogin.php", @$data, $msg);
-            }
-            
-            
-        }
-        
+     
+        return $this->loadView("usuarios/dadosUsuario.php", @$data);
     }
 
     private function findUsuarioById(){
@@ -150,7 +140,17 @@ class ControllerUsuario{
         print_r($usuario);
         print "</pre>";
     }
-    
+
+    private function findUsuarioByClick(){
+        session_start();
+           $idParam = $_GET['id'];
+           $usuarioRepository = new UsuarioRepository(); 
+           $usuario = $usuarioRepository->findUsuarioById($idParam);
+           $data['usuario'] = $usuario;
+         
+           $this->loadView("usuarios/UsuarioClicked.php", $data);
+       }
+
      private function login(){
        
 
