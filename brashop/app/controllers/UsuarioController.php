@@ -119,6 +119,9 @@ class ControllerUsuario{
     
 
     private function findAll(string $msg = null){
+            @session_start();
+
+
         if(!isset($_SESSION["usuario"])){
             return $this->loadView("usuarios/formLogin.php", @$data, @$msg);
           }
@@ -135,8 +138,13 @@ class ControllerUsuario{
 
         $data['titulo'] = "listar usuarios";
         $data['usuarios'] = $usuarios;
-     
-        return $this->loadView("usuarios/dadosUsuario.php", @$data);
+        
+        if(isset($_SESSION["usuario"])){
+            if($_SESSION["usuario"]['is_adm'] == 1){
+                return $this->loadView("usuarios/dadosUsuario.php", @$data);
+            } 
+            }
+       
     }
 
     private function findUsuarioById(){
@@ -227,6 +235,11 @@ class ControllerUsuario{
         @session_start();
         if(!isset($_SESSION["usuario"])){
             return $this->loadView("usuarios/formLogin.php", @$data, @$msg);
+          }
+          if(isset($_SESSION["usuario"])){
+            if($_SESSION["usuario"]['id'] != $_GET['id']){
+                return $this->loadView("usuarios/formLogin.php", @$data, @$msg);
+            }
           }
           
         $idParam = $_GET['id'];

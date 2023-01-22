@@ -122,6 +122,11 @@ class ControllerAnuncio{
         if(!isset($_SESSION["usuario"])){
             return $this->loadView("usuarios/formLogin.php", @$data, @$msg);
           }
+          if(isset($_SESSION["usuario"])){
+            if($_SESSION["usuario"]['id'] != @$_GET['usuarios_id']){
+                return $this->loadView("usuarios/formLogin.php", @$data, @$msg);
+            }
+          }
         $idParam = $_GET['id'];
         $anuncioRepository = new AnuncioRepository();    
 
