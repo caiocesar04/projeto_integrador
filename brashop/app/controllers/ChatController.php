@@ -124,7 +124,7 @@ class ControllerChat{
     }
 
     private function loadFormNew(){
-        session_start();
+        @session_start();
         $chatRepository = new ChatRepository();
         $chats = $chatRepository->getConversa($_GET["id"]);
         if((@$_SESSION["usuario"])){

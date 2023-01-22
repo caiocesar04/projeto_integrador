@@ -43,7 +43,7 @@
         }
  
         public function findAll(): array {
-            $table = $this->conn->query("SELECT a.id, a.nome, a.preco, a.imagem, a.descricao,u.nome as 'usuario_nome' FROM `anuncios` a, usuarios u WHERE a.usuarios_id = u.id");
+            $table = $this->conn->query("SELECT usuarios_id, a.id, a.nome, a.preco, a.imagem, a.descricao,u.nome as 'usuario_nome' FROM `anuncios` a, usuarios u WHERE a.usuarios_id = u.id");
             $anuncios  = $table->fetchAll(PDO::FETCH_ASSOC);
 
             return $anuncios;

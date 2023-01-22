@@ -119,7 +119,16 @@ class ControllerUsuario{
     
 
     private function findAll(string $msg = null){
-        session_start();
+        if(!isset($_SESSION["usuario"])){
+            return $this->loadView("usuarios/formLogin.php", @$data, @$msg);
+          }
+          if(isset($_SESSION["usuario"])){
+            if($_SESSION["usuario"]['is_adm'] == 0){
+                $msg = "Acesso restrito! Somente administradores tem direito a essa ação.";
+                 return $this->loadView("usuarios/formLogin.php", @$data, $msg);
+            } 
+            }
+
         $usuarioRepository = new UsuarioRepository();
 
         $usuarios = $usuarioRepository->findAll();

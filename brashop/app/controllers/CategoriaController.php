@@ -83,6 +83,15 @@ class ControllerCategoria{
 
     private function findAll(string $msg = null){
         @session_start();
+        
+        if(!isset($_SESSION["usuario"])){
+            return $this->loadView("usuarios/formLogin.php", @$data, @$msg);
+          }
+          if(isset($_SESSION["usuario"])){
+            if($_SESSION["usuario"]['is_adm'] == 0){
+                return $this->loadView("usuarios/formLogin.php", @$data, @$msg);
+            } 
+            }
 
         $categoriaRepository = new CategoriaRepository();
 
@@ -90,28 +99,24 @@ class ControllerCategoria{
 
         $data['titulo'] = "listar categorias";
         $data['categorias'] = $categorias;
+
+        return $this->loadView("categorias/list.php", @$data);     
         
-        if(isset($_SESSION["usuario"])){
-            if($_SESSION["usuario"]['is_adm'] == 1){
-           return $this->loadView("categorias/list.php", @$data);
-        }else{
-                $msg = "É necessário o administrador estar Logado!";
-                $this->loadView("usuarios/formLogin.php", @$data, $msg);
-            }
-            
-            
-        }
     }
 
 
     private function deleteCategoriaById(){
         @session_start();
-        if(isset($_SESSION["usuario"])){
+        if(!isset($_SESSION["usuario"])){
+            return $this->loadView("usuarios/formLogin.php", @$data, @$msg);
+          }
+          if(isset($_SESSION["usuario"])){
             if($_SESSION["usuario"]['is_adm'] == 0){
-                $msg = "É necessário o administrador estar Logado!";
-           return  $this->loadView("usuarios/formLogin.php", @$data, $msg);
+                return $this->loadView("usuarios/formLogin.php", @$data, @$msg);
+            } else {
+                $this->findAll($msg);
             }
-        }
+          }
 
         $idParam = $_GET['id'];
         $categoriaRepository = new CategoriaRepository();    
@@ -122,7 +127,7 @@ class ControllerCategoria{
 		}else{
 			$msg = "Erro ao excluir o registro no banco de dados.";
 		}
-        $this->findAll($msg);
+        
     }
 
     private function findCategoriaByName(){
@@ -142,7 +147,7 @@ class ControllerCategoria{
         $data['titulo'] = "listar categorias";
         $data['categorias'] = $categorias;
   
-        $this->loadView("categorias/list.php", $data, @$msg);
+       return $this->loadView("categorias/list.php", $data, @$msg);
         
     }
 

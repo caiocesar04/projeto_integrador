@@ -39,8 +39,7 @@
                  <td><?= $user['nome'] ?></td>
                  <td><?= $user['email'] ?></td>
                  <td><?= $user['data_nasc'] ?></td>
-                 <td><img style="height: 50px; border-radius : 100%;" src="../../imagens/<?= $user['foto_perfil'] ?>"></img></td>  
-                 <td><a class="btn btn-primary" href="./UsuarioController.php?action=findUsuarioByClick&id=<?= $user['id'] ?>">Entrar em contato</a></td>              
+                 <td><img style="height: 50px; border-radius : 100%;" src="../../imagens/<?= $user['foto_perfil'] ?>"></img></td>          
                  <td><a class="btn btn-success" href="./UsuarioController.php?action=edit&id=<?= $user['id'] ?>">Editar</a></td> 
                  <td><a class="btn btn-danger" href="javascript:confirmarExclusaoUsuario('<?= $user['nome'] ?>', <?= $user['id'] ?>)">Excluir</a></td>
                 <?php endforeach; ?>
