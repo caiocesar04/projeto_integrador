@@ -32,7 +32,7 @@
                     <div class="card-content-area">
                     <label>Preço</label>
                     <input type="number" name="preco" pattern="[0-9]+([,\.][0-9]+)?" min="0" step="any"
-name="null" class="form-control" required>
+                    name="null" class="form-control" required>
                     </div>
                     <label for="categoria_id">Categoria:</label>
                    

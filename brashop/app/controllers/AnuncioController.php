@@ -105,6 +105,20 @@ class ControllerAnuncio{
         
     }
 
+    private function findAnuncioByCategoria(){
+        
+        $nomeParam = @$_GET['categoria_id'];
+        $anuncioRepository = new AnuncioRepository();
+        $anuncios = $anuncioRepository->findAnuncioByCategoria($nomeParam);
+        $data['titulo'] = "listar anuncios";
+        $data['anuncios'] = $anuncios;
+        
+        
+     $this->loadView("anuncios/list.php", $data, @$msg);
+          
+        
+    }
+
     
     private function findAnuncioByName(){
         session_start();
@@ -122,11 +136,7 @@ class ControllerAnuncio{
         if(!isset($_SESSION["usuario"])){
             return $this->loadView("usuarios/formLogin.php", @$data, @$msg);
           }
-          if(isset($_SESSION["usuario"])){
-            if($_SESSION["usuario"]['id'] != @$_GET['usuarios_id']){
-                return $this->loadView("usuarios/formLogin.php", @$data, @$msg);
-            }
-          }
+        
         $idParam = $_GET['id'];
         $anuncioRepository = new AnuncioRepository();    
 

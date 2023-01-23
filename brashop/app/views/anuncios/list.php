@@ -27,7 +27,6 @@ else{
     <ul>
       <td><table class = 'table table-hover-table-striped table-bordered'></td>
           <tr>
-            <th>#</th>
           <th>Nome</th>
           <th>Preço</th>
           <th>Imagem</th>
@@ -37,7 +36,6 @@ else{
         <?php foreach($data['anuncios'] as $user): ?>
               
           <tr>
-            <td><?= $user['id'] ?></td>
           <td><?= $user['nome'] ?></td>
           <td><?= $user['preco'] ?></td>
           <td><img  style="width:50px;" src="../../imagens/<?=$user['imagem'];?>"></img></td>

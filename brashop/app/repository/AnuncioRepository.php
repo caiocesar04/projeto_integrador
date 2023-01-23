@@ -41,6 +41,15 @@
             $result = $prepare->fetchALL(PDO::FETCH_ASSOC);
             return $result;
         }
+        public function findAnuncioByCategoria(): array {
+            @session_start();
+            $query = "SELECT usuarios_id, a.id, a.nome, a.preco, a.imagem, a.descricao,u.nome as 'usuario_nome' FROM `anuncios` a, usuarios u  WHERE categorias_id = :categoria_id";
+            $prepare = $this->conn->prepare($query);
+            $prepare->bindValue(':categoria_id',@$_POST["categoria_id"]);
+            $prepare->execute();
+            $result = $prepare->fetchALL(PDO::FETCH_ASSOC);
+            return $result;
+        }
  
         public function findAll(): array {
             $table = $this->conn->query("SELECT usuarios_id, a.id, a.nome, a.preco, a.imagem, a.descricao,u.nome as 'usuario_nome' FROM `anuncios` a, usuarios u WHERE a.usuarios_id = u.id");
@@ -89,7 +98,7 @@
 
         
        public function findAnuncioByName(string $nome){
-            $query = "SELECT a.id, a.nome, a.preco, a.imagem, a.descricao, u.nome as 'usuario_nome' FROM `anuncios` a, usuarios u WHERE a.usuarios_id = u.id AND a.nome like :nome";
+            $query = "SELECT  usuarios_id, a.id, a.nome, a.preco, a.imagem, a.descricao, u.nome as 'usuario_nome' FROM `anuncios` a, usuarios u WHERE a.usuarios_id = u.id AND a.nome like :nome";
             $prepare = $this->conn->prepare($query);
             $prepare->bindValue(':nome','%'.$nome.'%', PDO::PARAM_STR);
             $prepare->execute();

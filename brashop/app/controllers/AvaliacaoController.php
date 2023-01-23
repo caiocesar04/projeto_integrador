@@ -46,6 +46,13 @@ class ControllerAvaliacao{
     }
 
     private function create(){
+
+        @session_start();
+        if(!isset($_SESSION["usuario"])){
+            return $this->loadView("usuarios/formLogin.php", @$data, @$msg);
+          }
+          
+
         $avaliacao = new AvaliacaoModel();
         $avaliacao->setNota($_POST["nota"]);
 		$avaliacaoRepository = new AvaliacaoRepository();
@@ -61,6 +68,7 @@ class ControllerAvaliacao{
     }
 
     private function findAvaliacaoByUser(){
+        
         
         $nomeParam = @$_GET['usuarios_id'];
         $avaliacaoRepository = new AvaliacaoRepository();
