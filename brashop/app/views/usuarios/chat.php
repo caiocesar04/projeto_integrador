@@ -33,7 +33,7 @@ else{
   <div class="row d-flex justify-content-center">
     <div class="col-md-10 col-lg-8 col-xl-6">
 
-      <div class="card" id="chat2">
+      <div class="card" id="chat">
         <div class="card-header d-flex justify-content-between align-items-center p-3">
           <h5 class="mb-0">Chat</h5>
         </div>

@@ -63,7 +63,7 @@ class ControllerChat{
         //var_dump($id);
 
 
-            $this->loadFormNew();    
+        echo "<script language='javascript'>history.back()</script>"; 
     }
 
     private function findAll(string $msg = null){
