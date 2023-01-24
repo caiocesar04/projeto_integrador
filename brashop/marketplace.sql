@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 24-Jan-2023 às 01:02
+-- Tempo de geração: 24-Jan-2023 às 15:19
 -- Versão do servidor: 10.4.24-MariaDB
 -- versão do PHP: 8.1.6
 
@@ -47,7 +47,7 @@ INSERT INTO `anuncios` (`id`, `nome`, `preco`, `imagem`, `descricao`, `usuarios_
 (51, 'jogo do batman', 70.55, 'batman.jpg', '', 73, 0, 0),
 (62, 'playstation 5', 4599.99, 'ps5.jpg', '', 74, 0, 0),
 (70, 'Livro Percy jackson', 100, 'percy jackson.jpg', 'livro bem conservado', 70, 5, 0),
-(71, 'fogão', 1200, 'territorio.png', '6 bocas Marca continental', 70, 1, 0);
+(72, 'fogão brastemp', 1200, 'fogão.jpg', '6 bocas, semi-novo', 70, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -112,7 +112,8 @@ CREATE TABLE `chat` (
 INSERT INTO `chat` (`id`, `mensagem`, `usuarios_id`, `usuario2_id`) VALUES
 (116, 'eae', 70, 72),
 (117, 'quanta custa o ps4?', 70, 72),
-(118, 'opa... mano tava querendo 1400 nele.', 72, 70);
+(118, 'opa... mano tava querendo 1400 nele.', 72, 70),
+(119, 'faz por duas vezes de 700?', 70, 72);
 
 -- --------------------------------------------------------
 
@@ -228,7 +229,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de tabela `anuncios`
 --
 ALTER TABLE `anuncios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
 
 --
 -- AUTO_INCREMENT de tabela `avaliacoes`
@@ -246,7 +247,7 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT de tabela `chat`
 --
 ALTER TABLE `chat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=119;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=120;
 
 --
 -- AUTO_INCREMENT de tabela `imagens`

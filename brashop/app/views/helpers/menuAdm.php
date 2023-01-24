@@ -45,7 +45,7 @@ include_once __DIR__ . "/../helpers/mensagem.php";
   <form action="./AnuncioController.php?action=findAnuncioByCategoria" method="POST">
   <label for="categoria_id">Categoria:</label>
                    
-                    <select name="categoria_id" id="categoria_id" >
+                    <select name="categoria_id" id="categoria_id" required>
                         <option value="">Selecionar</option>
                     <?php
                     foreach ($data['categorias'] as $key => $categoria) {

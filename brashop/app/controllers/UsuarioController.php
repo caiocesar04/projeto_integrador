@@ -182,12 +182,14 @@ class ControllerUsuario{
         
        
 
-        @session_start();
+        
         if($usuario){
             if($usuario->isAdm()){
-                $this->loadAdm(@$data);
+                @session_start();
+                $this->loadView("usuarios/homeAdm.php",@$data);
             }
             else{
+                @session_start();
                 $this->loadView("usuarios/homeLogin.php",@$data);
                 echo ("<h1><font> Bem Vindo  ".$usuario->getNome(@$_GET["nome"])."!</font>");
             }
