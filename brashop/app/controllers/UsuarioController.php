@@ -89,7 +89,7 @@ class ControllerUsuario{
         $this->loadView("usuarios/home.php", null);
     }    
     private function loadAdm(){
-        session_start();
+        @session_start();
         if(isset($_SESSION["usuario"])){
         if($_SESSION["usuario"]['is_adm'] == 1){
         $this->loadView("usuarios/homeAdm.php", null);
@@ -107,7 +107,7 @@ class ControllerUsuario{
     } 
 
     private function loadHomeLogin(){
-        session_start();
+        @session_start();
         if(isset($_SESSION["usuario"])){
             $this->loadView("usuarios/homeLogin.php", null);
 		}else{
@@ -178,17 +178,19 @@ class ControllerUsuario{
         
         $usuarioRepository = new UsuarioRepository();
         $usuario = $usuarioRepository->login($usuario);
- 
+
         
+       
+
+        @session_start();
         if($usuario){
             if($usuario->isAdm()){
-                $this->loadView("usuarios/homeAdm.php", @$data);
+                $this->loadAdm(@$data);
             }
             else{
-                $this->loadView("usuarios/homeLogin.php", @$data);
+                $this->loadView("usuarios/homeLogin.php",@$data);
                 echo ("<h1><font> Bem Vindo  ".$usuario->getNome(@$_GET["nome"])."!</font>");
             }
-            @session_start();
             $_SESSION['usuario'] = $usuario->getAll();
 		}else{
 			$msg = "Erro ao Logar! verifique se seu email e senha estão corretos.";

@@ -24,7 +24,6 @@ include_once __DIR__ . "/../helpers/mensagem.php";
         Perfil
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="./ChatController.php?action=findMensagemByUser">Chat</a>
           <a class="dropdown-item" href="./AnuncioController.php?action=findAnuncioByUser">Meus Anuncios</a>
           <a class="dropdown-item" href="./UsuarioController.php?action=findUsuarioByIdLogged">Meus Dados</a>
           <a class="dropdown-item" href="./UsuarioController.php?action=logout">Sair</a>

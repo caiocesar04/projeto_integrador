@@ -40,15 +40,12 @@
 		<label>Preço:</label>
 		 <input type="file" name="imagem" class="form-control" value="<?= $anuncio->getImagem(); ?>" required>
 		</div>
-		<label>Descrição:</label> 
-	<input type="text" name="nome" class="form-control" value="<?= $anuncio->getDescricao(); ?>">
-	</div>
+		<label>Descricao:</label>
+		 <input type="text" name="descricao" class="form-control" value="<?= $anuncio->getDescricao(); ?>" required>
+		</div>
 		<div class="mb-3">
 		<button type="submit" value="Atualizar" class="btn
     btn-primary">Atualizar</button>
-		<button type="reset" value="Limpar"class="btn
-    btn-primary">Limpar</button>
-		</div>
 	</form>		
 <?php endforeach; ?>
 
