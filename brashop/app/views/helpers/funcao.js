@@ -46,6 +46,14 @@ function confirmarExclusaoUsuario(nome, id) {
     }
 }
 
+function confirmarMensagem(msg) {
+    var resposta = confirm("" + msg + "");
+
+}
+
+
+
+
 function ajax(){
  var req = new XMLHttpRequest();
  req.onreadystatechange = function(){

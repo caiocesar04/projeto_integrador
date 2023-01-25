@@ -1,5 +1,6 @@
 <?php
 include_once __DIR__ . "/../helpers/mensagem.php";
+include_once __DIR__."../../../repository/CategoriaRepository.php";
 ?>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
@@ -45,13 +46,16 @@ include_once __DIR__ . "/../helpers/mensagem.php";
   <form action="./AnuncioController.php?action=findAnuncioByCategoria" method="POST">
   <label for="categoria_id">Categoria:</label>
                    
-                    <select name="categoria_id" id="categoria_id" required>
-                        <option value="">Selecionar</option>
-                    <?php
-                    foreach ($data['categorias'] as $key => $categoria) {
-                        echo '<option value="'.$categoria['id'].'">'.$categoria['nome'].'</option>';
-                    }
-                    ?>
+        <select name="categoria_id" id="categoria_id" required>
+            <option value="">Selecionar</option>
+        <?php
+          
+          $categoriaRepository = new CategoriaRepository();
+          $categorias = $categoriaRepository->findAll();
+        foreach ($categorias as $key => $categoria) {
+            echo '<option value="'.$categoria['id'].'">'.$categoria['nome'].'</option>';
+        }
+        ?>
       </select>
       <button style = "background-color: #ffdf00;" class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
       </form>

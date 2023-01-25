@@ -32,6 +32,10 @@
                 <input type="password" name="senha" class="form-control" placeholder="Senha" required>
             </div>
             <div class="textfield">
+                <label for="usuario">Confirme sua Senha</label>
+                <input type="password" name="confirmar_senha" class="form-control" placeholder="Senha" required>
+            </div>
+            <div class="textfield">
                 <label>Data de Nascimento:</label>
                 <input type="date" name="data_nasc" class="form-control" required>
              </div>

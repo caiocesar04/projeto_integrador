@@ -54,6 +54,12 @@ class ControllerUsuario{
     }
 
     private function create(){
+
+        if($_POST["senha"] != $_POST["confirmar_senha"] ){
+            $msg = "As senhas não condizem!";
+          return $this->loadView("usuarios/formCadastro.php", @$data, $msg);
+        }
+
         $usuario = new usuarioModel();
         // $usuario->setNome("aaa");
         // $usuario->setSenha("123213");
@@ -70,7 +76,8 @@ class ControllerUsuario{
         $id = $usuarioRepository->create($usuario);
         //var_dump($id);
 
-      
+        
+
         if($id > 0){
 			$msg = "Registro inserido com sucesso. Agora é só Logar!";
             $this->loadView("usuarios/formLogin.php", @$data, $msg);

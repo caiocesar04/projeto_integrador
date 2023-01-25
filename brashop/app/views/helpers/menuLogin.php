@@ -1,5 +1,6 @@
 <?php
 include_once __DIR__ . "/../helpers/mensagem.php";
+include_once __DIR__."../../../repository/CategoriaRepository.php";
 ?>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
@@ -41,6 +42,22 @@ include_once __DIR__ . "/../helpers/mensagem.php";
       </li>
     </ul>
   </div>
+  <form action="./AnuncioController.php?action=findAnuncioByCategoria" method="POST">
+  <label for="categoria_id">Categoria:</label>
+                   
+        <select name="categoria_id" id="categoria_id" required>
+            <option value="">Selecionar</option>
+        <?php
+          
+          $categoriaRepository = new CategoriaRepository();
+          $categorias = $categoriaRepository->findAll();
+        foreach ($categorias as $key => $categoria) {
+            echo '<option value="'.$categoria['id'].'">'.$categoria['nome'].'</option>';
+        }
+        ?>
+      </select>
+      <button style = "background-color: #ffdf00;" class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+      </form>
   <form action="./AnuncioController.php?action=findAnunciobyName" method="POST">
       <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" name="nome"  aria-label="Pesquisar" required>
       <button style = "background-color: #ffdf00;" class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>

@@ -1,3 +1,6 @@
+<?
+include_once __DIR__."../../../repository/CategoriaRepository.php";
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -33,6 +36,7 @@
       </li>
     </ul>
   </div>
+ 
   <form action="./AnuncioController.php?action=findAnunciobyName" method="POST">
       <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" name="nome"  aria-label="Pesquisar" required>
       <button style = "background-color: #ffdf00;" class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
