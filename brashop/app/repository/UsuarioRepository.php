@@ -67,6 +67,8 @@
             return $result;
         }
     
+  
+    
 
         public function update(UsuarioModel $usuario) : bool {
             $query = "UPDATE usuarios SET nome = ?, senha = ?, email = ?, data_nasc = 
@@ -95,7 +97,7 @@
         
         public function login(UsuarioModel $usuario){
             
-
+            
             $query = "SELECT * FROM usuarios WHERE  email = :email AND senha = :senha";
             $prepare = $this->conn->prepare($query);
             $prepare->bindValue(":email", $usuario->getEmail());

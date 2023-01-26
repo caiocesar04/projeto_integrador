@@ -36,6 +36,7 @@ include_once __DIR__."../../../repository/CategoriaRepository.php";
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <a class="dropdown-item" href="./AnuncioController.php?action=loadFormNew">Anunciar um produto</a>
+          <a class="dropdown-item" href="./ImagemController.php?action=loadFormNew">Imagem</a>
           <a class="dropdown-item" href="./CategoriaController.php?action=findAll">Categorias</a>
           <a class="dropdown-item" href="./SugestaoController.php?action=findAll">Sugestões</a>
           <a class="dropdown-item" href="./UsuarioController.php?action=findAll">Usuarios</a>

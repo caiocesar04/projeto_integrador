@@ -15,7 +15,7 @@
         
         public function create(AvaliacaoModel $avaliacao, $anuncios_id) : int {
             try {
-                session_start();
+                @session_start();
                 $query = "INSERT INTO avaliacoes (nota, usuarios_id, anuncios_id) VALUES (:nota, :usuarios_id, :anuncios_id)";
                 $prepare = $this->conn->prepare($query);
                 $prepare->bindValue(":nota", $avaliacao->getNota());
