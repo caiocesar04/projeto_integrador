@@ -1,6 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap');
-
 body{
+    overflow-y: hidden;
+    overflow-x: hidden;
     margin: 0;
     font-family: "Noto Sans" , sans-serif;
 }
@@ -12,7 +12,6 @@ body{
     display: flex;
     align-items: center;
 }
-
 .left-login{
     width: 50vw;
     height: 100vh;
@@ -20,11 +19,9 @@ body{
     display: flex;
     align-items: center;
 }
-
 .left-login-image{
     width: 75%;
 }
-
 .right-login{
     width: 50vw;
     height: 100vh;
@@ -32,7 +29,6 @@ body{
     display: flex;
     align-items: center;
 }
-
 .card-login{
     width: 60%;
     justify-content: center;
@@ -44,13 +40,11 @@ body{
     border-radius: 20px;
     box-shadow: 0px 10px 40px #00000056;
 }
-
 .card-login > h1{
     color: #00ff88;
     font-weight: 800;
     margin: 0;
 }
-
 .textfield{
     width: 100%;
     justify-content: center;
@@ -59,7 +53,6 @@ body{
     flex-direction: column;
     margin: 10px 0px;
 }
- 
 .textfield > input{
     width: 100%;
     border: none;
@@ -72,16 +65,13 @@ body{
     outline: none;
     box-sizing: border-box;
 }
-
 .textfield > label{
     color: #f0ffffde;
     margin-bottom: 10px;
 }
-
 .textfield > input::placeholder{
     color: #f0ffff94;
 }
-
 .btn-login{
     width: 100%;
     padding: 16px 0px;
@@ -94,6 +84,47 @@ body{
     letter-spacing: 3px;
     color: #2b134b;
     background: #00ff88;
+    cursor: pointer;
+    box-shadow: 0px 10px 40px -12px #00ff8052;
+}
+.cont-contactBtn {
+    height: 100%;
+    margin: auto;
+    width: 574px;
+    margin-left: 0%;
+    perspective: 800px;
+}
+    .cont-contactBtn .cont-flip {
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    height: 100%;
+    width: 100%;
+}
+    .cont-contactBtn .cont-flip .front, .cont-contactBtn .cont-flip .back {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+}
+    .cont-contactBtn .cont-flip .back {
+    transform: rotateX(180deg);
+}
+.cont-contactBtn .cont-flip.flipped { 
+    transform: rotateX(180deg);
+}
+.cont-contactBtn .close {
+    background-color: #00ff88;
+    position: absolute;
+    top: 15%;
+    right: 8%;  
+    width: 10%;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+    text-transform: uppercase;
+    font-weight: 800;
+    font-size: 30px;
+    color: #2b134b;
     cursor: pointer;
     box-shadow: 0px 10px 40px -12px #00ff8052;
 }
