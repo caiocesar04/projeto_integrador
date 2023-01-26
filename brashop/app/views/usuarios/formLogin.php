@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=devide-widthm initial-scale=1.0">
-    <link rel="stylesheet" href="../views/helpers/styles.css">
+    <link rel="stylesheet" href="../views/helpers/styless.css">
     <title>Brashop</title>
 </head>    
 <?php include_once __DIR__ . "/../helpers/mensagem.php";?>
