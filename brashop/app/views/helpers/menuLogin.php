@@ -14,7 +14,10 @@ include_once __DIR__."../../../repository/CategoriaRepository.php";
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="./UsuarioController.php?action=loadHomeLogin">Brashop <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="./UsuarioController.php?action=loadHomeLogin">
+        <img style="height: 25px;" src="../../imagens/brashop.png"></img>  
+        Brashop <span class="sr-only">(current)</span>
+        </a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="./AnuncioController.php?action=findAll">Anuncios</a>
@@ -63,6 +66,3 @@ include_once __DIR__."../../../repository/CategoriaRepository.php";
       <button style = "background-color: #ffdf00;" class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
     </form>
 </nav>
-
-
-
