@@ -119,13 +119,5 @@
             session_destroy();
         }
 
-        public function ValidateEmail($email){
-          if(filter_var($email, filter:FILTER_VALIDATE_EMAIL)){
-            return true;
-          }
-          else{
-            $this->setErro(erro:"email inválido");
-            return false;
-          }
-        }
+        
     }

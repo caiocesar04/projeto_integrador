@@ -152,7 +152,7 @@ class ControllerUsuario{
         
         if(isset($_SESSION["usuario"])){
             if($_SESSION["usuario"]['is_adm'] == 1){
-                return $this->loadView("usuarios/List.php", @$data);
+                return $this->loadView("usuarios/list.php", @$data);
             } 
             }
        

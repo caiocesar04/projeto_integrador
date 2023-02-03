@@ -24,8 +24,7 @@
 <form action="./AnuncioController.php?action=findAnunciobyName" method="POST">
      <h2 style= "color:white; text-align: center;">O que você busca?</h2>
      <div>
-      <input style=" width: 800px; item-align: center; background-color:black;" class="form-control mr-sm-2" type="search" placeholder="Pesquisar" name="nome"  aria-label="Pesquisar" required>
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+      <input style=" width:50%; margin-left: 25%; background-color:black;" class="form-control mr-sm-2" type="search" placeholder="Pesquisar" name="nome"  aria-label="Pesquisar" required>
     </div>
     </form>
 
@@ -38,25 +37,27 @@
 			</ol>
 			<div class="carousel-inner" role="listbox">
 				<div class="item active">
-					<img class="first-slide"  src="../../imgs/imagem1.png" alt="First slide">
+					<img class="first-slide" style="width:50%; margin-left: 25%;"  src="../../imgs/imagem1.png" alt="First slide">
           <div class="carousel-caption d-none d-md-block">
+		  <br>
                  <h2 >Encontre aqui produtos de seu interesse!</h2>
                  <p><a class="btn btn-outline-success my-2 my-sm-0" href="./AnuncioController.php?action=findAll" role="button">Ver mais</a></p>
                   </div>
 					</div>
 				<div class="item">
-					<img class="second-slide" src="../../imgs/imagem2.png" alt="Second slide">
+					<img class="second-slide" style="width:50%; margin-left: 25%;"  src="../../imgs/imagem2.png" alt="Second slide">
           <div class="carousel-caption d-none d-md-block">
+			<br>
                  <h2>Quer vender algo? Anuncie aqui!</h2>
                  <p>Você pode anunciar seus produtos em nosso site sem gastar nada!</p>
                  <p><a class="btn btn-outline-success my-2 my-sm-0" href="./AnuncioController.php?action=loadFormNew" role="button">Ver mais</a></p>
                   </div>
 				</div>
 				<div class="item">
-					 <img class="third-slide" src="imagens/imagem3.png" alt="Third slide">
+					 <img class="third-slide" style="width:50%; margin-left: 25%;"  src="imagens/imagem3.png" alt="Third slide">
 					<div class="container">
 						<div class="carousel-caption">
-							<p><a class="btn btn-lg btn-primary" href="http://celke.com.br/cursos/1/curso-de-php-mysqli-e-bootstrap" role="button">Ver mais</a></p>
+							<p><a class="btn btn-lg btn-primary" href="" role="button">Ver mais</a></p>
 						</div>
 					</div>
 				</div>

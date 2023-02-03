@@ -14,10 +14,7 @@ include_once __DIR__."../../../repository/CategoriaRepository.php";
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav">
       <li class="nav-item active">
-      <a class="nav-link" href="./UsuarioController.php?action=loadHomeLogin">
-        <img style="height: 25px;" src="../../imgs/brashop.png"></img>  
-        Brashop <span class="sr-only">(current)</span>
-        </a>
+        <a class="nav-link" href="./UsuarioController.php?action=loadAdm">Brashop <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="./AnuncioController.php?action=findAll">Anuncios</a>
@@ -57,20 +54,9 @@ include_once __DIR__."../../../repository/CategoriaRepository.php";
       </li>
     </ul>
   </div>
-  <form action="./AnuncioController.php?action=findAnuncioByCategoria" method="POST">
-  <label for="categoria_id">Categoria:</label>
-                   
-        <select name="categoria_id" id="categoria_id" required>
-            <option value="">Selecionar</option>
-        <?php
-          
-          $categoriaRepository = new CategoriaRepository();
-          $categorias = $categoriaRepository->findAll();
-        foreach ($categorias as $key => $categoria) {
-            echo '<option value="'.$categoria['id'].'">'.$categoria['nome'].'</option>';
-        }
-        ?>
-      </select>
-      <button style = "background-color: #ffdf00;" class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+  
 
 </nav>
+
+
+

@@ -104,6 +104,13 @@
             $prepare->bindValue(':nome','%'.$nome.'%', PDO::PARAM_STR);
             $prepare->execute();
             $result = $prepare->fetchALL(PDO::FETCH_ASSOC);
+            
+            if ($result){
+                echo"esses são os resultados encontrados";
+            }
+            else{
+                echo "Não econtramos resultados para sua pesquisa.";
+            }
             return $result;
         }
 

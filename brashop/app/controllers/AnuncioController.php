@@ -138,6 +138,7 @@ class ControllerAnuncio{
 
     
     private function findAnuncioByName(){
+
         session_start();
         $nomeParam = $_POST['nome'];
         $anuncioRepository = new AnuncioRepository();
