@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" type="text/css" href="../views/helpers/css/bootstrap.min.css">
     <script src="../views/helpers/funcao.js" type="text/javascript"></script>
-
+    <title>Anuncios</title>
 </head>
 <body>
 <?php
@@ -21,38 +21,81 @@ else{
   include_once __DIR__ . "/../helpers/menuHome.php";
 }
 ?>
+<style>
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+    background: white;
+}
+#container {
+    max-width: 1024px;
+    margin: 0 auto;
+}
+main {
+    background: darkgray;
+    font-size: 20px;
+    padding: 1rem;
+}
+footer {
+    background: #6aabd2;
+    height: 7rem;
+}
+ 
+.produto {  
+  cursor: pointer; 
+}
+.produto p {
+    color: white;
+    padding: 5px 10px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    line-height: 150%;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+#produtos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.card{
+  display: flex;
+  justify-content: center;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  background: gray;
+  width: 22%;
+  height: 100%; 
+  margin-bottom: 10px;
+  margin-top: 10px;
+  border-width: 3px;
+}
 
-    <h1> Anuncios </h1>
-    
-    <ul>
-      <td><table class = 'table table-hover-table-striped table-bordered'></td>
-          <tr>
-          <th>Nome</th>
-          <th>Preço</th>
-          <th>Imagem</th>
-          <th>Usuario</th>
-          <th>Informações</th>
-          </tr>
-        <?php foreach($data['anuncios'] as $user): ?>
-              
-          <tr>
-          <td><?= $user['nome'] ?></td>
-          <td><?= $user['preco'] ?></td>
-          <td><img  style="width:50px;" src="../../imgs/<?=$user['imagem'];?>"></img></td>
-          <td><?= $user['usuario_nome'] ?></td>  
-          <td><a class="btn btn-primary" href="./UsuarioController.php?action=findUsuarioByClick&id=<?= $user['usuarios_id'] ?>">Entrar em contato</a></td>      
-          <td><a class="btn btn-primary" href="./AnuncioController.php?action=findAnuncioByClick&id=<?= $user['id'] ?>">Ver mais</a></td>   
-                 
+</style>
+
+  <div id="container">
+    <main>
+      
+      <section id="produtos">
+      <?php foreach($data['anuncios'] as $user): ?>
+        <div class="card">
+        <section class="produto">
+
+          <img style="width:100%; height: 150px;" src="../../imagens/<?=$user['imagem'];?>"></img>
+          <p><?= $user['nome'] ?></p>
+          <p>Preço: <?= $user['preco'] ?></p>
+          <p><?= $user['descricao'] ?></p> 
+          <p><a class="btn btn-primary" href="./AnuncioController.php?action=findAnuncioByClick&id=<?= $user['id'] ?>">Saiba mais...</a></p> 
+
+        </section>
+        </div>
         <?php endforeach; ?>
-    </ul>
-    <p>
-    <a class="btn btn-primary" href="./AvaliacaoController.php?action=findAll" >Avaliações</a> 
-    
-
-    <?php
-	include_once __DIR__ . "/../helpers/mensagem.php";
-	//$caminho = __DIR__ . "/../helpers/mensagem.php";
-	//print_r($caminho); 
-?>
+      </section>
+    </main>
+  </div>
 </body>
 </html>
