@@ -56,8 +56,9 @@ class ControllerUsuario{
     private function create(){
 
         if($_POST["senha"] != $_POST["confirmar_senha"] ){
-            $msg = "As senhas não condizem!";
-          return $this->loadView("usuarios/formCadastro.php", @$data, $msg);
+            echo "<script>alert('As senhas não condizem!');</script>";
+            return $this->loadView("usuarios/formCadastro.php", @$data);
+         
         }
 
         $usuario = new usuarioModel();
@@ -112,7 +113,10 @@ class ControllerUsuario{
     private function loadLogin(){
         $this->loadView("usuarios/formLogin.php", null);
     } 
-
+    private function loadRecuperar(){
+        $this->loadView("usuarios/recuperarSenha.php", null);
+    } 
+    
     private function loadHomeLogin(){
         @session_start();
         if(isset($_SESSION["usuario"])){
@@ -148,7 +152,7 @@ class ControllerUsuario{
         
         if(isset($_SESSION["usuario"])){
             if($_SESSION["usuario"]['is_adm'] == 1){
-                return $this->loadView("usuarios/dadosUsuario.php", @$data);
+                return $this->loadView("usuarios/List.php", @$data);
             } 
             }
        
@@ -208,6 +212,29 @@ class ControllerUsuario{
 		}     
     }
 
+    private function Recuperar_Senha(){
+        $email = $_POST["recuperar"];
+        $emailenviar = $_POST["recuperar"];
+        $destino = $emailenviar;
+        $assunto = "Contato pelo Site";
+      
+        // É necessário indicar que o formato do e-mail é html
+        $headers  = 'MIME-Version: 1.0' . "\r\n";
+            $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+            $headers .= 'From:  <$email>';
+        //$headers .= "Bcc: $EmailPadrao\r\n";
+      
+        $enviaremail = mail($destino, $assunto, $headers);
+        if($enviaremail){
+        $mgm = "E-MAIL ENVIADO COM SUCESSO! <br> O link será enviado para o e-mail fornecido no formulário";
+        echo " <meta http-equiv='refresh' content='10;URL=contato.php'>";
+        } else {
+        $mgm = "ERRO AO ENVIAR E-MAIL!";
+        echo "";
+        }
+    }
+
+
     private function logout(){
 
         $usuario = new usuarioModel();
@@ -243,6 +270,7 @@ class ControllerUsuario{
     }
 
     private function deleteUsuarioById(){
+       // $usuario->setSenha($_POST["senha"]);
         @session_start();
         if(!isset($_SESSION["usuario"])){
             return $this->loadView("usuarios/formLogin.php", @$data, @$msg);
@@ -251,6 +279,10 @@ class ControllerUsuario{
             if($_SESSION["usuario"]['id'] != $_GET['id']){
                 return $this->loadView("usuarios/formLogin.php", @$data, @$msg);
             }
+            //if($_SESSION["usuario"]['senha'] != $_POST['senha']){
+                //echo "Senha incorreta!"
+                //return $this->findUsuarioByIdLogged(@$data, @$msg);
+            //}
           }
           
         $idParam = $_GET['id'];

@@ -33,7 +33,7 @@
     <tr>
     <td><?= $data['anuncio']->getNome(); ?></td>
     <td><?= $data['anuncio']->getPreco(); ?></td>
-	<td><img style="width:50px;" src="../../imagens/<?= $data['anuncio']->getImagem();?>"></img></td>
+	<td><img style="width:50px;" src="../../imgs/<?= $data['anuncio']->getImagem();?>"></img></td>
     <td><?= $data['anuncio']->getDescricao(); ?></td>
     <td><?= $data['anuncio']->nota; ?></td>
     <td><a class="btn btn-primary" href="./AvaliacaoController.php?action=loadFormNew&id=<?= $data['anuncio']->getId(); ?>">Avaliar</a></td>

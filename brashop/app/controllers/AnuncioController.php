@@ -105,6 +105,23 @@ class ControllerAnuncio{
         
     }
 
+    private function findAnuncioByUserClick(){  
+        session_start();
+        $nomeParam = @$_GET['usuarios_id'];
+        $anuncioRepository = new AnuncioRepository();
+        $anuncios = $anuncioRepository->findAnuncioByUserClick($nomeParam);
+        $data['titulo'] = "listar anuncios";
+        $data['anuncios'] = $anuncios;
+        
+        if(isset($_SESSION["usuario"])){
+            $this->loadView("anuncios/listAnunciosAdm.php", $data, @$msg);
+          }else{
+            $msg = "É necessário estar Logado!";
+            $this->loadView("usuarios/formLogin.php", $data, $msg);
+          }
+        
+    }
+
     private function findAnuncioByCategoria(){
         
         $nomeParam = @$_GET['categoria_id'];

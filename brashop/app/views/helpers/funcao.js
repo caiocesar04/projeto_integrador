@@ -65,3 +65,5 @@ function ajax(){
     req.send();
 }
     setInterval(function(){ajax();},1000);
+
+  

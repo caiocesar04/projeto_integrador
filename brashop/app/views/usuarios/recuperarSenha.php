@@ -7,9 +7,9 @@
     <link rel="stylesheet" href="../views/helpers/styless.css">
     <title>Brashop</title>
 </head>    
-<?php include_once __DIR__ . "/../helpers/mensagem.php";?>
+<//?php include_once __DIR__ . "/../helpers/mensagem.php";?>
 <body >
-<form action="./UsuarioController.php?action=login" method="POST">  
+<form action="./UsuarioController.php?action=Recuperar_Senha" method="POST">  
 <div class="main-login">
     <div class="left-login">
        <a href="./UsuarioController.php?action=loadHome" class="left-login-image">
@@ -18,20 +18,19 @@
     </div>  
     <div class="right-login">
         <div class="card-login">
-            <h1>Login</h1>
+            <h1>Recuperar Senha</h1>
             <div class="textfield">
-                <label for="usuario">Insira seu e-mail</label>
-                <input type="email" name="email" placeholder="E-mail">
-            </div>
-                <div class="textfield">
-                <label for="usuario">Insira sua senha</label>
-                <input type="password" name="senha" placeholder="Senha">
-            </div>
-            <button class="btn-login">Login</button>
-            <a style="color: #00ff88;" href="./UsuarioController.php?action=loadRecuperar"> Esqueceu sua senha? </a>
+                <label for="usuario">Digite seu e-mail cadastrado:</label>
+                <input type="email" name="recuperar" placeholder="E-mail">
+            <button class="btn-login">enviar</button>
         </div>
     </div>
 </div>
 </form>
 </body>
 </html>
+
+
+
+
+

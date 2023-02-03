@@ -14,17 +14,14 @@ include_once __DIR__."../../../repository/CategoriaRepository.php";
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="./UsuarioController.php?action=loadHomeLogin">
-        <img style="height: 25px;" src="../../imagens/brashop.png"></img>  
-        Brashop <span class="sr-only">(current)</span>
-        </a>
+        <a class="nav-link" href="./UsuarioController.php?action=loadHomeLogin">Brashop <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="./AnuncioController.php?action=findAll">Anuncios</a>
       </li>
       <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      <img  style="height: 20px; border-radius : 100%;" src="../../imagens/<?=$_SESSION["usuario"]['foto_perfil']; ?>"></img>
+      <img  style="height: 20px; border-radius : 100%;" src="../../imgs/<?=$_SESSION["usuario"]['foto_perfil']; ?>"></img>
         Perfil
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -43,6 +40,7 @@ include_once __DIR__."../../../repository/CategoriaRepository.php";
           <a class="dropdown-item" href="./SugestaoController.php?action=findAll">Sugestões</a>
         </div>
       </li>
+      
     </ul>
   </div>
   <form action="./AnuncioController.php?action=findAnuncioByCategoria" method="POST">
@@ -66,3 +64,6 @@ include_once __DIR__."../../../repository/CategoriaRepository.php";
       <button style = "background-color: #ffdf00;" class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
     </form>
 </nav>
+
+
+

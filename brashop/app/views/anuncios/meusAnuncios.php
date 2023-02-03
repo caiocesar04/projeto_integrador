@@ -34,7 +34,7 @@ if(isset($_SESSION["usuario"])){
 
           <td><?= $user['nome'] ?></td>
           <td><?= $user['preco'] ?></td>
-          <td><img style="width:50px;" src="../../imagens/<?=$user['imagem'];?>"></img></td>
+          <td><img style="width:50px;" src="../../imgs/<?=$user['imagem'];?>"></img></td>
           <td><a class="btn btn-success" href="./AnuncioController.php?action=edit&id=<?= $user['id'] ?>">Editar</a></td>
           <td><a class="btn btn-danger" href="javascript:confirmarExclusaoAnuncio('<?= $user['nome'] ?>', <?= $user['id'] ?>)">Excluir</a></td>
                 

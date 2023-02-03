@@ -13,3 +13,15 @@
   <?php
 include_once __DIR__ . "/../helpers/menuAdm.php";
 ?>
+<body style="background-color: black">
+ 
+<form action="./AnuncioController.php?action=findAnunciobyName" method="POST">
+     <h2 style= "color:white; text-align: center;">O que você busca?</h2>
+     <div>
+      <input style=" width: 800px; item-align: center; background-color:black;" class="form-control mr-sm-2" type="search" placeholder="Pesquisar" name="nome"  aria-label="Pesquisar" required>
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+    </div>
+    </form>
+ 
+  </html>  
+</body>

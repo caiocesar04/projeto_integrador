@@ -21,7 +21,7 @@ include_once __DIR__."../../../repository/CategoriaRepository.php";
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <img  style="height: 20px; border-radius : 100%;" src="../../imagens/<?=$_SESSION["usuario"]['foto_perfil']; ?>"></img>
+        <img  style="height: 20px; border-radius : 100%;" src="../../imgs/<?=$_SESSION["usuario"]['foto_perfil']; ?>"></img>
         Perfil
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -42,6 +42,16 @@ include_once __DIR__."../../../repository/CategoriaRepository.php";
           <a class="dropdown-item" href="./UsuarioController.php?action=findAll">Usuarios</a>
         </div>
       </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Notificações
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="./AnuncioController.php?action=loadFormNew">Mensagens</a>
+          <a class="dropdown-item" href="./SugestaoController.php?action=findAll">Comentários</a>
+          <a class="dropdown-item" href="./SugestaoController.php?action=findAll">feedbacks</a>
+        </div>
+      </li>
     </ul>
   </div>
   <form action="./AnuncioController.php?action=findAnuncioByCategoria" method="POST">
@@ -59,11 +69,7 @@ include_once __DIR__."../../../repository/CategoriaRepository.php";
         ?>
       </select>
       <button style = "background-color: #ffdf00;" class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
-      </form>
-  <form action="./AnuncioController.php?action=findAnunciobyName" method="POST">
-      <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" name="nome"  aria-label="Pesquisar" required>
-      <button style = "background-color: #ffdf00;" class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
-    </form>
+
 </nav>
 
 

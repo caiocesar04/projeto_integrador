@@ -21,9 +21,9 @@
 	//$caminho = __DIR__ . "/../helpers/mensagem.php";
 	//print_r($caminho); 
 ?>
-<h2>Editar anuncio</h2>
+<h2>Editar Avaliação</h2>
 
-<?php foreach($data['avalicoes'] as $avaliacao): ?>
+<?php foreach($data['avaliacoes'] as $avaliacao): ?>
 	<form action="./AvaliacaoController.php?action=update&id=<?= $avaliacao->getId()?>" method="POST">
 		<div class="mb-3">
 		<label>Nota:</label>
@@ -33,9 +33,6 @@
 		<div class="mb-3">
 		<button type="submit" value="Atualizar" class="btn
     btn-primary">Atualizar</button>
-		<button type="reset" value="Limpar"class="btn
-    btn-primary">Limpar</button>
-		</div>
 	</form>		
 <?php endforeach; ?>
 

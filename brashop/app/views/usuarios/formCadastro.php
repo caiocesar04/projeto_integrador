@@ -14,7 +14,7 @@
 <div class="main-login">
     <div class="left-login">
         <a href="./UsuarioController.php?action=loadHome" class="left-login-image">
-           <img src="../../imagens/brashop.png" class="left-login-image" alt="imagem">
+           <img src="../../imgs/brashop.png" class="left-login-image" alt="imagem">
         </a>
     </div>
     <div class="cont-contactBtn">

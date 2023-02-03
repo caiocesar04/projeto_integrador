@@ -13,7 +13,7 @@
         }
 
         
-        public function create( $imagem) : int {
+        public function create( ImagemModel $imagem) : int {
             try {
                 @session_start();
                 $query = "INSERT INTO imagens ('path', usuarios_id) VALUES (:arquivo, :usuarios_id)";
