@@ -33,7 +33,7 @@
             <div class="back">
                 <div class="right-login">
                     <div class="card-login">
-                        <h1>Complete seu cadastro</h1>
+                        <h1>Cadastre-se</h1>
                         <button class="flip close"> ⇽ </button>
                         <div class="textfield"><label for="usuario">Nome de exbição</label><input type="text" name="nome" class="form-control"  placeholder="Nome" required></div>
                         <div class="textfield"><label>Data de Nascimento:</label><input type="date" name="data_nasc" class="form-control" required></div>
