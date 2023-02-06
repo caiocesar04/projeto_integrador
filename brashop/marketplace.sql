@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 03-Fev-2023 às 19:23
+-- Tempo de geração: 06-Fev-2023 às 12:16
 -- Versão do servidor: 10.4.24-MariaDB
 -- versão do PHP: 8.1.6
 
@@ -125,6 +125,22 @@ INSERT INTO `chat` (`id`, `mensagem`, `usuarios_id`, `usuario2_id`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `denuncias`
+--
+
+CREATE TABLE `denuncias` (
+  `id` int(11) NOT NULL,
+  `motivo` text NOT NULL,
+  `status` int(11) NOT NULL,
+  `usuarios_id` int(11) NOT NULL,
+  `usuario_denunciado_id` int(11) NOT NULL,
+  `anuncios_id` int(11) NOT NULL,
+  `comentarios_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `imagens`
 --
 
@@ -182,19 +198,20 @@ CREATE TABLE `usuarios` (
   `senha` varchar(255) NOT NULL,
   `data_nasc` date NOT NULL,
   `foto_perfil` varchar(255) NOT NULL,
-  `isadm` bit(1) NOT NULL
+  `isadm` bit(1) NOT NULL,
+  `ban` bit(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `nome`, `email`, `senha`, `data_nasc`, `foto_perfil`, `isadm`) VALUES
-(70, 'Caio', 'caio@gmail.com', 'abc123', '2004-04-20', 'Caio.jpg', b'1'),
-(71, 'Pedro Henrique ', 'pedro@gmail.com', 'pedro', '2004-10-22', '0', b'0'),
-(72, 'Luis Coradi', 'luis@gmail.com', 'luis', '2003-03-27', '', b'0'),
-(73, 'Rubens', 'rubens@gmail.com', 'rubens', '2002-12-05', '0', b'0'),
-(85, 'Caio Cesar', 'cai11o@gmail.com', 'abc123222222', '2009-01-22', 'rubens junior.png', b'0');
+INSERT INTO `usuarios` (`id`, `nome`, `email`, `senha`, `data_nasc`, `foto_perfil`, `isadm`, `ban`) VALUES
+(70, 'Caio', 'caio@gmail.com', 'abc123', '2004-04-20', 'Caio.jpg', b'1', b'0'),
+(71, 'Pedro Henrique ', 'pedro@gmail.com', 'pedro', '2004-10-22', '0', b'0', b'0'),
+(72, 'Luis Coradi', 'luis@gmail.com', 'luis', '2003-03-27', '', b'0', b'0'),
+(73, 'Rubens', 'rubens@gmail.com', 'rubens', '2002-12-05', '0', b'0', b'1'),
+(85, 'Caio Cesar', 'cai11o@gmail.com', 'abc123222222', '2009-01-22', 'rubens junior.png', b'0', b'0');
 
 --
 -- Índices para tabelas despejadas
@@ -224,6 +241,14 @@ ALTER TABLE `categorias`
 --
 ALTER TABLE `chat`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Índices para tabela `denuncias`
+--
+ALTER TABLE `denuncias`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_usuarios_id` (`usuarios_id`),
+  ADD KEY `fk_denunciados_id` (`usuario_denunciado_id`);
 
 --
 -- Índices para tabela `imagens`
@@ -282,6 +307,12 @@ ALTER TABLE `chat`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=125;
 
 --
+-- AUTO_INCREMENT de tabela `denuncias`
+--
+ALTER TABLE `denuncias`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT de tabela `imagens`
 --
 ALTER TABLE `imagens`
@@ -303,11 +334,17 @@ ALTER TABLE `sugestoes`
 -- AUTO_INCREMENT de tabela `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
 
 --
 -- Restrições para despejos de tabelas
 --
+
+--
+-- Limitadores para a tabela `denuncias`
+--
+ALTER TABLE `denuncias`
+  ADD CONSTRAINT `fk_denunciados_id` FOREIGN KEY (`usuario_denunciado_id`) REFERENCES `usuarios` (`id`);
 
 --
 -- Limitadores para a tabela `imagens`
