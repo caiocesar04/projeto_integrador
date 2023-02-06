@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../views/helpers/styless.css">
     <title>Brashop</title>
 </head>    
-<//?php include_once __DIR__ . "/../helpers/mensagem.php";?>
+<?php include_once __DIR__ . "/../helpers/mensagem.php";?>
 <body >
 <form action="./UsuarioController.php?action=Recuperar_Senha" method="POST">  
 <div class="main-login">
@@ -22,15 +22,10 @@
             <div class="textfield">
                 <label for="usuario">Digite seu e-mail cadastrado:</label>
                 <input type="email" name="recuperar" placeholder="E-mail">
-            <button class="btn-login">enviar</button>
+            <button class="btn-login">Enviar</button>
         </div>
     </div>
 </div>
 </form>
 </body>
 </html>
-
-
-
-
-
