@@ -19,14 +19,8 @@
     <div class="right-login">
         <div class="card-login">
             <h1>Login</h1>
-            <div class="textfield">
-                <label for="usuario">Insira seu e-mail</label>
-                <input type="email" name="email" placeholder="E-mail">
-            </div>
-                <div class="textfield">
-                <label for="usuario">Insira sua senha</label>
-                <input type="password" name="senha" placeholder="Senha">
-            </div>
+            <div class="textfield"><label for="usuario">Insira seu e-mail</label><input type="email" name="email" placeholder="E-mail"></div>
+            <div class="textfield"><label for="usuario">Insira sua senha</label><input type="password" name="senha" placeholder="Senha"></div>
             <button class="btn-login">Login</button>
             <a style="color: #00ff88;" href="./UsuarioController.php?action=loadRecuperar"> Esqueceu sua senha? </a>
         </div>
