@@ -37,6 +37,7 @@
     <td><?= $data['anuncio']->getDescricao(); ?></td>
     <td><?= $data['anuncio']->nota; ?></td>
     <td><a class="btn btn-primary" href="./AvaliacaoController.php?action=loadFormNew&id=<?= $data['anuncio']->getId(); ?>">Avaliar</a></td>
+    <td><a class="btn btn-danger" href="./DenunciaController.php?action=loadFormNew&id=<?= $data['anuncio']->getId(); ?>">Denunciar</a></td>
 </ul>
 </body>
 </html>

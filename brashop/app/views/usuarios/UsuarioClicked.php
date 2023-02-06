@@ -22,6 +22,12 @@
    include_once __DIR__ . "/../helpers/menuHome.php";
  }
     ?>
+    <form action="./AnuncioController.php?action=findAnunciobyName" method="POST">
+     <h2 style= "color:white; text-align: center;">Procurar Alguém</h2>
+     <div>
+      <input style="width:50%; margin-left: 25%; background-color:black;" class="form-control mr-sm-2" type="search" placeholder="Pesquisar" name="nome"  aria-label="Pesquisar" required>
+    </div>
+    </form>
       <ul>
       <td><table class = 'table table-hover-table-striped table-bordered'></td>
           <tr>
@@ -32,7 +38,8 @@
     <tr>
     <td><?= $data['usuario']->getNome(); ?></td>
     <td><img  style="height: 20px; border-radius : 100%;" src="../../imagens/<?= $data['usuario']->getFoto_Perfil(); ?>"></td>
-    <td><a class="btn btn-primary" href="./ChatController.php?action=loadFormNew&id=<?= $data['usuario']->getId();?>">Conversar</a></td>                  
+    <td><a class="btn btn-primary" href="./ChatController.php?action=loadFormNew&id=<?= $data['usuario']->getId();?>">Conversar</a></td>
+    <td><a class="btn btn-danger" href="./DenunciaController.php?action=loadFormNew2&id=<?= $data['usuario']->getId(); ?>">Denunciar</a></td>                  
 </ul>
                 
                 

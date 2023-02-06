@@ -36,6 +36,7 @@ if(isset($_SESSION["usuario"])){
           <td><?= $user['preco'] ?></td>
           <td><?= $user['descricao'] ?></td>
           <td><img style="width:50px;" src="../../imgs/<?=$user['imagem'];?>"></img></td>
+          <td><a class="btn btn-danger" href="./DenunciaController.php?action=findDenunciaAnuncio&id=('<?= $user['id'] ?>)">Denuncias</a>
           <td><a class="btn btn-danger" href="javascript:confirmarExclusaoAnuncio('<?= $user['nome'] ?>', <?= $user['id'] ?>)">Excluir</a></td>
                 
                        

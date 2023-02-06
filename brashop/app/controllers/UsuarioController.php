@@ -88,9 +88,75 @@ class ControllerUsuario{
 		}
         
     }
+    private function InsertAdmByUserId(){
+        session_start();
+            if(!isset($_SESSION["usuario"])){
+            return $this->loadView("usuarios/formLogin.php", @$data, @$msg);
+            }
+            if(isset($_SESSION["usuario"])){
+            if($_SESSION["usuario"]['is_adm'] == 0){
+                $msg = "Acesso restrito! Somente administradores tem direito a essa ação.";
+                 return $this->loadView("usuarios/formLogin.php", @$data, $msg);
+            } 
+            }  
+            $usuario = new usuarioModel();
+            $usuario->isAdm();
+            $idParam = $_GET['id'];
+            $usuarioRepository = new UsuarioRepository();    
+    
+            $qt = $usuarioRepository->InsertAdmByUserId($idParam);
+            if($qt){
+                $msg = "Registro excluído com sucesso.";
+            }else{
+                $msg = "Erro ao excluir o registro no banco de dados.";
+            }
+            if(isset($_SESSION["usuario"])){
+            if($_SESSION["usuario"]['is_adm'] == 1){
+                $this->findAll($msg);
+            }
+    }
+}
+
+private function Banir(){
+    session_start();
+    if(!isset($_SESSION["usuario"])){
+        return $this->loadView("usuarios/formLogin.php", @$data, @$msg);
+      }
+      if(isset($_SESSION["usuario"])){
+        if($_SESSION["usuario"]['is_adm'] == 0){
+            $msg = "Acesso restrito! Somente administradores tem direito a essa ação.";
+             return $this->loadView("usuarios/formLogin.php", @$data, $msg);
+        } 
+    }  
+
+        $idParam = $_GET['id'];
+        $usuarioRepository = new UsuarioRepository();    
+
+        $qt = $usuarioRepository->Banir($idParam);
+        if($qt){
+            $msg = "Registro excluído com sucesso.";
+        }else{
+            $msg = "Erro ao excluir o registro no banco de dados.";
+        }
+        if(isset($_SESSION["usuario"])){
+        if($_SESSION["usuario"]['is_adm'] == 1){
+            $this->findAll($msg);
+        }
+}
+}
 
     private function loadFormNew(){
         $this->loadView("usuarios/formCadastro.php", null);
+    }   
+     private function loadFormDelete(){
+         session_start();
+        if(isset($_SESSION["usuario"])){
+            $this->loadView("usuarios/DeleteUsuario.php", null);
+		}else{
+			$msg = "É necessário estar logado";
+            $this->loadView("usuarios/formLogin.php", @$data, $msg);
+		}
+       
     }    
 
     private function loadHome(){
@@ -119,14 +185,14 @@ class ControllerUsuario{
     
     private function loadHomeLogin(){
         @session_start();
+        
         if(isset($_SESSION["usuario"])){
             $this->loadView("usuarios/homeLogin.php", null);
 		}else{
 			$msg = "É necessário estar logado";
             $this->loadView("usuarios/formLogin.php", @$data, $msg);
 		}
-       
-    }  
+    }      
     
 
     private function findAll(string $msg = null){
@@ -199,6 +265,11 @@ class ControllerUsuario{
                 @session_start();
                 $this->loadView("usuarios/homeAdm.php",@$data);
             }
+            if($usuario->Ban()){
+                @session_start();
+                echo "Você está banido!";
+                return $this->loadView("usuarios/FormLogin.php",@$data);
+            }
             else{
                 @session_start();
                 $this->loadView("usuarios/homeLogin.php",@$data);
@@ -213,6 +284,7 @@ class ControllerUsuario{
     }
 
     private function Recuperar_Senha(){
+
         $email = $_POST["recuperar"];
         $emailenviar = $_POST["recuperar"];
         $destino = $emailenviar;
@@ -236,6 +308,7 @@ class ControllerUsuario{
 
 
     private function logout(){
+        
 
         $usuario = new usuarioModel();
         $usuarioRepository = new UsuarioRepository();
@@ -243,16 +316,9 @@ class ControllerUsuario{
         $this->loadHome();
     }
 
-    private function validateEmail(){
-
-        $usuario = new usuarioModel();
-        $usuarioRepository = new UsuarioRepository();
-        $usuario = $usuarioRepository->validateEmail($usuario);
-        $this->loadHome();
-    }
 
     private function findUsuarioByIdLogged(){
-       
+
         $nomeParam = @$_GET['id'];
         $usuarioRepository = new UsuarioRepository();
         $usuarios = $usuarioRepository->findUsuariorByIdLogged($nomeParam);
@@ -268,7 +334,31 @@ class ControllerUsuario{
           }
        
     }
-
+    private function findUsuarioByName(){
+        session_start();
+       if(!isset($_SESSION["usuario"])){
+                $msg = "É necessário o estar Logado!";
+                return  $this->loadView("usuarios/formLogin.php", @$data, $msg);
+            }
+            if(isset($_SESSION["usuario"])){
+                if($_SESSION["usuario"]['ban'] == 1){
+               return  $this->loadView("usuarios/UsuarioClicked.php", @$data, $msg);
+                }   
+        $nomeParam = $_POST['nome'];
+        $UsuarioRepository = new UsuarioRepository();
+        $usuarios = $categoriaRepository->findUsuarioByName($nomeParam);
+        $data['titulo'] = "listar usuarios";
+        $data['usuarios'] = $usuarios;
+  
+        if(isset($_SESSION["usuario"])){
+            if($_SESSION["usuario"]['is_adm'] == 0){
+           return  $this->loadView("usuarios/UsuarioClicked.php", @$data, $msg);
+            } if($_SESSION["usuario"]['is_adm'] == 1){
+            $this->loadView("usuarios/list.php", $data, @$msg);
+            }
+    }
+    }
+    }
     private function deleteUsuarioById(){
        // $usuario->setSenha($_POST["senha"]);
         @session_start();
@@ -279,10 +369,10 @@ class ControllerUsuario{
             if($_SESSION["usuario"]['id'] != $_GET['id']){
                 return $this->loadView("usuarios/formLogin.php", @$data, @$msg);
             }
-            //if($_SESSION["usuario"]['senha'] != $_POST['senha']){
+            if($_SESSION["usuario"]['senha'] != $_POST['senha']){
                 //echo "Senha incorreta!"
                 //return $this->findUsuarioByIdLogged(@$data, @$msg);
-            //}
+            }
           }
           
         $idParam = $_GET['id'];

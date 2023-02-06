@@ -37,6 +37,8 @@
             return $avaliacoes;
         }
 
+        
+
         public function findAvaliacaoByUser(): array {
             @session_start();
             $query = "SELECT * FROM avaliacoes WHERE usuarios_id = :usuarios_id";

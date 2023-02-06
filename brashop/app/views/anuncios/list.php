@@ -74,6 +74,25 @@ footer {
   margin-top: 10px;
   border-width: 3px;
 }
+ .select-estiloso { /* <div> */
+       width: 240px;
+       height: 34px;
+       overflow: hidden;
+       background: url(nova_setinha.jpg) no-repeat right #ddd; /* novo ícone para o <select> */
+       border: 1px solid #ccc;
+    }   
+
+    .select-estiloso select { /* <select> */
+       background: transparent; /* importante para exibir o novo ícone */
+       width: 268px;
+       padding: 5px;
+       font-size: 16px;
+       line-height: 1;
+       border: 0;
+       border-radius: 0;
+       height: 34px;
+       -webkit-appearance: none;
+    }      
 
 </style>
 

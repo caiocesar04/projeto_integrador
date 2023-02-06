@@ -42,7 +42,16 @@
             return $usuarios;
         }
  
-
+        public function findUsuarioByName(string $nome){
+            $query = "SELECT * FROM usuarios WHERE nome like :nome";
+            $prepare = $this->conn->prepare($query);
+            $prepare->bindValue(':nome','%'.$nome.'%', PDO::PARAM_STR);
+            $prepare->execute();
+            $result = $prepare->fetchALL(PDO::FETCH_ASSOC);
+            return $result;
+        }
+        
+    
 
         public function findUsuarioById(int $id) {
             $query = "SELECT * FROM usuarios WHERE id = ?";
@@ -55,6 +64,28 @@
                 $usuario = null;
             }
             return $usuario;
+        }
+
+        public function InsertAdmByUserId(int $id) : int {
+            @session_start();
+            $query = "UPDATE usuarios SET isadm = 1, WHERE id = :id";
+            $prepare = $this->conn->prepare($query);
+            $prepare->bindValue(1, $usuario->isAdm());
+            $prepare->bindValue(2, ":id", $id);
+            $prepare->execute();
+            $result = $prepare->rowCount();
+            return $result;
+            
+        }
+        public function Banir(int $id) : int {
+            @session_start();
+            $query = "INSERT INTO usuarios (Banir) VALUES (1)  WHERE id = :id";
+            $prepare = $this->conn->prepare($query);
+            $prepare->bindValue(":id", $id);
+            $prepare->execute();
+            $result = $prepare->rowCount();
+            return $result;
+            
         }
 
         public function findUsuariorByIdLogged(): array {

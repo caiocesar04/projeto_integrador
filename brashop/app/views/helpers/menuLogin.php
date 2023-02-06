@@ -25,7 +25,6 @@ include_once __DIR__."../../../repository/CategoriaRepository.php";
         Perfil
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="./ChatController.php?action=findMensagemByUser">Chat</a>
           <a class="dropdown-item" href="./AnuncioController.php?action=findAnuncioByUser">Meus Anuncios</a>
           <a class="dropdown-item" href="./UsuarioController.php?action=findUsuarioByIdLogged">Meus Dados</a>
           <a class="dropdown-item" href="./UsuarioController.php?action=logout">Sair</a>
@@ -37,32 +36,13 @@ include_once __DIR__."../../../repository/CategoriaRepository.php";
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <a class="dropdown-item" href="./AnuncioController.php?action=loadFormNew">Anunciar um produto</a>
+          <a class="dropdown-item" href="./AnuncioController.php?action=loadFormNew">Mensagens</a>
           <a class="dropdown-item" href="./SugestaoController.php?action=findAll">Sugestões</a>
         </div>
       </li>
       
     </ul>
   </div>
-  <form action="./AnuncioController.php?action=findAnuncioByCategoria" method="POST">
-  <label for="categoria_id">Categoria:</label>
-                   
-        <select name="categoria_id" id="categoria_id" required>
-            <option value="">Selecionar</option>
-        <?php
-          
-          $categoriaRepository = new CategoriaRepository();
-          $categorias = $categoriaRepository->findAll();
-        foreach ($categorias as $key => $categoria) {
-            echo '<option value="'.$categoria['id'].'">'.$categoria['nome'].'</option>';
-        }
-        ?>
-      </select>
-      <button style = "background-color: #ffdf00;" class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
-      </form>
-  <form action="./AnuncioController.php?action=findAnunciobyName" method="POST">
-      <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" name="nome"  aria-label="Pesquisar" required>
-      <button style = "background-color: #ffdf00;" class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
-    </form>
 </nav>
 
 

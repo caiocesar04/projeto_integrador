@@ -39,17 +39,8 @@ include_once __DIR__."../../../repository/CategoriaRepository.php";
           <a class="dropdown-item" href="./ImagemController.php?action=loadFormNew">Imagem</a>
           <a class="dropdown-item" href="./CategoriaController.php?action=findAll">Categorias</a>
           <a class="dropdown-item" href="./SugestaoController.php?action=findAll">Sugestões</a>
-          <a class="dropdown-item" href="./UsuarioController.php?action=findAll">Usuarios</a>
-        </div>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Notificações
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <a class="dropdown-item" href="./AnuncioController.php?action=loadFormNew">Mensagens</a>
-          <a class="dropdown-item" href="./SugestaoController.php?action=findAll">Comentários</a>
-          <a class="dropdown-item" href="./SugestaoController.php?action=findAll">feedbacks</a>
+          <a class="dropdown-item" href="./UsuarioController.php?action=findAll">Usuarios</a>
         </div>
       </li>
     </ul>

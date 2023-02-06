@@ -37,6 +37,13 @@ function confirmarExclusaoAvaliacao(nota, id) {
        window.location.href = "AvaliacaoController.php?action=deleteAvaliacaoById&id=" + id;
     }
 }
+function confirmarExclusaoDenuncia(motivo, id) {
+    
+    var resposta = confirm("Deseja remover o registro '" + motivo + "' ?");
+    if (resposta) {
+       window.location.href = "DenunciaController.php?action=deleteDenunciaById&id=" + id;
+    }
+}
 
 function confirmarExclusaoUsuario(nome, id) {
     var resposta = confirm("Deseja remover o registro '" + nome + "' ?");

@@ -106,10 +106,9 @@
             $result = $prepare->fetchALL(PDO::FETCH_ASSOC);
             
             if ($result){
-                echo"esses são os resultados encontrados";
             }
             else{
-                echo "Não econtramos resultados para sua pesquisa.";
+                echo "<h2><font color='white'> Não econtramos resultados para sua pesquisa!</font></h2>";
             }
             return $result;
         }

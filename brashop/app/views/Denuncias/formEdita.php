@@ -17,33 +17,19 @@
 		 }else{
 		 include_once __DIR__ . "/../helpers/menuLogin.php";
 	   }
-	 }
-	 
+	  }
 	//$caminho = __DIR__ . "/../helpers/mensagem.php";
 	//print_r($caminho); 
 ?>
-<h2>Editar anuncio</h2>
+<h2>Editar Avaliação</h2>
 
-<?php foreach($data['anuncios'] as $anuncio): ?>
-	<form action="./AnuncioController.php?action=update&id=<?= $anuncio->getId()?>" method="POST">
-	<div class="mb-3">	
-	<label>Nome:</label> 
-	<input type="text" name="nome" class="form-control" value="<?= $anuncio->getNome(); ?>">
-	</div>
-
+<?php foreach($data['denuncias'] as $denuncia): ?>
+	<form action="./DenunciaController.php?action=update&id=<?= $denuncia->getId()?>" method="POST">
 		<div class="mb-3">
-		<label>Preço:</label>
-		 <input type="number" name="preco"  pattern="[0-9]+([,\.][0-9]+)?" min="0" step="any" name="null" class="form-control" value="<?= $anuncio->getPreco(); ?>">
-		</div>
-		<div class="mb-3">
-		<label>imagem:</label>
-		 <input type="file" name="imagem" class="form-control" value="<?= $anuncio->getImagem(); ?>">
+		<label>Nota:</label>
+		 <input type="text" name="motivo" class="form-control" value="<?= $denuncia->getMotivo(); ?>">
 		</div>
 
-		<div class="mb-3">
-		<label>Descricao:</label>
-		 <input type="text" name="descricao" class="form-control" value="<?= $anuncio->getDescricao(); ?>" required>
-		</div>
 		<div class="mb-3">
 		<button type="submit" value="Atualizar" class="btn
     btn-primary">Atualizar</button>

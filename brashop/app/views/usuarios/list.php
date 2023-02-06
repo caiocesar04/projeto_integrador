@@ -29,7 +29,7 @@ else{
          <th>Email</th>
          <th>Data de Nascimento</th>
          <th>foto de perfil</th>
-         <th>Atividades</th>
+         <th>Sobre este Usuário:</th>
          </tr>
            <?php foreach($data['usuarios'] as $user): ?>
         
@@ -43,7 +43,9 @@ else{
                  <td><?= $user['data_nasc'] ?></td> 
                  <td><img style="height: 50px; border-radius : 100%;" src="../../imgs/<?= $user['foto_perfil'] ?>"></img>
                  <td><a  class="btn btn-success" href="./AnuncioController.php?action=findAnuncioByUserClick&id=<?= $user['id'] ?>">Anuncios</a>
-                 <a  class="btn btn-success" href="./UsuarioController.php?action=findComentarioByUsuarioClicked&id=<?= $user['id'] ?>">Comentários</a></td> 
+                 <a  class="btn btn-danger" href="./DenunciaController.php?action=findDenunciaUsuario&id=<?= $user['id'] ?>">Denuncias</a> 
+                 <a  class="btn btn-primary" href="./UsuarioController.php?action=InsertAdmByUserId&id=<?= $user['id'] ?>">Tornar Administrador</a>
+                 <a  class="btn btn-danger" href="./UsuarioController.php?action=Banir&id=<?= $user['id'] ?>">Banir</a>
                 <?php endforeach; ?>
 
                 

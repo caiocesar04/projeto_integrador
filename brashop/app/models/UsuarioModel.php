@@ -59,6 +59,9 @@ class UsuarioModel{
 	public function isAdm(): bool{
 		return $this->isadm == 1;
 	}
+	public function Ban(): bool{
+		return $this->ban == 1;
+	}
 	
 
 	public function getAll(){
@@ -68,7 +71,8 @@ class UsuarioModel{
 			"email" =>$this->email,
 			"data_nasc" =>$this->data_nasc,
 			"foto_perfil" =>$this->foto_perfil,
-			"is_adm" => $this->isadm
+			"is_adm" => $this->isadm,
+			"ban" => $this->isadm
 		
 		];
 	}

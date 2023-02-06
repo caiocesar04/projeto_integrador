@@ -37,7 +37,7 @@
 			</ol>
 			<div class="carousel-inner" role="listbox">
 				<div class="item active">
-					<img class="first-slide" style="width:50%; margin-left: 25%;"  src="../../imgs/imagem1.png" alt="First slide">
+					<img class="first-slide"   src="../../imgs/imagem1.png" alt="First slide">
           <div class="carousel-caption d-none d-md-block">
 		  <br>
                  <h2 >Encontre aqui produtos de seu interesse!</h2>
@@ -45,7 +45,7 @@
                   </div>
 					</div>
 				<div class="item">
-					<img class="second-slide" style="width:50%; margin-left: 25%;"  src="../../imgs/imagem2.png" alt="Second slide">
+					<img class="second-slide"   src="../../imgs/imagem2.png" alt="Second slide">
           <div class="carousel-caption d-none d-md-block">
 			<br>
                  <h2>Quer vender algo? Anuncie aqui!</h2>
@@ -54,7 +54,7 @@
                   </div>
 				</div>
 				<div class="item">
-					 <img class="third-slide" style="width:50%; margin-left: 25%;"  src="imagens/imagem3.png" alt="Third slide">
+					 <img class="third-slide" src="imagens/imagem3.png" alt="Third slide">
 					<div class="container">
 						<div class="carousel-caption">
 							<p><a class="btn btn-lg btn-primary" href="" role="button">Ver mais</a></p>
