@@ -75,7 +75,8 @@ body{
 .btn-login{
     width: 100%;
     padding: 16px 0px;
-    margin: 25px;
+    margin-top: 25px;
+    margin-bottom: 25px;
     border: none;
     border-radius: 8px;
     outline: none;
@@ -106,7 +107,7 @@ body{
     position: absolute;
     backface-visibility: hidden;
 }
-    .cont-contactBtn .cont-flip .back {
+.cont-contactBtn .cont-flip .back {
     transform: rotateX(180deg);
 }
 .cont-contactBtn .cont-flip.flipped { 
@@ -114,13 +115,13 @@ body{
 }
 .cont-contactBtn .close {
     background-color: #00ff88;
-    position: absolute;
-    top: 15%;
-    right: 8%;  
-    width: 10%;
+    position: relative;
+    margin: -20px;
+    left: 13vw;
+    bottom: 2vh;
+    width: 12%;
     border: none;
     border-radius: 8px;
-    outline: none;
     text-transform: uppercase;
     font-weight: 800;
     font-size: 30px;
