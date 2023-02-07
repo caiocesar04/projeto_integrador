@@ -1,0 +1,32 @@
+body{
+    background-color: black !important;
+}
+h2{
+    color:white !important; 
+    text-align: center;
+}
+.pesquisa{
+    width:50% !important; 
+    margin-left: 25% !important; 
+    background-color:black !important;
+}
+.slide{
+    height: 20%!important;
+    width: 80%!important;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+footer{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #009c3b;
+    color: white;
+    text-align: center;
+    z-index: 1;
+}
+footer p{
+	margin-top: 1vh;
+	margin-bottom: 1vh;
+}

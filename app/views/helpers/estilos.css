@@ -1,0 +1,118 @@
+@CHARSET "utf-8";
+
+html{
+	background: rgb(207, 223, 136);
+}
+
+#mensagem{
+	padding: 0px;
+	margin: 0px;
+	margin-bottom: 0px;
+	text-align: center;
+	font-family: sans-serif;
+	color: #FF0000;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#titulo{
+	padding: 20px;
+	margin: 20px;
+	margin-bottom: 0px;
+	text-align: center;
+	font-family: sans-serif;
+	margin-left: auto;
+	margin-right: auto;
+	border: 1px solid #cccccc;
+}
+
+#menu{
+	width: 150px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 20px;
+	margin-top: 10px;
+	margin-bottom: -10px;
+	border: 1px solid #cccccc;
+	float: left;
+	text-align: center;
+}
+
+#conteudo{
+	margin-left: 200px;
+	margin-right: auto;
+	padding: 20px;
+	margin-top: 10px;
+	margin-bottom: -10px;
+	border: 1px solid #cccccc;
+}
+
+#rodape{
+	padding: 20px;
+	margin: 20px;
+	clear:left;
+	margin-bottom: 0px;
+	text-align: center;
+	font-family: sans-serif;
+	margin-left: auto;
+	margin-right: auto;
+	border: 1px solid #cccccc;
+}
+
+table.consulta {
+	border-width: 1px;
+	border-spacing: 2px;
+	border-style: outset;
+	border-color: gray;
+	border-collapse: separate;
+	background-color: rgb(243, 195, 92);
+}
+
+table.consulta th {
+	border-width: 1px;
+	padding: 5px;
+	border-style: inset;
+	background-color:rgb(243, 195, 92);
+}
+
+table.consulta td {
+	border-width: 1px;
+	padding: 5px;
+	border-style: inset;
+}
+
+.dropbtn {
+	background-color: #04AA6D;
+	color: white;
+	padding: 16px;
+	font-size: 16px;
+	border: none;
+  }
+  
+  .dropdown {
+	position: relative;
+	display: inline-block;
+  }
+  
+  .dropdown-content {
+	display: none;
+	position: absolute;
+	background-color: #f1f1f1;
+	min-width: 160px;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	z-index: 1;
+  }
+  
+  .dropdown-content a {
+	color: black;
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+  }
+  
+  .dropdown-content a:hover {background-color: #ddd;}
+  
+  .dropdown:hover .dropdown-content {display: block;}
+  
+  .dropdown:hover .dropbtn {background-color: #000000;}
+  
