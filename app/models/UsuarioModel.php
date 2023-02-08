@@ -7,6 +7,8 @@ class UsuarioModel{
 	private $data_nasc;
 	private $foto_perfil;
 	private $isadm;
+	private $ban;
+
 
 
 	public function getId(): int{
@@ -72,7 +74,7 @@ class UsuarioModel{
 			"data_nasc" =>$this->data_nasc,
 			"foto_perfil" =>$this->foto_perfil,
 			"is_adm" => $this->isadm,
-			"ban" => $this->isadm
+			"ban" => $this->ban
 		
 		];
 	}

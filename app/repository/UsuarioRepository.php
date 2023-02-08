@@ -19,13 +19,12 @@
         public function create(UsuarioModel $usuario) : int {
             try {
                 //print_r($usuario);
-                $query = "INSERT INTO usuarios (nome, senha, email, data_nasc, foto_perfil) VALUES (:nome, :senha, :email, :data_nasc, :foto_perfil)";
+                $query = "INSERT INTO usuarios (nome, senha, email, data_nasc) VALUES (:nome, :senha, :email, :data_nasc)";
                 $prepare = $this->conn->prepare($query);
                 $prepare->bindValue(":nome", $usuario->getNome());
                 $prepare->bindValue(":senha", $usuario->getSenha());
                 $prepare->bindValue(":email", $usuario->getEmail());
                 $prepare->bindValue(":data_nasc", $usuario->getData_nasc());
-                $prepare->bindValue(":foto_perfil", $usuario->getFoto_perfil());
                 $prepare->execute();
                 return $this->conn->lastInsertId();
                 
@@ -36,12 +35,26 @@
         }
 
         public function findAll(): array {
-            $table = $this->conn->query("SELECT * FROM usuarios");
+            $table = $this->conn->query("SELECT * FROM usuarios WHERE ban = 0 AND isadm = 0");
             $usuarios  = $table->fetchAll(PDO::FETCH_ASSOC);
 
             return $usuarios;
         }
- 
+        
+        public function findUsuarioBan(): array {
+            $table = $this->conn->query("SELECT * FROM usuarios WHERE ban = 1");
+            $usuarios  = $table->fetchAll(PDO::FETCH_ASSOC);
+
+            return $usuarios;
+        }
+
+        public function findAdm(): array {
+            $table = $this->conn->query("SELECT * FROM usuarios WHERE isadm = 1 AND ban = 0");
+            $usuarios  = $table->fetchAll(PDO::FETCH_ASSOC);
+
+            return $usuarios;
+        }
+
         public function findUsuarioByName(string $nome){
             $query = "SELECT * FROM usuarios WHERE nome like :nome";
             $prepare = $this->conn->prepare($query);
@@ -68,18 +81,48 @@
 
         public function InsertAdmByUserId(int $id) : int {
             @session_start();
-            $query = "UPDATE usuarios SET isadm = 1, WHERE id = :id";
+            $query = "UPDATE usuarios SET isadm = 1 WHERE id = :id";
             $prepare = $this->conn->prepare($query);
-            $prepare->bindValue(1, $usuario->isAdm());
-            $prepare->bindValue(2, ":id", $id);
+            $prepare->bindValue(":id", $id);
             $prepare->execute();
             $result = $prepare->rowCount();
             return $result;
             
         }
+        public function InsertFotoPerfil(UsuarioModel $usuario) : bool {
+            @session_start();
+            $query = "UPDATE usuarios SET foto_perfil = ? WHERE id = ?";
+            $prepare = $this->conn->prepare($query);
+            $prepare->bindValue(1, $usuario->getFoto_perfil());
+            $prepare->bindValue(2, $usuario->getId());
+            $prepare->execute();
+            $result = $prepare->rowCount(); 
+            return $result;
+            
+        }
         public function Banir(int $id) : int {
             @session_start();
-            $query = "INSERT INTO usuarios (Banir) VALUES (1)  WHERE id = :id";
+            $query = "UPDATE usuarios SET ban = 1 WHERE id = :id";
+            $prepare = $this->conn->prepare($query);
+            $prepare->bindValue(":id", $id);
+            $prepare->execute();
+            $result = $prepare->rowCount();
+            return $result;
+            
+        }
+        public function RetirarBanimento(int $id) : int {
+            @session_start();
+            $query = "UPDATE usuarios SET ban = 0 WHERE id = :id";
+            $prepare = $this->conn->prepare($query);
+            $prepare->bindValue(":id", $id);
+            $prepare->execute();
+            $result = $prepare->rowCount();
+            return $result;
+            
+        }
+        public function RetirarAdm(int $id) : int {
+            @session_start();
+            $query = "UPDATE usuarios SET isadm = 0 WHERE id = :id";
             $prepare = $this->conn->prepare($query);
             $prepare->bindValue(":id", $id);
             $prepare->execute();
@@ -103,14 +146,13 @@
 
         public function update(UsuarioModel $usuario) : bool {
             $query = "UPDATE usuarios SET nome = ?, senha = ?, email = ?, data_nasc = 
-            ?, foto_perfil = ? WHERE id = ?";
+            ? WHERE id = ?";
             $prepare = $this->conn->prepare($query);
             $prepare->bindValue(1, $usuario->getNome());
             $prepare->bindValue(2, $usuario->getSenha());
             $prepare->bindValue(3, $usuario->getEmail());
             $prepare->bindValue(4, $usuario->getData_nasc());
-            $prepare->bindValue(5, $usuario->getFoto_Perfil());
-            $prepare->bindValue(6, $usuario->getId());
+            $prepare->bindValue(5, $usuario->getId());
             $result = $prepare->execute();
             return $result;
         }

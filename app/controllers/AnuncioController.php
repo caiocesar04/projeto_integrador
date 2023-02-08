@@ -50,8 +50,75 @@ class ControllerAnuncio{
         $anuncio = new AnuncioModel();
 		$anuncio->setNome($_POST["nome"]);
         $anuncio->setPreco($_POST["preco"]);
-        $anuncio->setImagem($_POST["imagem"]);
         $anuncio->setDescricao($_POST["descricao"]);
+
+     
+        if(isset($_FILES["imagem"])){
+            $arquivo = $_FILES["imagem"];
+            $pasta = "imgs/";
+            $nomeArquivo = md5($arquivo["name"].time());
+            $novoNomeArquivo = uniqid();
+            $extensao = explode(".",$arquivo["name"]);
+            $extensao = end($extensao);
+            $deu_certo = move_uploaded_file($arquivo["tmp_name"], $_SERVER["DOCUMENT_ROOT"]."/brashop/imgs/".$novoNomeArquivo.".".$extensao);
+            if($deu_certo){
+            $anuncio->setImagem($novoNomeArquivo.".".$extensao);
+            
+            }
+         }
+         if(isset($_FILES["imagem2"])){
+            $arquivo = $_FILES["imagem2"];
+            $pasta = "imgs/";
+            $nomeArquivo = md5($arquivo["name"].time());
+            $novoNomeArquivo = uniqid();
+            $extensao = explode(".",$arquivo["name"]);
+            $extensao = end($extensao);
+            $deu_certo = move_uploaded_file($arquivo["tmp_name"], $_SERVER["DOCUMENT_ROOT"]."/brashop/imgs/".$novoNomeArquivo.".".$extensao);
+            if($deu_certo){
+            $anuncio->setImagem2($novoNomeArquivo.".".$extensao);
+            
+            }
+         }
+
+         if(isset($_FILES["imagem3"])){
+            $arquivo = $_FILES["imagem3"];
+            $pasta = "imgs/";
+            $nomeArquivo = md5($arquivo["name"].time());
+            $novoNomeArquivo = uniqid();
+            $extensao = explode(".",$arquivo["name"]);
+            $extensao = end($extensao);
+            $deu_certo = move_uploaded_file($arquivo["tmp_name"], $_SERVER["DOCUMENT_ROOT"]."/brashop/imgs/".$novoNomeArquivo.".".$extensao);
+            if($deu_certo){
+            $anuncio->setImagem3($novoNomeArquivo.".".$extensao);
+            
+            }
+         }
+         if(isset($_FILES["imagem4"])){
+            $arquivo = $_FILES["imagem4"];
+            $pasta = "imgs/";
+            $nomeArquivo = md5($arquivo["name"].time());
+            $novoNomeArquivo = uniqid();
+            $extensao = explode(".",$arquivo["name"]);
+            $extensao = end($extensao);
+            $deu_certo = move_uploaded_file($arquivo["tmp_name"], $_SERVER["DOCUMENT_ROOT"]."/brashop/imgs/".$novoNomeArquivo.".".$extensao);
+            if($deu_certo){
+            $anuncio->setImagem4($novoNomeArquivo.".".$extensao);
+            
+            }
+         }
+         if(isset($_FILES["imagem5"])){
+            $arquivo = $_FILES["imagem5"];
+            $pasta = "imgs/";
+            $nomeArquivo = md5($arquivo["name"].time());
+            $novoNomeArquivo = uniqid();
+            $extensao = explode(".",$arquivo["name"]);
+            $extensao = end($extensao);
+            $deu_certo = move_uploaded_file($arquivo["tmp_name"], $_SERVER["DOCUMENT_ROOT"]."/brashop/imgs/".$novoNomeArquivo.".".$extensao);
+            if($deu_certo){
+            $anuncio->setImagem5($novoNomeArquivo.".".$extensao);
+            
+            }
+         }
 
 		$anuncioRepository = new AnuncioRepository();
         $id = $anuncioRepository->create($anuncio);
@@ -183,7 +250,12 @@ class ControllerAnuncio{
        
     }
     private function findAnuncioByClick(){
-     session_start();
+        session_start();
+        if(!isset($_SESSION["usuario"])){
+            $msg = "É necessário estar Logado!";
+            return $this->loadView("usuarios/formLogin.php", @$data, $msg);
+        }
+   
         $idParam = $_GET['id'];
         $anuncioRepository = new AnuncioRepository(); 
         $anuncio = $anuncioRepository->findAnuncioById($idParam);
@@ -199,8 +271,74 @@ class ControllerAnuncio{
 		$anuncio->setId($_GET["id"]);
 		$anuncio->setNome($_POST["nome"]);
 		$anuncio->setPreco($_POST["preco"]);
-        $anuncio->setImagem($_POST["imagem"]);
         $anuncio->setDescricao($_POST["descricao"]);
+        if(isset($_FILES["imagem"])){
+            $arquivo = $_FILES["imagem"];
+            $pasta = "imgs/";
+            $nomeArquivo = md5($arquivo["name"].time());
+            $novoNomeArquivo = uniqid();
+            $extensao = explode(".",$arquivo["name"]);
+            $extensao = end($extensao);
+            $deu_certo = move_uploaded_file($arquivo["tmp_name"], $_SERVER["DOCUMENT_ROOT"]."/brashop/imgs/".$novoNomeArquivo.".".$extensao);
+            if($deu_certo){
+            $anuncio->setImagem($novoNomeArquivo.".".$extensao);
+            
+            }
+         }
+         if(isset($_FILES["imagem2"])){
+            $arquivo = $_FILES["imagem2"];
+            $pasta = "imgs/";
+            $nomeArquivo = md5($arquivo["name"].time());
+            $novoNomeArquivo = uniqid();
+            $extensao = explode(".",$arquivo["name"]);
+            $extensao = end($extensao);
+            $deu_certo = move_uploaded_file($arquivo["tmp_name"], $_SERVER["DOCUMENT_ROOT"]."/brashop/imgs/".$novoNomeArquivo.".".$extensao);
+            if($deu_certo){
+            $anuncio->setImagem2($novoNomeArquivo.".".$extensao);
+            
+            }
+         }
+
+         if(isset($_FILES["imagem3"])){
+            $arquivo = $_FILES["imagem3"];
+            $pasta = "imgs/";
+            $nomeArquivo = md5($arquivo["name"].time());
+            $novoNomeArquivo = uniqid();
+            $extensao = explode(".",$arquivo["name"]);
+            $extensao = end($extensao);
+            $deu_certo = move_uploaded_file($arquivo["tmp_name"], $_SERVER["DOCUMENT_ROOT"]."/brashop/imgs/".$novoNomeArquivo.".".$extensao);
+            if($deu_certo){
+            $anuncio->setImagem3($novoNomeArquivo.".".$extensao);
+            
+            }
+         }
+         if(isset($_FILES["imagem4"])){
+            $arquivo = $_FILES["imagem4"];
+            $pasta = "imgs/";
+            $nomeArquivo = md5($arquivo["name"].time());
+            $novoNomeArquivo = uniqid();
+            $extensao = explode(".",$arquivo["name"]);
+            $extensao = end($extensao);
+            $deu_certo = move_uploaded_file($arquivo["tmp_name"], $_SERVER["DOCUMENT_ROOT"]."/brashop/imgs/".$novoNomeArquivo.".".$extensao);
+            if($deu_certo){
+            $anuncio->setImagem4($novoNomeArquivo.".".$extensao);
+            
+            }
+         }
+         if(isset($_FILES["imagem5"])){
+            $arquivo = $_FILES["imagem5"];
+            $pasta = "imgs/";
+            $nomeArquivo = md5($arquivo["name"].time());
+            $novoNomeArquivo = uniqid();
+            $extensao = explode(".",$arquivo["name"]);
+            $extensao = end($extensao);
+            $deu_certo = move_uploaded_file($arquivo["tmp_name"], $_SERVER["DOCUMENT_ROOT"]."/brashop/imgs/".$novoNomeArquivo.".".$extensao);
+            if($deu_certo){
+            $anuncio->setImagem5($novoNomeArquivo.".".$extensao);
+            
+            }
+         }
+
         $anuncioRepository = new AnuncioRepository();
         //print_r($usuario);
         $atualizou = $anuncioRepository->update($anuncio);

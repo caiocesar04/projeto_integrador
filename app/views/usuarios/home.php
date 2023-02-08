@@ -42,7 +42,6 @@
 					<img class="second-slide slide" src="../../imgs/imagem2.png" alt="Second slide">
           			<div class="carousel-caption d-none d-md-block">			
                  		<h2>Quer vender algo? Anuncie aqui!</h2>
-                 		<p>Você pode anunciar seus produtos em nosso site sem gastar nada!</p>
                  		<p><a class="btn btn-outline-success my-2 my-sm-0" href="./AnuncioController.php?action=loadFormNew" role="button">Ver mais</a></p>
                   	</div>
 				</div>

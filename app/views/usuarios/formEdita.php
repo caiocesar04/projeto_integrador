@@ -53,8 +53,6 @@
 		<div class="mb-3">
 		<button type="submit" value="Atualizar" class="btn
     btn-primary">Atualizar</button>
-		<button type="reset" value="Limpar"class="btn
-    btn-primary">Limpar</button>
 		</div>
 	</form>		
 <?php endforeach; ?>

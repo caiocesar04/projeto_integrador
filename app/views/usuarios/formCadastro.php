@@ -10,7 +10,7 @@
 </head>    
 <?php include_once __DIR__ . "/../helpers/mensagem.php";?>
 <body>
-<form action="./UsuarioController.php?action=create" method="POST">
+<form enctype="multipart/form-data" action="./UsuarioController.php?action=create" method="POST">
 <div class="main-login">
     <div class="left-login">
         <a href="./UsuarioController.php?action=loadHome" class="left-login-image">
@@ -37,7 +37,6 @@
                         <button class="flip close"> ⇽ </button>
                         <div class="textfield"><label for="usuario">Nome de exbição</label><input type="text" name="nome" class="form-control"  placeholder="Nome" required></div>
                         <div class="textfield"><label>Data de Nascimento:</label><input type="date" name="data_nasc" class="form-control" required></div>
-                        <div class="textfield"><label>Foto de perfil:</label><input type="file" name="foto_perfil" class="form-control" ></div>
                         <button class="btn-login">Cadastre-se</button>
                     </div>
                 </div>

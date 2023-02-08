@@ -21,36 +21,37 @@ else{
 }
 ?>
 
-    <h1> Usuarios</h1>
+    <h1 style="color:white; text-align:center;" > Usuarios</h1>
     <ul>
       <table class = 'table table-hover-table-striped table-bordered'>
          <tr>
-         <th>Nome</th>
-         <th>Email</th>
-         <th>Data de Nascimento</th>
-         <th>foto de perfil</th>
-         <th>Sobre este Usuário:</th>
+         <th style="color:white;">Nome</th>
+         <th style="color:white;">Email</th>
+         <th style="color:white;">Data de Nascimento</th>
+         <th style="color:white;">foto de perfil</th>
+         <th style="color:white;">Sobre este Usuário:</th>
          </tr>
            <?php foreach($data['usuarios'] as $user): ?>
         
-                
+                  
             
                 
             
                  <tr>
-                 <td><?= $user['nome'] ?></td>
-                 <td><?= $user['email'] ?></td>
-                 <td><?= $user['data_nasc'] ?></td> 
-                 <td><img style="height: 50px; border-radius : 100%;" src="../../imgs/<?= $user['foto_perfil'] ?>"></img>
-                 <td><a  class="btn btn-success" href="./AnuncioController.php?action=findAnuncioByUserClick&id=<?= $user['id'] ?>">Anuncios</a>
-                 <a  class="btn btn-danger" href="./DenunciaController.php?action=findDenunciaUsuario&id=<?= $user['id'] ?>">Denuncias</a> 
-                 <a  class="btn btn-primary" href="./UsuarioController.php?action=InsertAdmByUserId&id=<?= $user['id'] ?>">Tornar Administrador</a>
-                 <a  class="btn btn-danger" href="./UsuarioController.php?action=Banir&id=<?= $user['id'] ?>">Banir</a>
+                 <td style="color:white;"><?= $user['nome'] ?></td>
+                 <td style="color:white;"><?= $user['email'] ?></td>
+                 <td style="color:white;"><?= $user['data_nasc'] ?></td> 
+                 <td ><img style="height: 50px; border-radius : 100%;" src="../../imgs/<?= $user['foto_perfil'] ?>"></img>
+                 <td><a  class="btn btn-outline-success my-2 my-sm-0-success my-2 my-sm-0" href="./AnuncioController.php?action=findAnuncioByUserClick&id=<?= $user['id'] ?>">Anuncios</a>
+                 <a  class="btn btn-outline-danger  my-2 my-sm-0-success my-2 my-sm-0" href="./DenunciaController.php?action=findDenunciaUsuario&id=<?= $user['id'] ?>">Denuncias</a> 
+                 <a  class="btn btn-outline-success my-2 my-sm-0-success my-2 my-sm-0" href="./UsuarioController.php?action=InsertAdmByUserId&id=<?= $user['id'] ?>">Tornar Administrador</a>
+                 <a  class="btn btn-outline-danger  my-2 my-sm-0-success my-2 my-sm-0" href="./UsuarioController.php?action=Banir&id=<?= $user['id'] ?>">Banir</a></td>
                 <?php endforeach; ?>
 
                 
     </ul>
-
+    <a  class="btn btn-outline-success my-2 my-sm-0" href="./UsuarioController.php?action=findUsuarioBan">Usuarios Banidos</a>
+    <a  class="btn btn-outline-success my-2 my-sm-0" href="./UsuarioController.php?action=findAdm">Administradores</a>
     <p>
     
     <?php

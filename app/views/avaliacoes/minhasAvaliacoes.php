@@ -31,12 +31,11 @@
           <tr>
           <td><?= $user['nota'] ?></td>
           <td><a class="btn btn-success" href="./AvaliacaoController.php?action=edit&id=<?= $user['id'] ?>">Editar</a></td>
-          <td><a class="btn btn-danger" href="javascript:confirmarExclusaoAvaliacaos('<?= $user['nota'] ?>', <?= $user['id'] ?>)">Excluir</a></td>
+          <td><a class="btn btn-danger" href="javascript:confirmarExclusaoAvaliacao('<?= $user['nota'] ?>', <?= $user['id'] ?>)">Excluir</a></td>
                        
         <?php endforeach; ?>
     </ul>
     <p>
-     <a class="btn btn-primary" href="./AvaliacaoController.php?action=loadFormNew"> Fazer uma nova avaliação</a> 
     <?php
 	include_once __DIR__ . "/../helpers/mensagem.php";
 	//$caminho = __DIR__ . "/../helpers/mensagem.php";

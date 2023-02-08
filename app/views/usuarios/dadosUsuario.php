@@ -22,26 +22,28 @@
    include_once __DIR__ . "/../helpers/menuHome.php";
  }
     ?>
-    <h1> Usuarios</h1>
+    <h1 style="text-align: center; color:white;"> Meus Dados </h1>
     <ul>
       <table class = 'table table-hover-table-striped table-bordered'>
          <tr>
-         <th>Nome</th>
-         <th>Email</th>
-         <th>Data de Nascimento</th>
-         <th>Foto de Perfil</th>
+         <th style="color:white;">Nome</th>
+         <th  style="color:white;">Email</th>
+         <th  style="color:white;" >Data de Nascimento</th>
+         <th  style="color:white;">Foto de Perfil</th>
+         <th  style="color:white;">Ações</th>
          </tr>
            <?php foreach($data['usuarios'] as $user): ?>
          
           
                  <tr>
                  
-                 <td><?= $user['nome'] ?></td>
-                 <td><?= $user['email'] ?></td>
-                 <td><?= $user['data_nasc'] ?></td>
-                 <td><img style="height: 50px; border-radius : 100%;" src="../../imgs/<?= $user['foto_perfil'] ?>"></img></td>          
-                 <td><a class="btn btn-success" href="./UsuarioController.php?action=edit&id=<?= $user['id'] ?>">Editar</a></td> 
-                 <td><a class="btn btn-danger" href="./UsuarioController.php?action=loadFormDelete&id=<?= $user['id'] ?>">Excluir</a></td>
+                 <td style="color:white;"><?= $user['nome'] ?></td>
+                 <td style="color:white;"><?= $user['email'] ?></td>
+                 <td style="color:white;"><?= $user['data_nasc'] ?></td>
+                 <td ><img style="height: 50px; border-radius : 100%;" src="../../imgs/<?= $user['foto_perfil'] ?>"></img>
+                 <a class="btn btn-outline-success my-2 my-sm-0" href="./UsuarioController.php?action=editfotoPerfil&id=<?= $user['id'] ?>">Alterar Foto</a> </td>          
+                 <td><a class="btn btn-outline-success my-2 my-sm-0" href="./UsuarioController.php?action=edit&id=<?= $user['id'] ?>">Editar</a> 
+                 <a class="btn btn-outline-danger my-2 my-sm-0" href="./UsuarioController.php?action=loadFormDelete&id=<?= $user['id'] ?>">Excluir</a></td>
                 <?php endforeach; ?>
 
                 

@@ -19,7 +19,7 @@
     ?>
 
         <div id="title">
-            <form class="card col-md-10 mx-auto col-lg-5 p-4 p-md-5" action="./AnuncioController.php?action=create" method="POST">
+            <form enctype="multipart/form-data" class="card col-md-10 mx-auto col-lg-5 p-4 p-md-5" action="./AnuncioController.php?action=create" method="POST">
                 <div class="card-header">
                     <h2>Anuncie um Produto</h2>
                 </div>
@@ -46,6 +46,22 @@
                     <div class="card-content-area">
                     <label>Imagem</label>
                     <input type="file" name="imagem" class="form-control" required>
+                    </div>
+                    <div class="card-content-area">
+                    <label>Imagem 2:</label>
+                    <input type="file" name="imagem2" class="form-control" required>
+                    </div>
+                    <div class="card-content-area">
+                    <label>Imagem 3:</label>
+                    <input type="file" name="imagem3" class="form-control" required>
+                    </div>
+                    <div class="card-content-area">
+                    <label>Imagem 4:</label>
+                    <input type="file" name="imagem4" class="form-control" required>
+                    </div>
+                    <div class="card-content-area">
+                    <label>Imagem 5:</label>
+                    <input type="file" name="imagem5" class="form-control" required>
                     </div>
                     <label>Descrição</label>
                     <input type="text" name="descricao" class="form-control" required>

@@ -1,4 +1,5 @@
 <?php
+@session_start();
 include_once __DIR__ . "/../helpers/mensagem.php";
 include_once __DIR__."../../../repository/CategoriaRepository.php";
 ?>
@@ -7,7 +8,7 @@ include_once __DIR__."../../../repository/CategoriaRepository.php";
 <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="../views/helpers/style-home.css">
 
-  <nav style="background-color: black;" class="navbar navbar-expand-lg navbar-dark">
+  <nav style="background-color: #363636;" class="navbar navbar-expand-lg navbar-dark">
    <div class="container-fluid">
    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -39,10 +40,8 @@ include_once __DIR__."../../../repository/CategoriaRepository.php";
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <a class="dropdown-item" href="./AnuncioController.php?action=loadFormNew">Anunciar um produto</a>
-          <a class="dropdown-item" href="./ImagemController.php?action=loadFormNew">Imagem</a>
           <a class="dropdown-item" href="./CategoriaController.php?action=findAll">Categorias</a>
           <a class="dropdown-item" href="./SugestaoController.php?action=findAll">Sugestões</a>
-          <a class="dropdown-item" href="./AnuncioController.php?action=loadFormNew">Mensagens</a>
           <a class="dropdown-item" href="./UsuarioController.php?action=findAll">Usuarios</a>
         </div>
       </li>

@@ -1,4 +1,5 @@
-<?php
+<?
+session_start();
 include_once __DIR__ . "/../helpers/mensagem.php";
 include_once __DIR__."../../../repository/CategoriaRepository.php";
 ?>

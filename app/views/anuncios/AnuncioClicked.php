@@ -23,21 +23,68 @@
   <ul>
       <td><table class = 'table table-hover-table-striped table-bordered'></td>
           <tr>
-          <th>Nome</th>
-          <th>Preço</th>
-          <th>Imagem</th>
-          <th>Informações</th>
-          <th>Nota</th>
-          <th>Entrar em contato</th>
+          <th style="color:white;">Nome</th>
+          <th style="color:white;">Preço</th>
+          <th style="color:white;">Descrição</th>
+          <th style="color:white;">Nota</th>
+          <th style="color:white;">Entrar em contato</th>
+          <th  style="color:white;">Ações</th>
           </tr>
     <tr>
-    <td><?= $data['anuncio']->getNome(); ?></td>
-    <td><?= $data['anuncio']->getPreco(); ?></td>
-	<td><img style="width:50px;" src="../../imgs/<?= $data['anuncio']->getImagem();?>"></img></td>
-    <td><?= $data['anuncio']->getDescricao(); ?></td>
-    <td><?= $data['anuncio']->nota; ?></td>
-    <td><a class="btn btn-primary" href="./AvaliacaoController.php?action=loadFormNew&id=<?= $data['anuncio']->getId(); ?>">Avaliar</a></td>
-    <td><a class="btn btn-danger" href="./DenunciaController.php?action=loadFormNew&id=<?= $data['anuncio']->getId(); ?>">Denunciar</a></td>
-</ul>
+    <td style="color:white;"><?= $data['anuncio']->getNome(); ?></td>
+    <td style="color:white;"><?= $data['anuncio']->getPreco(); ?> R$</td>
+    <td style="color:white;"><?= $data['anuncio']->getDescricao(); ?></td>
+    <td style="color:white;"><?= $data['anuncio']->nota; ?></td>
+    <td ><a class="btn btn-outline-success my-2 my-sm-0" href="./UsuarioController.php?action=findUsuarioByClick&id=<?= $data['anuncio']->usuarios_id; ?>">Entrar em contato</a></td>
+    <td><a class="btn btn-outline-success my-2 my-sm-0" href="./AvaliacaoController.php?action=loadFormNew&id=<?= $data['anuncio']->getId(); ?>">Avaliar</a>
+    <a class="btn btn-outline-danger my-2 my-sm-0" href="./ChatController.php?action=loadFormNew&id=90">Denunciar</a></td>
+
+          <div id="myCarousel" class="carousel slide" data-ride="carousel">
+		<ol class="carousel-indicators">
+			<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+			<li data-target="#myCarousel" data-slide-to="1"></li>
+			<li data-target="#myCarousel" data-slide-to="2"></li>
+            <li data-target="#myCarousel" data-slide-to="3"></li>
+            <li data-target="#myCarousel" data-slide-to="4"></li>
+		</ol>
+		<div class="carousel-inner" role="listbox">
+			<div class="item active">
+				<img class="first-slide slide"  src="../../imgs/<?= $data['anuncio']->getImagem();?>"></img>
+          			<div class="carousel-caption d-none d-md-block">
+                	</div>
+				</div>
+				<div class="item">
+                <img class="first-slide slide"  src="../../imgs/<?= $data['anuncio']->getImagem2();?>">
+          			<div class="carousel-caption d-none d-md-block">			
+                  	</div>
+				</div>
+                <div class="item">
+                <img class="first-slide slide" src="../../imgs/<?= $data['anuncio']->getImagem3();?>">
+          			<div class="carousel-caption d-none d-md-block">			
+                  	</div>
+				</div>
+                <div class="item">
+                <img class="first-slide slide" src="../../imgs/<?= $data['anuncio']->getImagem4();?>">
+          			<div class="carousel-caption d-none d-md-block">			
+                  	</div>
+				</div>
+				<div class="item">
+                <img class="first-slide slide" src="../../imgs/<?= $data['anuncio']->getImagem5();?>">
+					<div class="container">
+						</div>
+					</div>
+			</div>
+			<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+				<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+				<span class="sr-only">Previous</span>
+			</a>
+			<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+				<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+				<span class="sr-only">Next</span>
+			</a>
+		</div>
+	</div>
+    </ul>
+
 </body>
 </html>

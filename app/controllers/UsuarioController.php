@@ -71,8 +71,6 @@ class ControllerUsuario{
 		$usuario->setSenha($_POST["senha"]);
 		$usuario->setEmail($_POST["email"]);
         $usuario->setData_nasc($_POST["data_nasc"]);
-        $usuario->setFoto_Perfil($_POST["foto_perfil"]);
-        
         $usuarioRepository = new UsuarioRepository();
         $id = $usuarioRepository->create($usuario);
         //var_dump($id);
@@ -88,6 +86,65 @@ class ControllerUsuario{
 		}
         
     }
+    private function editfotoPerfil(){
+        session_start();
+
+        $idParam = $_GET['id'];
+        $usuarioRepository = new UsuarioRepository(); 
+        $usuario = $usuarioRepository->findUsuarioById($idParam);
+        $data['usuarios'][0] = $usuario;
+
+        if(isset($_SESSION["usuario"])){
+            $this->loadView("usuarios/formFotoPerfil.php", $data, @$msg);
+          }else{
+            $msg = "É necessário estar Logado!";
+            $this->loadView("usuarios/formLogin.php", $data, $msg);
+          }
+    }
+    private function InsertFotoPerfil(){
+
+        $usuario = new usuarioModel();
+        $usuario->setId($_GET["id"]);
+
+        if(isset($_FILES["foto_perfil"])){
+            $arquivo = $_FILES["foto_perfil"];
+
+            if($arquivo["error"])
+            die("Falha ao enviar arquivo!");
+
+            if($arquivo["size"] > 2097152)
+            die("Arquivo muito grande!! Max: 2MB");
+             
+            $pasta = "imgs/";
+            $nomeArquivo = md5($arquivo["name"].time());
+            $novoNomeArquivo = uniqid();
+            $extensao = explode(".",$arquivo["name"]);
+            $extensao = end($extensao);
+
+            if ($extensao != "jpg" && $extensao != "png" ) 
+                die("tipo de arquivo não aceito!");
+            $deu_certo = move_uploaded_file($arquivo["tmp_name"], $_SERVER["DOCUMENT_ROOT"]."/brashop/imgs/".$novoNomeArquivo.".".$extensao);
+            if($deu_certo){
+            $usuario->setFoto_perfil($novoNomeArquivo.".".$extensao);
+            
+            }
+         }
+      
+         $usuarioRepository = new UsuarioRepository();
+         //print_r($usuario);
+         $atualizou = $usuarioRepository->InsertFotoPerfil($usuario);
+         
+         if($atualizou){
+             $msg = "Registro atualizado com sucesso.";
+         }else{
+             $msg = "Erro ao atualizar o registro no banco de dados.";
+         }
+ 
+         $this->findUsuarioByIdLogged($msg);        
+     }
+        
+    
+
     private function InsertAdmByUserId(){
         session_start();
             if(!isset($_SESSION["usuario"])){
@@ -144,6 +201,61 @@ private function Banir(){
         }
 }
 }
+private function RetirarBanimento(){
+    session_start();
+    if(!isset($_SESSION["usuario"])){
+        return $this->loadView("usuarios/formLogin.php", @$data, @$msg);
+      }
+      if(isset($_SESSION["usuario"])){
+        if($_SESSION["usuario"]['is_adm'] == 0){
+            $msg = "Acesso restrito! Somente administradores tem direito a essa ação.";
+             return $this->loadView("usuarios/formLogin.php", @$data, $msg);
+        } 
+    }  
+
+        $idParam = $_GET['id'];
+        $usuarioRepository = new UsuarioRepository();    
+
+        $qt = $usuarioRepository->RetirarBanimento($idParam);
+        if($qt){
+            $msg = "Registro excluído com sucesso.";
+        }else{
+            $msg = "Erro ao excluir o registro no banco de dados.";
+        }
+        if(isset($_SESSION["usuario"])){
+        if($_SESSION["usuario"]['is_adm'] == 1){
+            $this->findAll($msg);
+        }
+}
+}
+
+private function RetirarAdm(){
+    session_start();
+    if(!isset($_SESSION["usuario"])){
+        return $this->loadView("usuarios/formLogin.php", @$data, @$msg);
+      }
+      if(isset($_SESSION["usuario"])){
+        if($_SESSION["usuario"]['is_adm'] == 0){
+            $msg = "Acesso restrito! Somente administradores tem direito a essa ação.";
+             return $this->loadView("usuarios/formLogin.php", @$data, $msg);
+        } 
+    }  
+
+        $idParam = $_GET['id'];
+        $usuarioRepository = new UsuarioRepository();    
+
+        $qt = $usuarioRepository->RetirarAdm($idParam);
+        if($qt){
+            $msg = "Registro excluído com sucesso.";
+        }else{
+            $msg = "Erro ao excluir o registro no banco de dados.";
+        }
+        if(isset($_SESSION["usuario"])){
+        if($_SESSION["usuario"]['is_adm'] == 1){
+            $this->findAll($msg);
+        }
+}
+}
 
     private function loadFormNew(){
         $this->loadView("usuarios/formCadastro.php", null);
@@ -151,7 +263,7 @@ private function Banir(){
      private function loadFormDelete(){
          session_start();
         if(isset($_SESSION["usuario"])){
-            $this->loadView("usuarios/DeleteUsuario.php", null);
+            $this->loadView("usuarios/deleteUsuario.php", null);
 		}else{
 			$msg = "É necessário estar logado";
             $this->loadView("usuarios/formLogin.php", @$data, $msg);
@@ -209,6 +321,8 @@ private function Banir(){
             } 
             }
 
+        
+
         $usuarioRepository = new UsuarioRepository();
 
         $usuarios = $usuarioRepository->findAll();
@@ -224,6 +338,66 @@ private function Banir(){
        
     }
 
+    private function findUsuarioBan(string $msg = null){
+        @session_start();
+
+
+    if(!isset($_SESSION["usuario"])){
+        return $this->loadView("usuarios/formLogin.php", @$data, @$msg);
+      }
+      if(isset($_SESSION["usuario"])){
+        if($_SESSION["usuario"]['is_adm'] == 0){
+            $msg = "Acesso restrito! Somente administradores tem direito a essa ação.";
+             return $this->loadView("usuarios/formLogin.php", @$data, $msg);
+        } 
+        }
+
+    
+
+    $usuarioRepository = new UsuarioRepository();
+
+    $usuarios = $usuarioRepository->findUsuarioBan();
+
+    $data['titulo'] = "listar usuarios";
+    $data['usuarios'] = $usuarios;
+    
+    if(isset($_SESSION["usuario"])){
+        if($_SESSION["usuario"]['is_adm'] == 1){
+            return $this->loadView("usuarios/listBanidos.php", @$data);
+        } 
+        }
+   
+}
+private function findAdm(string $msg = null){
+    @session_start();
+
+
+if(!isset($_SESSION["usuario"])){
+    return $this->loadView("usuarios/formLogin.php", @$data, @$msg);
+  }
+  if(isset($_SESSION["usuario"])){
+    if($_SESSION["usuario"]['is_adm'] == 0){
+        $msg = "Acesso restrito! Somente administradores tem direito a essa ação.";
+         return $this->loadView("usuarios/formLogin.php", @$data, $msg);
+    } 
+    }
+
+
+
+    $usuarioRepository = new UsuarioRepository();
+
+    $usuarios = $usuarioRepository->findAdm();
+
+    $data['titulo'] = "listar usuarios";
+    $data['usuarios'] = $usuarios;
+
+    if(isset($_SESSION["usuario"])){
+    if($_SESSION["usuario"]['is_adm'] == 1){
+        return $this->loadView("usuarios/listAdm.php", @$data);
+    } 
+    }
+
+}
     private function findUsuarioById(){
         $idParam = $_GET['id'];
 
@@ -265,7 +439,7 @@ private function Banir(){
                 @session_start();
                 $this->loadView("usuarios/homeAdm.php",@$data);
             }
-            if($usuario->Ban()){
+            elseif($usuario->Ban()){
                 @session_start();
                 echo "Você está banido!";
                 return $this->loadView("usuarios/FormLogin.php",@$data);
@@ -369,7 +543,7 @@ private function Banir(){
             if($_SESSION["usuario"]['id'] != $_GET['id']){
                 return $this->loadView("usuarios/formLogin.php", @$data, @$msg);
             }
-            if($_SESSION["usuario"]['senha'] != $_POST['senha']){
+            if(@$_SESSION["usuario"]['senha'] != @$_POST['senha']){
                 //echo "Senha incorreta!"
                 //return $this->findUsuarioByIdLogged(@$data, @$msg);
             }
@@ -418,7 +592,31 @@ private function Banir(){
 		$usuario->setSenha($_POST["senha"]);
 		$usuario->setEmail($_POST["email"]);
         $usuario->setData_nasc($_POST["data_nasc"]);
-        $usuario->setFoto_perfil($_POST["foto_perfil"]);
+
+        if(isset($_FILES["foto_perfil"])){
+            $arquivo = $_FILES["foto_perfil"];
+
+            if($arquivo["error"])
+            die("Falha ao enviar arquivo!");
+
+            if($arquivo["size"] > 2097152)
+            die("Arquivo muito grande!! Max: 2MB");
+             
+            $pasta = "imgs/";
+            $nomeArquivo = md5($arquivo["name"].time());
+            $novoNomeArquivo = uniqid();
+            $extensao = explode(".",$arquivo["name"]);
+            $extensao = end($extensao);
+
+            if ($extensao != "jpg" && $extensao != "png" ) 
+                die("tipo de arquivo não aceito!");
+            $deu_certo = move_uploaded_file($arquivo["tmp_name"], $_SERVER["DOCUMENT_ROOT"]."/brashop/imgs/".$novoNomeArquivo.".".$extensao);
+            if($deu_certo){
+            $usuario->setFoto_perfil($novoNomeArquivo.".".$extensao);
+            
+            }
+         }
+
 
         $usuarioRepository = new UsuarioRepository();
         //print_r($usuario);

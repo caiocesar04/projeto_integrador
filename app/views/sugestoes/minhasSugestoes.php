@@ -20,28 +20,28 @@ if(isset($_SESSION["usuario"])){
 ?>
 
 
-    <h1> Sugestões </h1>
+    <h1 style="color:white; text-align:center;"> Sugestões </h1>
     
     <ul>
       <td><table class = 'table table-hover-table-striped table-bordered'></td>
           <tr>
-          <th>#</th>
-          <th>Sugestão</th>
+          <th style="color:white">Sugestão</th>
+          <th style="color:white">Ações</th>
           </tr>
-        <?php foreach($data['sugestoes'] as $user): ?>
+        <?php foreach($data['sugestoes'] as $sugestao): ?>
               
           <tr>
-          <td><?= $user['id'] ?></td>
-          <td><?= $user['texto'] ?></td>
-          <td><a class="btn btn-success" href="./SugestaoController.php?action=edit&id=<?= $user['id'] ?>">Editar</a></td>
-          <td><a class="btn btn-danger" href="javascript:confirmarExclusaoSugestao('<?= $user['texto'] ?>', <?= $user['id'] ?>)">Excluir</a></td>
-                
+          <td style="color:white"><?= $sugestao['texto'] ?></td>
+          <td><a class="btn btn-outline-success my-2 my-sm-0" href="./SugestaoController.php?action=loadFormNew">Fazer uma nova sugestão</a>     
+          <a class="btn btn-outline-success my-2 my-sm-0" href="./SugestaoController.php?action=edit&id=<?= $sugestao['id'] ?>">Editar</a>
+          <a class="btn btn-outline-danger my-2 my-sm-0" href="javascript:confirmarExclusaoSugestao('<?= $sugestao['texto'] ?>', <?= $user['id'] ?>)">Excluir</a></td>
+            
                        
         <?php endforeach; ?>
     </ul>
 
     <p>
-     <a class="btn btn-primary" href="./SugestaoController.php?action=loadFormNew">Fazer uma nova sugestão</a> 
+     
     <?php
 	include_once __DIR__ . "/../helpers/mensagem.php";
 	//$caminho = __DIR__ . "/../helpers/mensagem.php";
