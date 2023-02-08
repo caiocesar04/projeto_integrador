@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 08-Fev-2023 às 03:24
+-- Tempo de geração: 08-Fev-2023 às 13:39
 -- Versão do servidor: 10.4.24-MariaDB
 -- versão do PHP: 8.1.6
 
@@ -32,6 +32,10 @@ CREATE TABLE `anuncios` (
   `nome` varchar(100) NOT NULL,
   `preco` float NOT NULL,
   `imagem` mediumtext NOT NULL,
+  `imagem2` varchar(500) NOT NULL,
+  `imagem3` varchar(500) NOT NULL,
+  `imagem4` varchar(500) NOT NULL,
+  `imagem5` varchar(500) NOT NULL,
   `descricao` text NOT NULL,
   `data_envio` timestamp NOT NULL DEFAULT current_timestamp(),
   `usuarios_id` int(11) NOT NULL,
@@ -43,11 +47,12 @@ CREATE TABLE `anuncios` (
 -- Extraindo dados da tabela `anuncios`
 --
 
-INSERT INTO `anuncios` (`id`, `nome`, `preco`, `imagem`, `descricao`, `data_envio`, `usuarios_id`, `categorias_id`, `avaliacoes_id`) VALUES
-(50, 'Playstation 4 (PS4)', 1499.99, 'ps4.png', '', '2023-02-07 07:09:36', 72, 0, 0),
-(51, 'jogo do batman', 70.55, 'batman.jpg', '', '2023-02-07 07:09:36', 73, 0, 0),
-(62, 'playstation 5', 4599.99, 'ps5.jpg', '', '2023-02-07 07:09:36', 74, 0, 0),
-(70, 'Livro Percy jackson', 100, 'percy jackson.jpg', 'Livro do Percy Jackson o ladrão de raios', '2023-02-07 07:09:36', 70, 5, 0);
+INSERT INTO `anuncios` (`id`, `nome`, `preco`, `imagem`, `imagem2`, `imagem3`, `imagem4`, `imagem5`, `descricao`, `data_envio`, `usuarios_id`, `categorias_id`, `avaliacoes_id`) VALUES
+(50, 'Playstation 4 (PS4)', 1499.99, 'ps4.png', '', '', '', '', '', '2023-02-07 07:09:36', 72, 0, 0),
+(51, 'jogo do batman', 70.55, 'batman.jpg', '', '', '', '', '', '2023-02-07 07:09:36', 73, 0, 0),
+(62, 'playstation 5', 4599.99, 'ps5.jpg', '', '', '', '', '', '2023-02-07 07:09:36', 74, 0, 0),
+(70, 'Livro Percy jackson', 100, 'percy jackson.jpg', '', '', '', '', 'Livro do Percy Jackson o ladrão de raios', '2023-02-07 07:09:36', 70, 5, 0),
+(82, 'PS4', 1500, '63e3795fb7305.jpg', '63e3795fbb83d.png', '63e3795fbc28e.png', '63e3795fbc673.png', '63e3795fbc993.png', 'usado', '2023-02-08 10:28:47', 70, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -72,7 +77,8 @@ INSERT INTO `avaliacoes` (`id`, `nota`, `usuarios_id`, `anuncios_id`) VALUES
 (24, 2, 73, 68),
 (25, 0, 72, 51),
 (26, 0, 72, 51),
-(27, 4, 71, 51);
+(27, 4, 71, 51),
+(28, 5, 70, 50);
 
 -- --------------------------------------------------------
 
@@ -132,12 +138,17 @@ INSERT INTO `chat` (`id`, `mensagem`, `usuarios_id`, `usuario2_id`) VALUES
 CREATE TABLE `denuncias` (
   `id` int(11) NOT NULL,
   `motivo` text NOT NULL,
-  `status` int(11) NOT NULL,
-  `usuarios_id` int(11) NOT NULL,
-  `usuario_denunciado_id` int(11) NOT NULL,
   `anuncios_id` int(11) NOT NULL,
-  `comentarios_id` int(11) NOT NULL
+  `usuario_denunciado_id` int(11) NOT NULL,
+  `usuarios_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `denuncias`
+--
+
+INSERT INTO `denuncias` (`id`, `motivo`, `anuncios_id`, `usuario_denunciado_id`, `usuarios_id`) VALUES
+(8, 'propaganda enganosa', 70, 0, 70);
 
 -- --------------------------------------------------------
 
@@ -199,6 +210,7 @@ CREATE TABLE `usuarios` (
   `senha` varchar(255) NOT NULL,
   `data_nasc` date NOT NULL,
   `foto_perfil` varchar(255) NOT NULL,
+  `isAdmPrincipal` bit(1) NOT NULL,
   `isadm` bit(1) NOT NULL,
   `ban` bit(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -207,12 +219,13 @@ CREATE TABLE `usuarios` (
 -- Extraindo dados da tabela `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `nome`, `email`, `senha`, `data_nasc`, `foto_perfil`, `isadm`, `ban`) VALUES
-(70, 'Caio', 'caio@gmail.com', 'abc123', '2004-04-20', 'Caio.jpg', b'1', b'0'),
-(71, 'Pedro Henrique ', 'pedro@gmail.com', 'pedro', '2004-10-22', '0', b'1', b'0'),
-(72, 'Luis Coradi', 'luis@gmail.com', 'luis', '2003-03-27', '', b'0', b'0'),
-(73, 'Rubens', 'rubens@gmail.com', 'rubens', '2002-12-05', '0', b'1', b'1'),
-(85, 'Caio Cesar', 'cai11o@gmail.com', 'abc123222222', '2009-01-22', 'rubens junior.png', b'0', b'0');
+INSERT INTO `usuarios` (`id`, `nome`, `email`, `senha`, `data_nasc`, `foto_perfil`, `isAdmPrincipal`, `isadm`, `ban`) VALUES
+(70, 'Caio', 'caio@gmail.com', 'abc123', '2004-04-20', 'Caio.jpg', b'0', b'1', b'0'),
+(71, 'Pedro Henrique ', 'pedro@gmail.com', 'pedro', '2004-10-22', '0', b'0', b'1', b'0'),
+(72, 'Luis Coradi', 'luis@gmail.com', 'luis', '2003-03-27', '63e33b1e92714.png', b'0', b'1', b'0'),
+(73, 'Rubens', 'rubens@gmail.com', 'rubens', '2002-12-05', '0', b'0', b'1', b'0'),
+(89, 'caio', 'caioteste@gmail.com', 'teste', '2004-04-20', '', b'0', b'0', b'0'),
+(90, 'Brashop', 'brashop@gmail.com', 'brashop2023', '2022-07-07', '63e36cef71ac1.png', b'1', b'0', b'0');
 
 --
 -- Índices para tabelas despejadas
@@ -249,7 +262,7 @@ ALTER TABLE `chat`
 ALTER TABLE `denuncias`
   ADD PRIMARY KEY (`id`),
   ADD KEY `fk_usuarios_id` (`usuarios_id`),
-  ADD KEY `fk_denunciados_id` (`usuario_denunciado_id`);
+  ADD KEY `fk_anuncio_id` (`anuncios_id`);
 
 --
 -- Índices para tabela `imagens`
@@ -287,13 +300,13 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de tabela `anuncios`
 --
 ALTER TABLE `anuncios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
 
 --
 -- AUTO_INCREMENT de tabela `avaliacoes`
 --
 ALTER TABLE `avaliacoes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT de tabela `categorias`
@@ -311,7 +324,7 @@ ALTER TABLE `chat`
 -- AUTO_INCREMENT de tabela `denuncias`
 --
 ALTER TABLE `denuncias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de tabela `imagens`
@@ -335,17 +348,11 @@ ALTER TABLE `sugestoes`
 -- AUTO_INCREMENT de tabela `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
 
 --
 -- Restrições para despejos de tabelas
 --
-
---
--- Limitadores para a tabela `denuncias`
---
-ALTER TABLE `denuncias`
-  ADD CONSTRAINT `fk_denunciados_id` FOREIGN KEY (`usuario_denunciado_id`) REFERENCES `usuarios` (`id`);
 
 --
 -- Limitadores para a tabela `imagens`
