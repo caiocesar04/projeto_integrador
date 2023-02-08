@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 06-Fev-2023 às 12:16
+-- Tempo de geração: 08-Fev-2023 às 03:24
 -- Versão do servidor: 10.4.24-MariaDB
 -- versão do PHP: 8.1.6
 
@@ -33,6 +33,7 @@ CREATE TABLE `anuncios` (
   `preco` float NOT NULL,
   `imagem` mediumtext NOT NULL,
   `descricao` text NOT NULL,
+  `data_envio` timestamp NOT NULL DEFAULT current_timestamp(),
   `usuarios_id` int(11) NOT NULL,
   `categorias_id` int(11) NOT NULL,
   `avaliacoes_id` int(11) NOT NULL
@@ -42,11 +43,11 @@ CREATE TABLE `anuncios` (
 -- Extraindo dados da tabela `anuncios`
 --
 
-INSERT INTO `anuncios` (`id`, `nome`, `preco`, `imagem`, `descricao`, `usuarios_id`, `categorias_id`, `avaliacoes_id`) VALUES
-(50, 'Playstation 4 (PS4)', 1499.99, 'ps4.png', '', 72, 0, 0),
-(51, 'jogo do batman', 70.55, 'batman.jpg', '', 73, 0, 0),
-(62, 'playstation 5', 4599.99, 'ps5.jpg', '', 74, 0, 0),
-(70, 'Livro Percy jackson', 100, 'percy jackson.jpg', 'livro bem conservado', 70, 5, 0);
+INSERT INTO `anuncios` (`id`, `nome`, `preco`, `imagem`, `descricao`, `data_envio`, `usuarios_id`, `categorias_id`, `avaliacoes_id`) VALUES
+(50, 'Playstation 4 (PS4)', 1499.99, 'ps4.png', '', '2023-02-07 07:09:36', 72, 0, 0),
+(51, 'jogo do batman', 70.55, 'batman.jpg', '', '2023-02-07 07:09:36', 73, 0, 0),
+(62, 'playstation 5', 4599.99, 'ps5.jpg', '', '2023-02-07 07:09:36', 74, 0, 0),
+(70, 'Livro Percy jackson', 100, 'percy jackson.jpg', 'Livro do Percy Jackson o ladrão de raios', '2023-02-07 07:09:36', 70, 5, 0);
 
 -- --------------------------------------------------------
 
@@ -208,9 +209,9 @@ CREATE TABLE `usuarios` (
 
 INSERT INTO `usuarios` (`id`, `nome`, `email`, `senha`, `data_nasc`, `foto_perfil`, `isadm`, `ban`) VALUES
 (70, 'Caio', 'caio@gmail.com', 'abc123', '2004-04-20', 'Caio.jpg', b'1', b'0'),
-(71, 'Pedro Henrique ', 'pedro@gmail.com', 'pedro', '2004-10-22', '0', b'0', b'0'),
+(71, 'Pedro Henrique ', 'pedro@gmail.com', 'pedro', '2004-10-22', '0', b'1', b'0'),
 (72, 'Luis Coradi', 'luis@gmail.com', 'luis', '2003-03-27', '', b'0', b'0'),
-(73, 'Rubens', 'rubens@gmail.com', 'rubens', '2002-12-05', '0', b'0', b'1'),
+(73, 'Rubens', 'rubens@gmail.com', 'rubens', '2002-12-05', '0', b'1', b'1'),
 (85, 'Caio Cesar', 'cai11o@gmail.com', 'abc123222222', '2009-01-22', 'rubens junior.png', b'0', b'0');
 
 --
@@ -286,7 +287,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de tabela `anuncios`
 --
 ALTER TABLE `anuncios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
 
 --
 -- AUTO_INCREMENT de tabela `avaliacoes`
