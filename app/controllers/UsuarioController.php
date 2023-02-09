@@ -68,7 +68,7 @@ class ControllerUsuario{
         // $usuario->setData_nasc("asd@asd");
 
 		$usuario->setNome($_POST["nome"]);
-		md5($usuario->setSenha($_POST["senha"]));
+		$usuario->setSenha(md5($_POST["senha"]));
 		$usuario->setEmail($_POST["email"]);
         $usuario->setData_nasc($_POST["data_nasc"]);
         $usuario->setCPF($_POST["CPF"]);
@@ -476,7 +476,7 @@ if(!isset($_SESSION["usuario"])){
 
         $usuario = new usuarioModel();
 		
-		@$usuario->setSenha($_POST["senha"]);
+		@$usuario->setSenha(md5($_POST["senha"]));
 		@$usuario->setEmail($_POST["email"]);
         
         $usuarioRepository = new UsuarioRepository();
@@ -487,21 +487,23 @@ if(!isset($_SESSION["usuario"])){
 
         
         if($usuario){
+            @session_start();
+            $_SESSION['usuario'] = $usuario->getAll();
             if($usuario->isAdm()){
-                @session_start();
+               
                 $this->loadView("usuarios/homeAdm.php",@$data);
             }
             elseif($usuario->Ban()){
-                @session_start();
+               
                 echo "Você está banido!";
                 return $this->loadView("usuarios/FormLogin.php",@$data);
             }
             else{
-                @session_start();
+               
                 $this->loadView("usuarios/homeLogin.php",@$data);
                 echo ("<h1><font> Bem Vindo  ".$usuario->getNome(@$_GET["nome"])."!</font>");
             }
-            $_SESSION['usuario'] = $usuario->getAll();
+            
 		}else{
 			$msg = "Erro ao Logar! verifique se seu email e senha estão corretos.";
             $this->loadView("usuarios/formLogin.php", @$data, $msg);
@@ -649,7 +651,7 @@ if(!isset($_SESSION["usuario"])){
 
 		$usuario->setId($_GET["id"]);
 		$usuario->setNome($_POST["nome"]);
-		$usuario->setSenha($_POST["senha"]);
+		$usuario->setSenha (md5($_POST["senha"]));
 		$usuario->setEmail($_POST["email"]);
         $usuario->setData_nasc($_POST["data_nasc"]);
 

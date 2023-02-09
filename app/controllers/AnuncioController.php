@@ -174,12 +174,11 @@ class ControllerAnuncio{
 
     private function findAnuncioByUserClick(){  
         session_start();
-        $nomeParam = @$_GET['usuarios_id'];
+        $nomeParam = @$_GET['id'];
         $anuncioRepository = new AnuncioRepository();
         $anuncios = $anuncioRepository->findAnuncioByUserClick($nomeParam);
         $data['titulo'] = "listar anuncios";
         $data['anuncios'] = $anuncios;
-        
         if(isset($_SESSION["usuario"])){
             $this->loadView("anuncios/listAnunciosAdm.php", $data, @$msg);
           }else{
