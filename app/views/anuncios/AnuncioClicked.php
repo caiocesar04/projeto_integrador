@@ -37,7 +37,7 @@
     <td style="color:white;"><?= $data['anuncio']->nota; ?></td>
     <td ><a class="btn btn-outline-success my-2 my-sm-0" href="./UsuarioController.php?action=findUsuarioByClick&id=<?= $data['anuncio']->usuarios_id; ?>">Entrar em contato</a></td>
     <td><a class="btn btn-outline-success my-2 my-sm-0" href="./AvaliacaoController.php?action=loadFormNew&id=<?= $data['anuncio']->getId(); ?>">Avaliar</a>
-    <a class="btn btn-outline-danger my-2 my-sm-0" href="./ChatController.php?action=loadFormNew&id=90">Denunciar</a></td>
+    <a class="btn btn-outline-danger my-2 my-sm-0" href="./ChatController.php?action=loadFormNew&id=99">Denunciar</a></td>
 
           <div id="myCarousel" class="carousel slide" data-ride="carousel">
 		<ol class="carousel-indicators">
