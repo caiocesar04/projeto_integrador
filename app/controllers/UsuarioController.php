@@ -588,7 +588,7 @@ if(!isset($_SESSION["usuario"])){
     }
     }
     private function deleteUsuarioById(){
-       // $usuario->setSenha($_POST["senha"]);
+        // $usuario->setSenha($_POST["senha"]);
         @session_start();
         if(!isset($_SESSION["usuario"])){
             return $this->loadView("usuarios/formLogin.php", @$data, @$msg);
@@ -647,6 +647,20 @@ if(!isset($_SESSION["usuario"])){
     }
 
     private function update(){
+          // $usuario->setSenha($_POST["senha"]);
+          @session_start();
+          if(!isset($_SESSION["usuario"])){
+              return $this->loadView("usuarios/formLogin.php", @$data, @$msg);
+            }
+            if(isset($_SESSION["usuario"])){
+              if($_SESSION["usuario"]['id'] != $_GET['id']){
+                  return $this->loadView("usuarios/formLogin.php", @$data, @$msg);
+              }
+              if(@$_SESSION["usuario"]['senha'] != @$_POST['confirmar_senha']){
+                  //echo "Senha incorreta!"
+                  //return $this->findUsuarioByIdLogged(@$data, @$msg);
+              }
+            }
         $usuario = new UsuarioModel();
 
 		$usuario->setId($_GET["id"]);
@@ -654,6 +668,8 @@ if(!isset($_SESSION["usuario"])){
 		$usuario->setSenha (md5($_POST["senha"]));
 		$usuario->setEmail($_POST["email"]);
         $usuario->setData_nasc($_POST["data_nasc"]);
+        
+
 
         if(isset($_FILES["foto_perfil"])){
             $arquivo = $_FILES["foto_perfil"];
