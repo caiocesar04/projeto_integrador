@@ -26,7 +26,7 @@
                             <div class="textfield"><label for="usuario">Insira seu e-mail</label><input type="email" name="email" class="form-control" placeholder="E-mail" required></div>
                             <div class="textfield"><label for="usuario">Insira sua senha</label><input type="password"   name="senha" class="form-control" placeholder="Senha" required></div>
                             <div class="textfield"><label for="usuario">Confirme sua Senha</label><input type="password" name="confirmar_senha" class="form-control" placeholder="Senha" required></div>
-                            <div class ="textfield"><label><input type="checkbox" required><a>Termos de Uso (Obrigatório)</a><a style = "color: white;" href="https://docs.google.com/document/d/1tOZpVVdvuIhEC8rYDoAqA9qb1JGSicMKmcnq89RjVfE/edit?usp=sharing">Leia mais</a></label></div>    
+                            <div class ="textfield"><label><input type="checkbox" required><a>Termos de Uso (Obrigatório)</a> <a style = "color: white;" href="https://docs.google.com/document/d/1tOZpVVdvuIhEC8rYDoAqA9qb1JGSicMKmcnq89RjVfE/edit?usp=sharing">Leia mais</a></label></div>    
                             <button class="btn-login flip">Continuar</button>
                     </div>
                 </div>
