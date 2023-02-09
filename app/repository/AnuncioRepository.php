@@ -121,11 +121,11 @@
             return $result;
         }
 
-        public function findAnuncioByUserClick(): array {
+        public function findAnuncioByUserClick($usuario_id): array {
             @session_start();
             $query = "SELECT * FROM anuncios WHERE usuarios_id = :usuarios_id";
             $prepare = $this->conn->prepare($query);
-            $prepare->bindValue(':usuarios_id',@$usuario_id);
+            $prepare->bindValue(':usuarios_id',$usuario_id);
             $prepare->execute();
             $result = $prepare->fetchALL(PDO::FETCH_ASSOC);
             return $result;
