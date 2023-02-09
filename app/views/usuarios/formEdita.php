@@ -45,7 +45,10 @@
 	<input style="background-color:black; width:50%; margin-left:25%;" type="date" name="data_nasc" class="form-control" value="<?= $usuario->getData_nasc(); ?>">
 	</div>
 
-	
+	<div class="mb-3">
+	<label style="color:white; width:50%; margin-left:25%;">Digite sua Senha para  confirmar a edição dos dados:</label>
+	<input style="background-color:black; width:50%; margin-left:25%;" type="password" name="confirmar_senha" class="form-control">
+	</div>
 
 		<div class="mb-3">
 	<button style="width:50%; margin-left:25%;" type="submit" value="Atualizar" class="
