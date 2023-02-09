@@ -19,17 +19,17 @@
     ?>
 
         <div id="title">
-            <form class="card col-md-10 mx-auto col-lg-5 p-4 p-md-5" action="./UsuarioController.php?action=deleteUsuarioById&id=(<?= $_SESSION['usuario']['id'] ?>)" method="POST">
-                <div class="card-header">
-                    <h2>Confirmar Exclusão de Conta</h2>
+            <form  action="./UsuarioController.php?action=deleteUsuarioById&id=<?= $_SESSION['usuario']['id'] ?>" method="POST">
+                <div >
+                    <h2 style="color:white; text-align:center">Confirmar Exclusão de Conta</h2>
                 </div>
-                <div class="card-content">
-                    <div class="card-content-area">
-                    <label>Senha</label>
-                    <input type="password" name="senha" class="form-control" required>
+                <div>
+                    <div>
+                    <label style="color:white; width:50%; margin-left:25%;" > Digite sua Senha</label>
+                    <input style="color:white; background-color:black; width:50%; margin-left:25%;" type="password" name="senha" class="form-control" required>
                     </div>
-                <div class="card-footer">
-                <button type="submit" value="enviar" href="" name="enviar" class="btn btn-primary">Exlcuir</button>
+                <div>
+                <button style="width:50%; margin-left:25%;"  type="submit" value="enviar" href="" name="enviar" class="btn btn-outline-success my-2 my-sm-0">Excluir</button>
                 </div>
             </form>
         </div>
