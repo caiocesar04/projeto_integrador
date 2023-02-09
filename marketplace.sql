@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 08-Fev-2023 às 18:33
+-- Tempo de geração: 08-Fev-2023 às 20:27
 -- Versão do servidor: 10.4.24-MariaDB
 -- versão do PHP: 8.1.6
 
@@ -48,11 +48,9 @@ CREATE TABLE `anuncios` (
 --
 
 INSERT INTO `anuncios` (`id`, `nome`, `preco`, `imagem`, `imagem2`, `imagem3`, `imagem4`, `imagem5`, `descricao`, `data_envio`, `usuarios_id`, `categorias_id`, `avaliacoes_id`) VALUES
-(50, 'Playstation 4 (PS4)', 1499.99, 'ps4.png', '', '', '', '', '', '2023-02-07 07:09:36', 72, 0, 0),
-(51, 'jogo do batman', 70.55, 'batman.jpg', '', '', '', '', '', '2023-02-07 07:09:36', 73, 0, 0),
-(62, 'playstation 5', 4599.99, 'ps5.jpg', '', '', '', '', '', '2023-02-07 07:09:36', 74, 0, 0),
-(70, 'Livro Percy jackson', 100, 'percy jackson.jpg', '', '', '', '', 'Livro do Percy Jackson o ladrão de raios', '2023-02-07 07:09:36', 70, 5, 0),
-(82, 'PS4', 1500, '63e3a96640a05.png', '63e3a96641603.png', '63e3a96641e39.png', '63e3a966423e3.png', '63e3a96642c36.png', 'usado', '2023-02-08 10:28:47', 70, 0, 0);
+(84, 'PS4', 1499, '63e3f61dc75b3.png', '63e3f61dc861c.png', '63e3f61dc8c20.jpg', '63e3f61dc8fd3.png', '63e3f61dc937d.jpg', 'Playstation 4 slim conservado', '2023-02-08 19:21:01', 100, 0, 0),
+(85, 'Livro Percy jackson', 70, '63e3f668b24f1.jpg', '63e3f668b28ed.jpg', '63e3f668b2f8b.png', '63e3f668b33c7.jpg', '63e3f668b38c0.png', 'livro bem conservado', '2023-02-08 19:22:16', 102, 0, 0),
+(86, 'PS5', 3900, '63e3f6d1640ca.jpg', '63e3f6d1645a9.png', '63e3f6d1648b9.jpg', '63e3f6d164bac.jpg', '63e3f6d16531f.jpg', 'Vendo Play 5 + chapeu do kiko + jogo do Batman + Livro', '2023-02-08 19:24:01', 101, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -177,17 +175,11 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `nome`, `email`, `senha`, `data_nasc`, `CPF`, `foto_perfil`, `isadm`, `ban`) VALUES
-(70, 'Caio', 'caio@gmail.com', 'abc123', '2004-04-20', 0, 'Caio.jpg', b'1', b'0'),
-(71, 'Pedro Henrique ', 'pedro@gmail.com', 'pedro', '2004-10-22', 0, 'sem_foto.png', b'1', b'0'),
-(72, 'Luis Coradi', 'luis12@gmail.com', 'luis', '2003-03-27', 0, 'sem_foto.png', b'1', b'0'),
-(73, 'Rubens', 'rubens@gmail.com', 'rubens', '2002-12-05', 0, 'sem_foto.png', b'1', b'0'),
-(89, 'caio', 'caioteste@gmail.com', 'teste', '2004-04-20', 0, 'sem_foto.png', b'0', b'0'),
-(90, 'Brashop', 'brashop@gmail.com', 'brashop2023', '2022-07-07', 0, '63e36cef71ac1.png', b'0', b'0'),
-(92, 'caio', 'caio123@gmail.com', '123', '3000-02-23', 0, 'sem_foto.png', b'0', b'0'),
-(93, '433', 'caio43@gmail.com', '43', '2000-02-20', 0, 'sem_foto.png', b'0', b'0'),
-(94, '1231241', 'caio123412@gmail.com', 'teste', '1111-02-21', 2147483647, 'sem_foto.png', b'0', b'0'),
-(96, '121124124', 'luis12241@gmail.com', '12', '0412-12-04', 2147483647, 'sem_foto.png', b'0', b'0'),
-(97, '1212412', 'eumesmo@gmail.com', 'eumesmo', '2009-02-14', 2147483647, 'sem_foto.png', b'0', b'0');
+(99, 'Brashop', 'brashop@gmail.com', 'c3d74d44dea8871ca8a4ad8e6ce44733', '2022-07-20', 2147483647, 'sem_foto.png', b'1', b'0'),
+(100, 'Caio Cesar', 'caio@gmail.com', 'c2c9a05c689cb3e5f2f52563957ff1b8', '2004-04-20', 2147483647, '63e3f5b71619d.jpg', b'1', b'0'),
+(101, 'Pedro Henrique ', 'pedro@gmail.com', 'c6cc8094c2dc07b700ffcc36d64e2138', '2004-10-22', 2147483647, 'sem_foto.png', b'1', b'0'),
+(102, 'Luis Coradi', 'luis@gmail.com', '502ff82f7f1f8218dd41201fe4353687', '2003-03-21', 2147483647, 'sem_foto.png', b'0', b'0'),
+(103, 'Rubens', 'rubens@gmail.com', 'ccf66f9fb9e5d2ccda26305ecab5455e', '2002-12-06', 2147483647, 'sem_foto.png', b'0', b'0');
 
 --
 -- Índices para tabelas despejadas
@@ -239,7 +231,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de tabela `anuncios`
 --
 ALTER TABLE `anuncios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
 
 --
 -- AUTO_INCREMENT de tabela `avaliacoes`
@@ -269,7 +261,7 @@ ALTER TABLE `sugestoes`
 -- AUTO_INCREMENT de tabela `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=104;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
