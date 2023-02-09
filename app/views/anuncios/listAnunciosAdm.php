@@ -18,25 +18,24 @@ if(isset($_SESSION["usuario"])){
 }
 ?>
 
-    <h1> Anuncios </h1>
+    <h1 style="color:white; text-align:center;"> Anuncios </h1>
     
     <ul>
       <td><table class = 'table table-hover-table-striped table-bordered'></td>
           <tr>
-          <th>Nome</th>
-          <th>Preço</th>
-          <th>Descricao<th>        
-          <th>Ações</th>
+          <th style="color:white">Nome</th>
+          <th style="color:white">Preço</th>
+          <th style="color:white">Descricao<th>        
+          <th style="color:white">Ações</th>
           </tr>
         <?php foreach($data['anuncios'] as $user): ?>
               
           <tr>
           
-          <td><?= $user['nome'] ?></td>
-          <td><?= $user['preco'] ?></td>
-          <td><?= $user['descricao'] ?></td>
-          <td><img style="width:50px;" src="../../imgs/<?=$user['imagem'];?>"></img></td>
-          <td><a class="btn btn-danger" href="./DenunciaController.php?action=findDenunciaAnuncio&id=('<?= $user['id'] ?>)">Denuncias</a>
+          <td style="color:white"><?= $user['nome'] ?></td>
+          <td style="color:white"><?= $user['preco'] ?></td>
+          <td style="color:white"><?= $user['descricao'] ?></td>
+          <td style="color:white"><img style="width:50px;" src="../../imgs/<?=$user['imagem'];?>"></img></td>
           <td><a class="btn btn-danger" href="javascript:confirmarExclusaoAnuncio('<?= $user['nome'] ?>', <?= $user['id'] ?>)">Excluir</a></td>
                 
                        
