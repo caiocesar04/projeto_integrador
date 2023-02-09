@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 08-Fev-2023 às 13:39
+-- Tempo de geração: 08-Fev-2023 às 18:33
 -- Versão do servidor: 10.4.24-MariaDB
 -- versão do PHP: 8.1.6
 
@@ -52,7 +52,7 @@ INSERT INTO `anuncios` (`id`, `nome`, `preco`, `imagem`, `imagem2`, `imagem3`, `
 (51, 'jogo do batman', 70.55, 'batman.jpg', '', '', '', '', '', '2023-02-07 07:09:36', 73, 0, 0),
 (62, 'playstation 5', 4599.99, 'ps5.jpg', '', '', '', '', '', '2023-02-07 07:09:36', 74, 0, 0),
 (70, 'Livro Percy jackson', 100, 'percy jackson.jpg', '', '', '', '', 'Livro do Percy Jackson o ladrão de raios', '2023-02-07 07:09:36', 70, 5, 0),
-(82, 'PS4', 1500, '63e3795fb7305.jpg', '63e3795fbb83d.png', '63e3795fbc28e.png', '63e3795fbc673.png', '63e3795fbc993.png', 'usado', '2023-02-08 10:28:47', 70, 0, 0);
+(82, 'PS4', 1500, '63e3a96640a05.png', '63e3a96641603.png', '63e3a96641e39.png', '63e3a966423e3.png', '63e3a96642c36.png', 'usado', '2023-02-08 10:28:47', 70, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -78,7 +78,8 @@ INSERT INTO `avaliacoes` (`id`, `nota`, `usuarios_id`, `anuncios_id`) VALUES
 (25, 0, 72, 51),
 (26, 0, 72, 51),
 (27, 4, 71, 51),
-(28, 5, 70, 50);
+(28, 5, 70, 50),
+(35, 5, 70, 83);
 
 -- --------------------------------------------------------
 
@@ -127,55 +128,10 @@ INSERT INTO `chat` (`id`, `mensagem`, `usuarios_id`, `usuario2_id`) VALUES
 (121, 'to tranquilo e você?', 73, 70),
 (122, 'Olá', 72, 73),
 (123, 'oi', 70, 72),
-(124, 'quanto é que tá esse jogo do batman?', 70, 73);
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `denuncias`
---
-
-CREATE TABLE `denuncias` (
-  `id` int(11) NOT NULL,
-  `motivo` text NOT NULL,
-  `anuncios_id` int(11) NOT NULL,
-  `usuario_denunciado_id` int(11) NOT NULL,
-  `usuarios_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Extraindo dados da tabela `denuncias`
---
-
-INSERT INTO `denuncias` (`id`, `motivo`, `anuncios_id`, `usuario_denunciado_id`, `usuarios_id`) VALUES
-(8, 'propaganda enganosa', 70, 0, 70);
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `imagens`
---
-
-CREATE TABLE `imagens` (
-  `id` int(11) NOT NULL,
-  `path` varchar(100) NOT NULL,
-  `data_upload` datetime NOT NULL DEFAULT current_timestamp(),
-  `usuarios_id` int(11) NOT NULL,
-  `anuncios_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `notificacao`
---
-
-CREATE TABLE `notificacao` (
-  `id` int(11) NOT NULL,
-  `ususarios_id` int(11) NOT NULL,
-  `texto` varchar(255) NOT NULL,
-  `link` varchar(500) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+(124, 'quanto é que tá esse jogo do batman?', 70, 73),
+(125, 'ih', 72, 73),
+(138, 'o @Caioteste me enganou!', 97, 90),
+(139, 'seu golpista!', 97, 89);
 
 -- --------------------------------------------------------
 
@@ -195,7 +151,8 @@ CREATE TABLE `sugestoes` (
 
 INSERT INTO `sugestoes` (`id`, `texto`, `usuarios_id`) VALUES
 (16, 'Precisam melhorar o Front-end hj', 0),
-(17, 'poderiam implementar um sistema de notificação', 70);
+(17, 'poderiam implementar um sistema de notificação', 70),
+(18, 'Precisam melhorar o Front-end', 72);
 
 -- --------------------------------------------------------
 
@@ -209,8 +166,8 @@ CREATE TABLE `usuarios` (
   `email` varchar(255) NOT NULL,
   `senha` varchar(255) NOT NULL,
   `data_nasc` date NOT NULL,
+  `CPF` int(11) NOT NULL,
   `foto_perfil` varchar(255) NOT NULL,
-  `isAdmPrincipal` bit(1) NOT NULL,
   `isadm` bit(1) NOT NULL,
   `ban` bit(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -219,13 +176,18 @@ CREATE TABLE `usuarios` (
 -- Extraindo dados da tabela `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `nome`, `email`, `senha`, `data_nasc`, `foto_perfil`, `isAdmPrincipal`, `isadm`, `ban`) VALUES
-(70, 'Caio', 'caio@gmail.com', 'abc123', '2004-04-20', 'Caio.jpg', b'0', b'1', b'0'),
-(71, 'Pedro Henrique ', 'pedro@gmail.com', 'pedro', '2004-10-22', '0', b'0', b'1', b'0'),
-(72, 'Luis Coradi', 'luis@gmail.com', 'luis', '2003-03-27', '63e33b1e92714.png', b'0', b'1', b'0'),
-(73, 'Rubens', 'rubens@gmail.com', 'rubens', '2002-12-05', '0', b'0', b'1', b'0'),
-(89, 'caio', 'caioteste@gmail.com', 'teste', '2004-04-20', '', b'0', b'0', b'0'),
-(90, 'Brashop', 'brashop@gmail.com', 'brashop2023', '2022-07-07', '63e36cef71ac1.png', b'1', b'0', b'0');
+INSERT INTO `usuarios` (`id`, `nome`, `email`, `senha`, `data_nasc`, `CPF`, `foto_perfil`, `isadm`, `ban`) VALUES
+(70, 'Caio', 'caio@gmail.com', 'abc123', '2004-04-20', 0, 'Caio.jpg', b'1', b'0'),
+(71, 'Pedro Henrique ', 'pedro@gmail.com', 'pedro', '2004-10-22', 0, 'sem_foto.png', b'1', b'0'),
+(72, 'Luis Coradi', 'luis12@gmail.com', 'luis', '2003-03-27', 0, 'sem_foto.png', b'1', b'0'),
+(73, 'Rubens', 'rubens@gmail.com', 'rubens', '2002-12-05', 0, 'sem_foto.png', b'1', b'0'),
+(89, 'caio', 'caioteste@gmail.com', 'teste', '2004-04-20', 0, 'sem_foto.png', b'0', b'0'),
+(90, 'Brashop', 'brashop@gmail.com', 'brashop2023', '2022-07-07', 0, '63e36cef71ac1.png', b'0', b'0'),
+(92, 'caio', 'caio123@gmail.com', '123', '3000-02-23', 0, 'sem_foto.png', b'0', b'0'),
+(93, '433', 'caio43@gmail.com', '43', '2000-02-20', 0, 'sem_foto.png', b'0', b'0'),
+(94, '1231241', 'caio123412@gmail.com', 'teste', '1111-02-21', 2147483647, 'sem_foto.png', b'0', b'0'),
+(96, '121124124', 'luis12241@gmail.com', '12', '0412-12-04', 2147483647, 'sem_foto.png', b'0', b'0'),
+(97, '1212412', 'eumesmo@gmail.com', 'eumesmo', '2009-02-14', 2147483647, 'sem_foto.png', b'0', b'0');
 
 --
 -- Índices para tabelas despejadas
@@ -257,29 +219,6 @@ ALTER TABLE `chat`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices para tabela `denuncias`
---
-ALTER TABLE `denuncias`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_usuarios_id` (`usuarios_id`),
-  ADD KEY `fk_anuncio_id` (`anuncios_id`);
-
---
--- Índices para tabela `imagens`
---
-ALTER TABLE `imagens`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_usuarios_id` (`usuarios_id`),
-  ADD KEY `fk_anuncios_id` (`anuncios_id`);
-
---
--- Índices para tabela `notificacao`
---
-ALTER TABLE `notificacao`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_usuarios_id` (`ususarios_id`);
-
---
 -- Índices para tabela `sugestoes`
 --
 ALTER TABLE `sugestoes`
@@ -300,13 +239,13 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de tabela `anuncios`
 --
 ALTER TABLE `anuncios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
 
 --
 -- AUTO_INCREMENT de tabela `avaliacoes`
 --
 ALTER TABLE `avaliacoes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT de tabela `categorias`
@@ -318,53 +257,19 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT de tabela `chat`
 --
 ALTER TABLE `chat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=125;
-
---
--- AUTO_INCREMENT de tabela `denuncias`
---
-ALTER TABLE `denuncias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
-
---
--- AUTO_INCREMENT de tabela `imagens`
---
-ALTER TABLE `imagens`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de tabela `notificacao`
---
-ALTER TABLE `notificacao`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=140;
 
 --
 -- AUTO_INCREMENT de tabela `sugestoes`
 --
 ALTER TABLE `sugestoes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de tabela `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
-
---
--- Restrições para despejos de tabelas
---
-
---
--- Limitadores para a tabela `imagens`
---
-ALTER TABLE `imagens`
-  ADD CONSTRAINT `fk_anuncios_id` FOREIGN KEY (`anuncios_id`) REFERENCES `anuncios` (`id`);
-
---
--- Limitadores para a tabela `notificacao`
---
-ALTER TABLE `notificacao`
-  ADD CONSTRAINT `notificacao_ibfk_1` FOREIGN KEY (`ususarios_id`) REFERENCES `usuarios` (`id`);
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
