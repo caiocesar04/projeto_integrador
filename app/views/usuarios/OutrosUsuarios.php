@@ -34,7 +34,6 @@ else{
          <tr>
          <th style="color:white;">Nome</th>
          <th style="color:white;">Email</th>
-         <th style="color:white;">Data de Nascimento</th>
          <th style="color:white;">foto de perfil</th>
          <th style="color:white;">Sobre este Usuário:</th>
          </tr>
@@ -47,18 +46,14 @@ else{
                  <tr>
                  <td style="color:white;"><?= $user['nome'] ?></td>
                  <td style="color:white;"><?= $user['email'] ?></td>
-                 <td style="color:white;"><?= $user['data_nasc'] ?></td> 
-                 <td ><img style="height: 50px; border-radius : 100%;" src="../../imgs/<?= $user['foto_perfil'] ?>"></img>
-                 <td><a  class="btn btn-outline-success my-2 my-sm-0-success my-2 my-sm-0" href="./AnuncioController.php?action=findAnuncioByUserClick&id=<?= $user['id'] ?>">Anuncios</a>
-                 <a class="btn btn-outline-success my-2 my-sm-0-success my-2 my-sm-0" href="./ChatController.php?action=loadFormNew&id=<?= $user['id'] ?>">Mensagem</a> 
-                 <a  class="btn btn-outline-success my-2 my-sm-0-success my-2 my-sm-0" href="./UsuarioController.php?action=InsertAdmByUserId&id=<?= $user['id'] ?>">Tornar Administrador</a>
-                 <a  class="btn btn-outline-danger  my-2 my-sm-0-success my-2 my-sm-0" href="./UsuarioController.php?action=Banir&id=<?= $user['id'] ?>">Banir</a></td>
+                 <td ><img style="height: 50px; border-radius : 100%;" src="../../imgs/<?= $user['foto_perfil'] ?>"></img></td>
+                 <td ><a class="btn btn-outline-success my-2 my-sm-0-success my-2 my-sm-0" href="./ChatController.php?action=loadFormNew&id=<?= $user['id'] ?>">Conversar</a>
+                 <a class="btn btn-outline-danger my-2 my-sm-0" href="./ChatController.php?action=loadFormNew&id=90">Denunciar</a></td> 
                 <?php endforeach; ?>
 
                 
     </ul>
-    <a  class="btn btn-outline-success my-2 my-sm-0" href="./UsuarioController.php?action=findUsuarioBan">Usuarios Banidos</a>
-    <a  class="btn btn-outline-success my-2 my-sm-0" href="./UsuarioController.php?action=findAdm">Administradores</a>
+
     <p>
     
     <?php

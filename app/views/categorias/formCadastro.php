@@ -12,12 +12,12 @@
 include_once __DIR__ . "/../helpers/menuAdm.php";
 ?>
 
-<h1> Criar nova Categoria </h1>
+<h1 style="color:white; text-align:center;" > Criar nova Categoria </h1>
 <form action="./CategoriaController.php?action=create" method="POST">
    
 <div class="mb-3">
-    <label>Nome</label>
-    <input type="text" name="nome" class="form-control" required>
+    <label style="color:white; width:50%; margin-left:25%;" >Nome</label>
+    <input style="color:white; background-color:black; width:50%; margin-left:25%;"  type="text" name="nome" class="form-control" required>
 </div>
 <div class="mb-3">
     <button type="submit" value="enviar" name="enviar" class="btn

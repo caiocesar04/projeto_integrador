@@ -21,20 +21,17 @@
 	//$caminho = __DIR__ . "/../helpers/mensagem.php";
 	//print_r($caminho); 
 ?>
-<h2>Editar Sugestao</h2>
+<h2 style="color:white; text-align:center;"> Editar Sugestao</h2>
 
 <?php foreach($data['sugestoes'] as $sugestao): ?>
 	<form action="./SugestaoController.php?action=update&id=<?= $sugestao->getId()?>" method="POST">
 	<div class="mb-3">	
-	<label>Sugestao:</label> 
-	<input type="text" name="texto" class="form-control" value="<?= $sugestao->getTexto(); ?>">
+	<label style="color:white; width:50%; margin-left:25%;">Sugestao:</label> 
+	<input style="color:white; background-color:black; width:50%; margin-left:25%;" type="text" name="texto" class="form-control" value="<?= $sugestao->getTexto(); ?>">
 	</div>
 
 		<div class="mb-3">
-		<button type="submit" value="Atualizar" class="btn
-    btn-primary">Atualizar</button>
-		<button type="reset" value="Limpar"class="btn
-    btn-primary">Limpar</button>
+		<button style="width:50%; margin-left:25%;" type="submit" value="Atualizar" class="btn btn-outline-success  my-2 my-sm-0-success my-2 my-sm-0">Atualizar</button>
 		</div>
 <?php endforeach; ?>
 

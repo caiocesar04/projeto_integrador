@@ -27,7 +27,7 @@ else{
 
 
 <form method="post" action="./ChatController.php?action=create">
-<section style="background-color: #eee;" >
+<section style="background-color: black;" >
 <div class="container py-5">
 
   <div class="row d-flex justify-content-center">

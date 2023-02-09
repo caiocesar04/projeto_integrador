@@ -18,32 +18,33 @@ if(isset($_SESSION["usuario"])){
 }
 ?>
 
-    <h1> Anuncios </h1>
+    <h1 style="color:white; text-align:center "> Anuncios </h1>
     
     <ul>
       <td><table class = 'table table-hover-table-striped table-bordered'></td>
           <tr>
-          <th>Nome</th>
-          <th>Preço</th>
-          <th>Imagem</th>
+          <th style="color:white; ">Nome</th>
+          <th style="color:white; ">Preço</th>
+          <th style="color:white; ">Imagem</th>
+          <th style="color:white; ">Ações</th>
           </tr>
         <?php foreach($data['anuncios'] as $user): ?>
               
           <tr>
           
 
-          <td><?= $user['nome'] ?></td>
-          <td><?= $user['preco'] ?></td>
+          <td style="color:white; "><?= $user['nome'] ?></td>
+          <td style="color:white; "><?= $user['preco'] ?></td>
           <td><img style="width:50px;" src="../../imgs/<?=$user['imagem'];?>"></img></td>
-          <td><a class="btn btn-success" href="./AnuncioController.php?action=edit&id=<?= $user['id'] ?>">Editar</a></td>
-          <td><a class="btn btn-danger" href="javascript:confirmarExclusaoAnuncio('<?= $user['nome'] ?>', <?= $user['id'] ?>)">Excluir</a></td>
+          <td><a class="btn btn-outline-success  my-2 my-sm-0-success my-2 my-sm-0" href="./AnuncioController.php?action=edit&id=<?= $user['id'] ?>">Editar</a>
+          <a class="btn btn-outline-danger  my-2 my-sm-0-success my-2 my-sm-0" href="javascript:confirmarExclusaoAnuncio('<?= $user['nome'] ?>', <?= $user['id'] ?>)">Excluir</a></td>
                 
                        
         <?php endforeach; ?>
     </ul>
 
     <p>
-     <a class="btn btn-primary" href="./AnuncioController.php?action=loadFormNew" >Anunciar novo Produto</a> 
+     <a class="btn btn-outline-success  my-2 my-sm-0-success my-2 my-sm-0" href="./AnuncioController.php?action=loadFormNew" >Anunciar novo Produto</a> 
     <?php
 	include_once __DIR__ . "/../helpers/mensagem.php";
 	//$caminho = __DIR__ . "/../helpers/mensagem.php";

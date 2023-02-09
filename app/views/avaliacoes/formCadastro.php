@@ -39,13 +39,13 @@
 
         <div id="title">
             
-            <form class="card col-md-10 mx-auto col-lg-5 p-4 p-md-5" action="./AvaliacaoController.php?action=create" method="POST">
-                <div class="card-header">
-                    <h2>Avaliar</h2>
+            <form action="./AvaliacaoController.php?action=create" method="POST">
+                <div >
+                    <h2 style="color:white; text-align:center;">Avaliar</h2>
                 </div>
-                    <div class="card-content-area">
-                    <label>Nota</label>
-                    <input type="number"  name="nota" pattern="[0-9]+([,\.][0-9]+)?" min="0" max="5" step="any"
+                    <div>
+                    <label style="color:white; text-align:center;">Nota(de 1 a 5)</label>
+                    <input style="color:white; background-color:black; width:50%; margin-left:25%;" type="number"  name="nota" pattern="[0-9]+([,\.][0-9]+)?" min="0" max="5" step="any"
 name="null" class="form-control" required>
 <input type="hidden" name="anuncios_id" value="<?php
 $queries = array();
@@ -55,10 +55,8 @@ echo(@$queries['id']);
                     </div>
 
 
-                </div>
-                <div class="card-footer">
-                <button type="submit" value="enviar" name="enviar" class="btn btn-primary">Enviar</button>
-                </div>
+                <button style="width:50%; margin-left:25%;" type="submit" value="enviar" class="
+		btn btn-outline-success  my-2 my-sm-0-success my-2 my-sm-0">Enviar</button>
             </form>
         </div>
     </body>

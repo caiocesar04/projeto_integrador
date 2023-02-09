@@ -41,7 +41,8 @@
                  <td style="color:white;"><?= $user['email'] ?></td>
                  <td style="color:white;"><?= $user['data_nasc'] ?></td>
                  <td ><img style="height: 50px; border-radius : 100%;" src="../../imgs/<?= $user['foto_perfil'] ?>"></img>
-                 <a class="btn btn-outline-success my-2 my-sm-0" href="./UsuarioController.php?action=editfotoPerfil&id=<?= $user['id'] ?>">Alterar Foto</a> </td>          
+                 <a class="btn btn-outline-success my-2 my-sm-0" href="./UsuarioController.php?action=editfotoPerfil&id=<?= $user['id'] ?>">Alterar Foto</a>
+                 <a  class="btn btn-outline-danger my-2 my-sm-0" href="./UsuarioController.php?action=RetirarFotoPerfil&id=<?= $user['id'] ?>">Remover foto</a> </td>          
                  <td><a class="btn btn-outline-success my-2 my-sm-0" href="./UsuarioController.php?action=edit&id=<?= $user['id'] ?>">Editar</a> 
                  <a class="btn btn-outline-danger my-2 my-sm-0" href="./UsuarioController.php?action=loadFormDelete&id=<?= $user['id'] ?>">Excluir</a></td>
                 <?php endforeach; ?>

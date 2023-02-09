@@ -24,15 +24,11 @@
 <?php foreach($data['categorias'] as $categoria): ?>
 	<form action="./CategoriaController.php?action=update&id=<?= $categoria->getId()?>" method="POST">
 	<div class="mb-3">	
-	<label>Nome:</label> 
-	<input type="text" name="nome" class="form-control" value="<?= $categoria->getNome(); ?>">
+	<label style="color:white; width:50%; margin-left:25%;" >Nome:</label> 
+	<input style="color:white; background-color:black; width:50%; margin-left:25%;" type="text" name="nome" class="form-control" value="<?= $categoria->getNome(); ?>">
 	</div>
 		<div class="mb-3">
-		<button type="submit" value="Atualizar" class="btn
-    btn-primary">Atualizar</button>
-		<button type="reset" value="Limpar"class="btn
-    btn-primary">Limpar</button>
-		</div>
+		<button style=" width:50%; margin-left:25%;"  type="submit" value="Atualizar" class="btn btn-outline-success  my-2 my-sm-0-success my-2 my-sm-0">Atualizar</button>
 	</form>		
 <?php endforeach; ?>
 

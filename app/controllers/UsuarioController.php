@@ -68,9 +68,10 @@ class ControllerUsuario{
         // $usuario->setData_nasc("asd@asd");
 
 		$usuario->setNome($_POST["nome"]);
-		$usuario->setSenha($_POST["senha"]);
+		md5($usuario->setSenha($_POST["senha"]));
 		$usuario->setEmail($_POST["email"]);
         $usuario->setData_nasc($_POST["data_nasc"]);
+        $usuario->setCPF($_POST["CPF"]);
         $usuarioRepository = new UsuarioRepository();
         $id = $usuarioRepository->create($usuario);
         //var_dump($id);
@@ -173,6 +174,31 @@ class ControllerUsuario{
             }
     }
 }
+private function RetirarFotoPerfil(){
+    session_start();
+        if(!isset($_SESSION["usuario"])){
+            $msg = "É necessário estar logado!";
+        return $this->loadView("usuarios/formLogin.php", @$data, @$msg);
+        }
+        if(isset($_SESSION["usuario"])){
+        if($_SESSION["usuario"]['id'] != $_GET["id"]){
+            $msg = "Acesso restrito! Somente o dono desta conta tem direito a essa ação.";
+             return $this->loadView("usuarios/formLogin.php", @$data, $msg);
+        } 
+        }  
+        $usuario = new usuarioModel();
+        $idParam = $_GET['id'];
+        $usuarioRepository = new UsuarioRepository();    
+
+        $qt = $usuarioRepository->RetirarFotoPerfil($idParam);
+        if($qt){
+            $msg = "Registro excluído com sucesso.";
+        }else{
+            $msg = "Erro ao excluir o registro no banco de dados.";
+        }
+        $this->findUsuarioByIdLogged($msg);
+}
+
 
 private function Banir(){
     session_start();
@@ -262,8 +288,14 @@ private function RetirarAdm(){
     }   
      private function loadFormDelete(){
          session_start();
+        
         if(isset($_SESSION["usuario"])){
-            $this->loadView("usuarios/deleteUsuario.php", null);
+                if($_SESSION["usuario"]['id'] != $_GET['id']){
+                    $msg = "Somente o dono da conta pode executar esta ação";
+                    return $this->loadView("usuarios/formLogin.php", @$data, @$msg);
+                }else{
+                return $this->loadView("usuarios/deleteUsuario.php", null);
+                }
 		}else{
 			$msg = "É necessário estar logado";
             $this->loadView("usuarios/formLogin.php", @$data, $msg);
@@ -337,6 +369,26 @@ private function RetirarAdm(){
             }
        
     }
+    private function findAllUsuario(string $msg = null){
+        @session_start();
+
+
+    if(!isset($_SESSION["usuario"])){
+        return $this->loadView("usuarios/formLogin.php", @$data, @$msg);
+      }
+
+    
+
+    $usuarioRepository = new UsuarioRepository();
+
+    $usuarios = $usuarioRepository->findAllUsuario();
+
+    $data['titulo'] = "listar usuarios";
+    $data['usuarios'] = $usuarios;
+    
+    
+            return $this->loadView("usuarios/OutrosUsuarios.php", @$data);
+}
 
     private function findUsuarioBan(string $msg = null){
         @session_start();
@@ -519,14 +571,14 @@ if(!isset($_SESSION["usuario"])){
                return  $this->loadView("usuarios/UsuarioClicked.php", @$data, $msg);
                 }   
         $nomeParam = $_POST['nome'];
-        $UsuarioRepository = new UsuarioRepository();
-        $usuarios = $categoriaRepository->findUsuarioByName($nomeParam);
+        $usuarioRepository = new UsuarioRepository();
+        $usuarios = $usuarioRepository->findUsuarioByName($nomeParam);
         $data['titulo'] = "listar usuarios";
         $data['usuarios'] = $usuarios;
   
         if(isset($_SESSION["usuario"])){
             if($_SESSION["usuario"]['is_adm'] == 0){
-           return  $this->loadView("usuarios/UsuarioClicked.php", @$data, $msg);
+           return  $this->loadView("usuarios/OutrosUsuarios.php", @$data, @$msg);
             } if($_SESSION["usuario"]['is_adm'] == 1){
             $this->loadView("usuarios/list.php", $data, @$msg);
             }
@@ -571,17 +623,25 @@ if(!isset($_SESSION["usuario"])){
     private function edit(){
         session_start();
 
+        if(isset($_SESSION["usuario"])){
+            if($_SESSION["usuario"]['id'] != $_GET['id']){
+                $msg = "Somente o dono da conta pode executar esta ação";
+                return $this->loadView("usuarios/formLogin.php", @$data, @$msg);
+            }
+        }
+        if(!isset($_SESSION["usuario"])){
+            $msg = "É necessário estar Logado!";
+           return $this->loadView("usuarios/formLogin.php", $data, $msg);
+          
+        }
         $idParam = $_GET['id'];
         $usuarioRepository = new UsuarioRepository(); 
         $usuario = $usuarioRepository->findUsuarioById($idParam);
         $data['usuarios'][0] = $usuario;
 
-        if(isset($_SESSION["usuario"])){
-            $this->loadView("usuarios/formEdita.php", $data, @$msg);
-          }else{
-            $msg = "É necessário estar Logado!";
-            $this->loadView("usuarios/formLogin.php", $data, $msg);
-          }
+       
+           return $this->loadView("usuarios/formEdita.php", $data, @$msg);
+          
     }
 
     private function update(){

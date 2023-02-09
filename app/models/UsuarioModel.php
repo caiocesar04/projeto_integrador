@@ -5,6 +5,7 @@ class UsuarioModel{
 	private $senha;
 	private $email;
 	private $data_nasc;
+	private $CPF;
 	private $foto_perfil;
 	private $isadm;
 	private $ban;
@@ -49,6 +50,15 @@ class UsuarioModel{
 	public function setData_nasc(string $dat){
 		$this->data_nasc = $dat;
 	}
+
+	public function getCPF(): int{
+		return $this->CPF;
+	}
+	
+	public function setCPF(int $CPF){
+		$this->CPF = $CPF;
+	}
+
 
 	public function getFoto_perfil(): string{
 		return $this->foto_perfil;

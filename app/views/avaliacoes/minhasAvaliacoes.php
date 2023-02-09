@@ -30,8 +30,8 @@
               
           <tr>
           <td><?= $user['nota'] ?></td>
-          <td><a class="btn btn-success" href="./AvaliacaoController.php?action=edit&id=<?= $user['id'] ?>">Editar</a></td>
-          <td><a class="btn btn-danger" href="javascript:confirmarExclusaoAvaliacao('<?= $user['nota'] ?>', <?= $user['id'] ?>)">Excluir</a></td>
+          <td><a class="btn btn-outline-success  my-2 my-sm-0-success my-2 my-sm-0" href="./AvaliacaoController.php?action=edit&id=<?= $user['id'] ?>">Editar</a></td>
+          <td><a class="btn btn-outline-danger  my-2 my-sm-0-success my-2 my-sm-0" href="javascript:confirmarExclusaoAvaliacao('<?= $user['nota'] ?>', <?= $user['id'] ?>)">Excluir</a></td>
                        
         <?php endforeach; ?>
     </ul>

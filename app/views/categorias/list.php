@@ -13,31 +13,31 @@ include_once __DIR__ . "/../helpers/menuAdm.php";
 ?>
 
 
-    <h1> Categorias </h1>
+    <h1 style="color:white; text-align:center"> Categorias </h1>
     
     <ul>
       <td><table class = 'table table-hover-table-striped table-bordered'></td>
           <tr>
-          <th>Nome</th>
-         
+          <th style="color:white; width:50%; margin-left:25%;">Nome</th>
+          <th style="color:white; width:50%; margin-left:25%;">Ações</th>
           </tr>
         <?php foreach($data['categorias'] as $user): ?>
               
           <tr>
-          <td><?= $user['nome'] ?></td>
-          <td><a class="btn btn-success" href="./CategoriaController.php?action=edit&id=<?= $user['id'] ?>">Editar</a></td>
-          <td><a class="btn btn-danger" href="javascript:confirmarExclusaoCategoria('<?= $user['nome'] ?>', <?= $user['id'] ?>)">Excluir</a></td>
+          <td style="color:white;"><?= $user['nome'] ?></td>
+          <td style=""><a class="btn btn-outline-success  my-2 my-sm-0-success my-2 my-sm-0" href="./CategoriaController.php?action=edit&id=<?= $user['id'] ?>">Editar</a>
+          <a class="btn btn-outline-danger  my-2 my-sm-0-success my-2 my-sm-0" href="javascript:confirmarExclusaoCategoria('<?= $user['nome'] ?>', <?= $user['id'] ?>)">Excluir</a></td>
                       
         <?php endforeach; ?>
     </ul>
     <div>
     <form action="./CategoriaController.php?action=findCategoriabyName" method="POST">
-        <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" name="nome"  aria-label="Pesquisar" required>
-        <button class="btn btn-primary" type="submit">Buscar</button>
+        <input style="background-color:black;"  class="form-control mr-sm-2" type="search" placeholder="Pesquisar" name="nome"  aria-label="Pesquisar" required>
+        <button class="btn btn-outline-success  my-2 my-sm-0-success my-2 my-sm-0" type="submit">Buscar</button>
         </form>
     <p>
     </div>
-    <a class="btn btn-primary" href="./CategoriaController.php?action=loadFormNew">Adicionar nova Categoria</a>
+    <a class="btn btn-outline-success  my-2 my-sm-0-success my-2 my-sm-0" href="./CategoriaController.php?action=loadFormNew">Adicionar nova Categoria</a>
     <?php
 	include_once __DIR__ . "/../helpers/mensagem.php";
 	//$caminho = __DIR__ . "/../helpers/mensagem.php";

@@ -19,23 +19,23 @@
     ?>
 
         <div id="title">
-            <form enctype="multipart/form-data" class="card col-md-10 mx-auto col-lg-5 p-4 p-md-5" action="./AnuncioController.php?action=create" method="POST">
+            <form enctype="multipart/form-data"  action="./AnuncioController.php?action=create" method="POST">
                 <div class="card-header">
-                    <h2>Anuncie um Produto</h2>
+                    <h2 style="color:white; text-align:cente;" >Anuncie um Produto</h2>
                 </div>
-                <div class="card-content">
-                    <div class="card-content-area">
-                    <label>Nome</label>
-                    <input type="text" name="nome" class="form-control" required>
+                <div >
+                    <div >
+                    <label style="color:white; width:50%; margin-left:25%;">Nome:</label>
+		 <input  style="color:white; background-color:black; width:50%; margin-left:25%;" type="text" name="nome" class="form-control" required>
                     </div>
-                    <div class="card-content-area">
-                    <label>Preço</label>
-                    <input type="number" name="preco" pattern="[0-9]+([,\.][0-9]+)?" min="0" step="any"
+                    <div >
+                    <label style="color:white; width:50%; margin-left:25%;">Preço:</label>
+		 <input  style="color:white; background-color:black; width:50%; margin-left:25%;" type="number" name="preco" pattern="[0-9]+([,\.][0-9]+)?" min="0" step="any"
                     name="null" class="form-control" required>
                     </div>
-                    <label for="categoria_id">Categoria:</label>
+                    <label style="color:white; background-color:black; width:50%; margin-left:25%;" for="categoria_id">Categoria:</label>
                    
-                    <select name="categoria_id" id="categoria_id" >
+                    <select style="color:white; background-color:black; width:50%; margin-left:25%;" name="categoria_id" id="categoria_id" >
                         <option value="">Selecionar</option>
                     <?php
                     foreach ($data['categorias'] as $key => $categoria) {
@@ -43,33 +43,33 @@
                     }
                     ?>
                     </select>
-                    <div class="card-content-area">
-                    <label>Imagem</label>
-                    <input type="file" name="imagem" class="form-control" required>
+                    <div >
+                    <label style="color:white; width:50%; margin-left:25%;">imagem :</label>
+		 <input style="color:white; background-color:black; width:50%; margin-left:25%;" type="file" name="imagem" class="form-control" required>
                     </div>
-                    <div class="card-content-area">
-                    <label>Imagem 2:</label>
-                    <input type="file" name="imagem2" class="form-control" required>
+                    <div >
+                    <label style="color:white; width:50%; margin-left:25%;">imagem 2:</label>
+		 <input style="color:white; background-color:black; width:50%; margin-left:25%;"  type="file" name="imagem2" class="form-control" required>
                     </div>
-                    <div class="card-content-area">
-                    <label>Imagem 3:</label>
-                    <input type="file" name="imagem3" class="form-control" required>
+                    <div >
+                    <label style="color:white; width:50%; margin-left:25%;">imagem 3:</label>
+		 <input style="color:white; background-color:black; width:50%; margin-left:25%;"  type="file" name="imagem3" class="form-control" required>
                     </div>
-                    <div class="card-content-area">
-                    <label>Imagem 4:</label>
-                    <input type="file" name="imagem4" class="form-control" required>
+                    <div >
+                    <label style="color:white; width:50%; margin-left:25%;">imagem 4:</label>
+		 <input style="color:white; background-color:black; width:50%; margin-left:25%;"  type="file" name="imagem4" class="form-control" required>
                     </div>
-                    <div class="card-content-area">
-                    <label>Imagem 5:</label>
-                    <input type="file" name="imagem5" class="form-control" required>
+                    <div >
+                    <label style="color:white; width:50%; margin-left:25%;">imagem 5:</label>
+		 <input style="color:white; background-color:black; width:50%; margin-left:25%;"  type="file" name="imagem5" class="form-control" required>
                     </div>
-                    <label>Descrição</label>
-                    <input type="text" name="descricao" class="form-control" required>
+                    <label style="color:white; width:50%; margin-left:25%;">Descricao:</label>
+		            <input style="color:white; background-color:black; width:50%; margin-left:25%;" type="text" name="descricao" class="form-control" required>
                     </div>
 
                 </div>
-                <div class="card-footer">
-                <button type="submit" value="enviar" name="enviar" class="btn btn-primary">Enviar</button>
+                <div >
+                <button style="width:50%; margin-left:25%;" type="submit" value="enviar" name="enviar" class="btn btn-outline-success  my-2 my-sm-0-success my-2 my-sm-0">Enviar</button>
                 </div>
             </form>
         </div>

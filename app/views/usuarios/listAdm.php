@@ -43,6 +43,7 @@ else{
                  <td style="color:white;"><?= $user['data_nasc'] ?></td> 
                  <td><img style="height: 50px; border-radius : 100%;" src="../../imgs/<?= $user['foto_perfil'] ?>"></img>
                  <td><a  class="btn btn-outline-success my-2 my-sm-0-success my-2 my-sm-0" href="./AnuncioController.php?action=findAnuncioByUserClick&id=<?= $user['id'] ?>">Anuncios</a>
+                 <a class="btn btn-outline-success my-2 my-sm-0-success my-2 my-sm-0" href="./ChatController.php?action=loadFormNew&id=<?= $user['id'] ?>">Mensagem</a>
                  <a  class="btn btn btn-outline-danger my-2 my-sm-0-success my-2 my-sm-0" href="./UsuarioController.php?action=Banir&id=<?= $user['id'] ?>">Banir</a>
                  <a  class="btn btn btn-outline-danger my-2 my-sm-0-success my-2 my-sm-0" href="./UsuarioController.php?action=RetirarAdm&id=<?= $user['id'] ?>">Remover função de Administrador</a> </td>
                 <?php endforeach; ?>

@@ -40,7 +40,7 @@ include_once __DIR__."../../../repository/CategoriaRepository.php";
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <a class="dropdown-item" href="./AnuncioController.php?action=loadFormNew">Anunciar um produto</a>
-          <a class="dropdown-item" href="./AnuncioController.php?action=loadFormNew">Mensagens</a>
+          <a class="dropdown-item" href="./UsuarioController.php?action=findAllUsuario">Usuarios</a>
           <a class="dropdown-item" href="./SugestaoController.php?action=findAll">Sugestões</a>
         </div>
       </li>

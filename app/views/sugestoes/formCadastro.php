@@ -17,16 +17,15 @@ if(isset($_SESSION["usuario"])){
 }
 ?>
   <body>
-<h3> Faça uma sugestão, Seu Feedback é importante para melhorarmos nosso site! </h3>
+<h3 style="color:white; text-align:center;" > Faça uma sugestão, Seu Feedback é importante para melhorarmos nosso site! </h3>
 <form action="./SugestaoController.php?action=create" method="POST">
    
 <div class="mb-3">
-    <label>Sugestão</label>
-    <input type="text" name="texto" class="form-control" required>
+    <label style="color:white; width:50%; margin-left:25%;">Sugestão</label>
+    <input style="color:white; background-color:black; width:50%; margin-left:25%;" type="text" name="texto" class="form-control" required>
 </div>
 <div class="mb-3">
-    <button type="submit" value="enviar" name="enviar" class="btn
-    btn-primary">Enviar</button>
+    <button style=" width:50%; margin-left:25%;"  type="submit" value="enviar" name="enviar" class="btn btn-outline-success  my-2 my-sm-0-success my-2 my-sm-0">Enviar</button>
 </div>
 </form>
 </body>

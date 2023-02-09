@@ -26,13 +26,15 @@ else{
      <h2 style= "color:white; text-align: center;">O que você busca?</h2>
      <div>
       <input style=" width:50%; margin-left: 25%; background-color:black;" class="form-control mr-sm-2" type="search" placeholder="Pesquisar" name="nome"  aria-label="Pesquisar" required>
+      <button style=" width:50%; margin-left: 25%;" class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
     </div>
     </form>
 
+<br>
 <form action="./AnuncioController.php?action=findAnuncioByCategoria" method="POST">
-  <label style=" width:50%; margin-left: 25%; background-color:black;" for="categoria_id">  Buscar por Categoria:</label>
+  <label  style="color:white; background-color:black; width:50%; margin-left:25%;" for="categoria_id">  Buscar por Categoria:</label>
                    
-        <select  name="categoria_id" id="categoria_id" required>
+        <select style="color:white; background-color:black; width:50%; margin-left:25%;"  name="categoria_id" id="categoria_id" required>
             <option value="">Selecionar</option>
         <?php
           
@@ -43,7 +45,7 @@ else{
         }
         ?>
       </select>
-      <button style = "background-color: #ffdf00;" class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
 
   <div id="container">
     <main>

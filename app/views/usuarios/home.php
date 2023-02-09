@@ -22,6 +22,7 @@
      	<h2>O que você busca?</h2>
      	<div>
       		<input class="pesquisa form-control mr-sm-2" type="search" placeholder="Pesquisar" name="nome" aria-label="Pesquisar" required>
+			  <button style=" width:50%; margin-left: 25%;" class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
     	</div>
     </form>
 	<div id="myCarousel" class="carousel slide" data-ride="carousel">

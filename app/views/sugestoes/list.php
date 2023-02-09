@@ -38,6 +38,7 @@ if(isset($_SESSION["usuario"])){
 
     <p>
      <a class="btn btn-outline-success my-2 my-sm-0"  href="./SugestaoController.php?action=findSugestaoByUser">Minhas Sugestões</a> 
+    <a class="btn btn-outline-success my-2 my-sm-0" href="./SugestaoController.php?action=loadFormNew">Fazer uma sugestão</a>  
     <?php
 	include_once __DIR__ . "/../helpers/mensagem.php";
 	//$caminho = __DIR__ . "/../helpers/mensagem.php";

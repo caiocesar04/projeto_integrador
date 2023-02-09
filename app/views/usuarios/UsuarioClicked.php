@@ -22,10 +22,11 @@
    include_once __DIR__ . "/../helpers/menuHome.php";
  }
     ?>
-    <form action="./AnuncioController.php?action=findAnunciobyName" method="POST">
+    <form action="./UsuarioController.php?action=findUsuarioByName" method="POST">
      <h2 style= "color:white; text-align: center;">Procurar Alguém</h2>
      <div>
       <input style="width:50%; margin-left: 25%; background-color:black;" class="form-control mr-sm-2" type="search" placeholder="Pesquisar" name="nome"  aria-label="Pesquisar" required>
+      <button style=" width:50%; margin-left: 25%;" class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
     </div>
     </form>
       <ul>

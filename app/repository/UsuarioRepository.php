@@ -19,12 +19,13 @@
         public function create(UsuarioModel $usuario) : int {
             try {
                 //print_r($usuario);
-                $query = "INSERT INTO usuarios (nome, senha, email, data_nasc) VALUES (:nome, :senha, :email, :data_nasc)";
+                $query = "INSERT INTO usuarios (nome, senha, email, data_nasc, CPF, foto_perfil) VALUES (:nome, :senha, :email, :data_nasc, :CPF, 'sem_foto.png')";
                 $prepare = $this->conn->prepare($query);
                 $prepare->bindValue(":nome", $usuario->getNome());
                 $prepare->bindValue(":senha", $usuario->getSenha());
                 $prepare->bindValue(":email", $usuario->getEmail());
                 $prepare->bindValue(":data_nasc", $usuario->getData_nasc());
+                $prepare->bindValue(":CPF", $usuario->getCPF());
                 $prepare->execute();
                 return $this->conn->lastInsertId();
                 
@@ -35,6 +36,13 @@
         }
 
         public function findAll(): array {
+            $table = $this->conn->query("SELECT * FROM usuarios WHERE ban = 0 AND isadm = 0");
+            $usuarios  = $table->fetchAll(PDO::FETCH_ASSOC);
+
+            return $usuarios;
+        }
+        
+        public function findAllUsuario(): array {
             $table = $this->conn->query("SELECT * FROM usuarios WHERE ban = 0 AND isadm = 0");
             $usuarios  = $table->fetchAll(PDO::FETCH_ASSOC);
 
@@ -89,6 +97,8 @@
             return $result;
             
         }
+        
+        
         public function InsertFotoPerfil(UsuarioModel $usuario) : bool {
             @session_start();
             $query = "UPDATE usuarios SET foto_perfil = ? WHERE id = ?";
@@ -123,6 +133,16 @@
         public function RetirarAdm(int $id) : int {
             @session_start();
             $query = "UPDATE usuarios SET isadm = 0 WHERE id = :id";
+            $prepare = $this->conn->prepare($query);
+            $prepare->bindValue(":id", $id);
+            $prepare->execute();
+            $result = $prepare->rowCount();
+            return $result;
+            
+        }
+        public function RetirarFotoPerfil(int $id) : int {
+            @session_start();
+            $query = "UPDATE usuarios SET foto_perfil = 'sem_foto.png' WHERE id = :id";
             $prepare = $this->conn->prepare($query);
             $prepare->bindValue(":id", $id);
             $prepare->execute();

@@ -26,13 +26,12 @@
 <?php foreach($data['avaliacoes'] as $avaliacao): ?>
 	<form action="./AvaliacaoController.php?action=update&id=<?= $avaliacao->getId()?>" method="POST">
 		<div class="mb-3">
-		<label>Nota:</label>
-		 <input type="number" name="nota"  pattern="[0-9]+([,\.][0-9]+)?" min="0" step="any" name="null" class="form-control" value="<?= $avaliacao->getNota(); ?>">
+		<label style="color:white; text-align:center;">Nota:</label>
+		 <input style="color:white; background-color:black; width:50%; margin-left:25%;" type="number" name="nota"  pattern="[0-9]+([,\.][0-9]+)?" min="0" step="any" name="null" class="form-control" value="<?= $avaliacao->getNota(); ?>">
 		</div>
 
 		<div class="mb-3">
-		<button type="submit" value="Atualizar" class="btn
-    btn-primary">Atualizar</button>
+		<button style="width:50%; margin-left:25%;" type="submit" value="Atualizar" class="btn btn-outline-success  my-2 my-sm-0-success my-2 my-sm-0">Atualizar</button>
 	</form>		
 <?php endforeach; ?>
 
