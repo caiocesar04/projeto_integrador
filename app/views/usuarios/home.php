@@ -31,7 +31,7 @@
 			<li data-target="#myCarousel" data-slide-to="1"></li>
 			<li data-target="#myCarousel" data-slide-to="2"></li>
 		</ol>
-		<div class="carousel-inner" role="listbox">a
+		<div class="carousel-inner" role="listbox">
 			<div class="item active">
 				<img class="first-slide slide" src="../../imgs/imagem1.png" alt="First slide">
           			<div class="carousel-caption d-none d-md-block">
