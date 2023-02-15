@@ -32,15 +32,15 @@
       <ul>
       <td><table class = 'table table-hover-table-striped table-bordered'></td>
           <tr>
-          <th>Nome</th>
-          <th>Foto Perfil<th>
-          <th>Entrar em contato</th>
+          <th style="color:white;">Nome</th>
+          <th style="color:white;">Foto Perfil<th>
+          <th style="color:white;">Entrar em contato</th>
           </tr>
     <tr>
     <td><?= $data['usuario']->getNome(); ?></td>
     <td><img  style="height: 20px; border-radius : 100%;" src="../../imagens/<?= $data['usuario']->getFoto_Perfil(); ?>"></td>
     <td><a class="btn btn-primary" href="./ChatController.php?action=loadFormNew&id=<?= $data['usuario']->getId();?>">Conversar</a></td>
-    <td><a class="btn btn-danger" href="./ChatController.php?action=loadFormNew&id=99">Denunciar</a></td>               
+    <td><a class="btn btn-danger" href="./DenunciaController.php?action=loadFormNew2&id=<?= $data['usuario']->getId(); ?>">Denunciar</a></td>                  
 </ul>
                 
                 
