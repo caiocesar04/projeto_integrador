@@ -4,7 +4,7 @@
     box-sizing: border-box;
   }
   body {
-      background: white;
+      background: black;
   }
   #container {
       max-width: 1024px;
@@ -45,6 +45,7 @@
     margin-top: 10px;
     border-width: 3px;
   }
+  
   .select-estiloso { /* <div> */
     width: 240px;
     height: 34px;
@@ -63,3 +64,39 @@
     border-radius: 0;
     height: 34px;
   }      
+  .AnuncioClicked{
+    overflow-y: hidden;
+    overflow-x: hidden;
+    margin: 0;
+    }
+    .main-side{
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    }
+    .left-side{
+    width: 50vw;
+    height: 100vh;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    margin-bottom: 25vh;
+    }
+    .right-side{
+    width: 50vw;
+    height: 100vh;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    margin-bottom: 25vh;
+    }
+    .text{
+    max-width: 80vh;
+    color: white;
+    }
+    .slide{
+    max-height: 50vh;
+    min-height: 50vh;
+    }
