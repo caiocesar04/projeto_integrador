@@ -31,18 +31,18 @@
 			<li data-target="#myCarousel" data-slide-to="1"></li>
 			<li data-target="#myCarousel" data-slide-to="2"></li>
 		</ol>
-		<div class="carousel-inner" role="listbox">
+		<div class="carousel-inner" role="listbox">a
 			<div class="item active">
 				<img class="first-slide slide" src="../../imgs/imagem1.png" alt="First slide">
           			<div class="carousel-caption d-none d-md-block">
-                 		<h2 >Encontre aqui produtos de seu interesse!</h2>
+                 		<h2 style="margin-bottom: -95px !important;">Encontre aqui produtos de seu interesse!</h2>
                  		<p><a class="btn btn-outline-success my-2 my-sm-0" href="./AnuncioController.php?action=findAll" role="button">Ver mais</a></p>
                 	</div>
 				</div>
 				<div class="item">
 					<img class="second-slide slide" src="../../imgs/imagem2.png" alt="Second slide">
           			<div class="carousel-caption d-none d-md-block">			
-                 		<h2>Quer vender algo? Anuncie aqui!</h2>
+                 		<h2 style="margin-bottom: -95px !important;">Quer vender algo? Anuncie aqui!</h2>
                  		<p><a class="btn btn-outline-success my-2 my-sm-0" href="./AnuncioController.php?action=loadFormNew" role="button">Ver mais</a></p>
                   	</div>
 				</div>
@@ -50,7 +50,7 @@
 					<img class="third-slide slide" src="../../imgs/imagem3.png" alt="Third slide">
 					<div class="container">
 						<div class="carousel-caption">
-						<h2>Brashop é um site de vendas que presa por você</h2>
+						<h2 style="margin-bottom: -95px !important;">Brashop, o site de vendas que presa por você</h2>
 						<p><a class="btn btn-outline-success my-2 my-sm-0" href="./AnuncioController.php?action=loadFormNew" role="button">Ver mais</a></p>
 						</div>
 					</div>
