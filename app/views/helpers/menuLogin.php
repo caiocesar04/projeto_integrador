@@ -7,7 +7,6 @@ include_once __DIR__."../../../repository/CategoriaRepository.php";
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="../views/helpers/style-home.css">
-<link rel="stylesheet" type="text/css" href="../views/helpers/style-anuncios.css">
   <nav style="background-color: #009c3b;" class="navbar navbar-expand-lg navbar-dark">
    <div class="container-fluid">
    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -44,7 +43,6 @@ include_once __DIR__."../../../repository/CategoriaRepository.php";
           <a class="dropdown-item" href="./SugestaoController.php?action=findAll">Sugestões</a>
         </div>
       </li>
-      
     </ul>
   </div>
 </nav>
