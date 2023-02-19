@@ -74,9 +74,13 @@ class ControllerSugestao{
         $data['titulo'] = "listar sugestoes";
         $data['sugestoes'] = $sugestoes;
 
-         
         if(isset($_SESSION["usuario"])){
+            if($_SESSION["usuario"]['is_adm'] == 0){
             $this->loadView("sugestoes/list.php", $data, $msg);
+            }
+            if($_SESSION["usuario"]['is_adm'] == 1){
+                $this->loadView("sugestoes/listSugestoesAdm.php", $data, @$msg);
+            }
           }else{
             $msg = "É necessário estar Logado!";
             $this->loadView("usuarios/formLogin.php", $data, $msg);
